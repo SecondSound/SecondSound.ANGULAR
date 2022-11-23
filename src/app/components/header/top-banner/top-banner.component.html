@@ -1,8 +1,27 @@
 <div class="container">
-  <div class="d-flex justify-content-between">
-    <p class="m-0 p-2">I am a banner title.</p>
-    <p class="m-0 p-2">I am a banner title.</p>
-    <p class="m-0 p-2">I am a banner title.</p>
+  <div class="row">
+    <div class="col d-flex justify-content-start">
+      <div class="row">
+        <div class="col">
+          <a routerLink="/info" mat-button class="p-0">
+            <span class="fa fa-info-circle icon-align"></span>
+            Help & Info
+          </a>
+        </div>
+        <div class="col">
+          <a routerLink="/contact" mat-button href="" class="p-0">
+            <span class="fa fa-envelope icon-align"></span>
+            Contact
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="col d-flex justify-content-end">
+      <a routerLink="/login" mat-button href="" class="p-0">
+        <span class="fa fa-user icon-align"></span>
+        Log in
+      </a>
+    </div>
   </div>
 </div>
 <hr class="m-0">

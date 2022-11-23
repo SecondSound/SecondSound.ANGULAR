@@ -8,13 +8,21 @@ import { HeaderComponent } from './components/header/header/header.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatButtonModule} from "@angular/material/button";
 import { HomeComponent } from './components/home/home/home.component';
+import { LoginComponent } from './components/account/login/login.component';
+import { RegisterComponent } from './components/account/register/register.component';
+import { ContactComponent } from './components/contact/contact/contact.component';
+import { InfoHelpComponent } from './components/info/info-help/info-help.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TopBannerComponent,
     HeaderComponent,
-    HomeComponent
+    HomeComponent,
+    LoginComponent,
+    RegisterComponent,
+    ContactComponent,
+    InfoHelpComponent
   ],
   imports: [
     BrowserModule,
