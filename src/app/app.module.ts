@@ -6,17 +6,21 @@ import { AppComponent } from './app.component';
 import { TopBannerComponent } from './components/header/top-banner/top-banner.component';
 import { HeaderComponent } from './components/header/header/header.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatButtonModule} from "@angular/material/button";
+import { HomeComponent } from './components/home/home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TopBannerComponent,
-    HeaderComponent
+    HeaderComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
