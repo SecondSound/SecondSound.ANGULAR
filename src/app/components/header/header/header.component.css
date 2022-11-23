@@ -1,0 +1,40 @@
+.svg-logo {
+  max-height: 150px;
+}
+
+.search {
+  position: relative;
+  box-shadow: 0 0 40px rgba(51, 51, 51, .1);
+  border: 2px solid #1B3F92;
+  border-radius: 8px;
+  align-items: center;
+}
+
+.search input {
+  height: 48px;
+  border: none;
+}
+
+.search input:focus {
+  box-shadow: none;
+}
+
+.search .fa-search {
+ margin-left: 12px;
+}
+
+.search button {
+  margin-right: 2px;
+  padding: 8px 16px;
+  background: #1B3F92;
+}
+
+.search button:hover {
+  background: #132b63;
+}
+
+.search button:active {
+  background-color: #132b63;
+  box-shadow: 0 5px #666;
+  transform: translateY(1px);
+}
