@@ -6,3 +6,9 @@
 .icon-align {
   vertical-align: baseline !important;
 }
+
+.route-active {
+  color: var(--bs-link-color);
+  text-decoration: underline;
+  background: var(--bs-bg-opacity);
+}
