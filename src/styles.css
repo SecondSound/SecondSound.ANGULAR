@@ -14,11 +14,9 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   color: var(--bs-link-color);
   background: var(--bs-bg-opacity);
   border-bottom: 2px solid var(--bs-link-color) !important;
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
 }
-
-
 
 .form-width {
   min-width: 150px;
