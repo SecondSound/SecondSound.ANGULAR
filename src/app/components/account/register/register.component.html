@@ -1,6 +1,27 @@
 <div class="container">
   <div class="row">
-    <p>Here we'll make the register page.</p>
+    <div class="col-10 mx-auto py-4">
+      <div class="title">
+        <h1>Register a new account</h1>
+        <p>Already have an account? <a routerLink="/login">Log in</a> here.</p>
+      </div>
+      <mat-card>
+        <mat-card-header class="d-flex justify-content-center">
+          <div class="row py-0">
+            <div class="col">
+              <a routerLink="/login" mat-button>
+                Login
+              </a>
+            </div>
+            <div class="col">
+              <a routerLink="/register" class="route-active"  mat-button>
+                Register
+              </a>
+            </div>
+          </div>
+        </mat-card-header>
+      </mat-card>
+    </div>
   </div>
 </div>
 
