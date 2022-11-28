@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-6 mx-auto py-4">
       <div class="title">
-        <h1>Log in</h1>
+        <h1>Log in to your account</h1>
         <p>Welcome back! Please log in to your account. Don't have an account? <a routerLink="/register">Register</a> here.</p>
       </div>
       <mat-card>
@@ -20,13 +20,15 @@
             </div>
           </div>
         </mat-card-header>
-        <hr>
+        <mat-divider></mat-divider>
         <mat-card-content class="d-flex justify-content-center">
-          <form class="login-form">
-            <mat-form-field class="login-full-width">
+          <form class="form-width">
+            <p class="half-width pt-4">Please log in with your e-mail address.</p>
+            <mat-form-field class="form-full-width pt-2" appearance="outline">
               <mat-label>Email</mat-label>
               <input type="email" matInput [formControl]="emailFormControl" [errorStateMatcher]="matcher"
                      placeholder="john.doe@example.com">
+              <mat-icon matSuffix>mail</mat-icon>
               <mat-hint>Please fill in your e-mail address</mat-hint>
               <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
                 Please enter a valid email address
@@ -36,9 +38,11 @@
               </mat-error>
             </mat-form-field>
 
-            <mat-form-field class="login-full-width py-4">
+            <mat-form-field class="form-full-width py-2" appearance="outline">
               <mat-label>Password</mat-label>
-              <input type="password" matInput [formControl]="passwordFormControl" [errorStateMatcher]="matcher">
+              <input type="password" matInput [formControl]="passwordFormControl" [errorStateMatcher]="matcher"
+                     [type]="hide ? 'password' : 'text'">
+              <mat-icon matSuffix (click)="displayPassword()">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
               <mat-hint>Please fill in your password</mat-hint>
               <mat-error *ngIf="passwordFormControl.hasError('password') && !passwordFormControl.hasError('required')">
                 Please enter a valid password
@@ -47,9 +51,11 @@
                 Password is <strong>required</strong>
               </mat-error>
               <mat-error *ngIf="passwordFormControl.invalid && !passwordFormControl.hasError('required')">
-                Password needs to be at least 6 characters long
+                Password needs to be at least {{ minLengthPassword }} characters long
               </mat-error>
             </mat-form-field>
+
+            <button mat-flat-button color="primary" type="submit" class="half-width my-2">Log in to your account</button>
           </form>
         </mat-card-content>
       </mat-card>
