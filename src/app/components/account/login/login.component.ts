@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, FormGroupDirective, NgForm, Validators} from "@angular/forms";
+import {Form, FormControl, FormGroupDirective, NgForm, Validators} from "@angular/forms";
 import {ErrorStateMatcher} from "@angular/material/core";
 
 export class LoginErrorStateMatcher implements ErrorStateMatcher {
@@ -15,14 +15,20 @@ export class LoginErrorStateMatcher implements ErrorStateMatcher {
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  emailFormControl = new FormControl('', [Validators.required, Validators.email]);
-  passwordFormControl = new FormControl('', [Validators.required, Validators.minLength(6)]);
+  hide: boolean = true;
+  minLengthPassword: number = 6;
 
-  matcher = new LoginErrorStateMatcher();
+  emailFormControl: FormControl = new FormControl('', [Validators.required, Validators.email]);
+  passwordFormControl: FormControl = new FormControl('', [Validators.required, Validators.minLength(this.minLengthPassword)]);
+
+  matcher: LoginErrorStateMatcher = new LoginErrorStateMatcher();
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  displayPassword() {
+    this.hide = !this.hide;
+  }
 }
