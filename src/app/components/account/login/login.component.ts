@@ -16,9 +16,10 @@ export class LoginErrorStateMatcher implements ErrorStateMatcher {
 })
 export class LoginComponent implements OnInit {
   hide: boolean = true;
+  minLengthPassword: number = 6;
 
   emailFormControl: FormControl = new FormControl('', [Validators.required, Validators.email]);
-  passwordFormControl: FormControl = new FormControl('', [Validators.required, Validators.minLength(6)]);
+  passwordFormControl: FormControl = new FormControl('', [Validators.required, Validators.minLength(this.minLengthPassword)]);
 
   matcher: LoginErrorStateMatcher = new LoginErrorStateMatcher();
 

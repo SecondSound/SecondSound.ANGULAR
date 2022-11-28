@@ -23,25 +23,45 @@
         <mat-divider></mat-divider>
 
         <mat-card-content class="d-flex justify-content-center">
-          <form class="register-form">
+          <form class="form-width">
             <p class="pt-4 text-align-center">Please fill out the form to register your account.</p>
 
-            <mat-form-field class="register-full-width py-2" appearance="outline">
-              <mat-label>Name</mat-label>
-              <input matInput placeholder="John Doe" type="text"
-                     [formControl]="nameFormControl" [errorStateMatcher]="matcher">
-              <mat-icon matSuffix>person</mat-icon>
-              <mat-hint>This is the name that will be publicly displayed on the Second Sound</mat-hint>
-              <mat-error *ngIf="nameFormControl.hasError('required')">
-                Name is <strong>required</strong>
-              </mat-error>
-              <mat-error *ngIf="nameFormControl.invalid && !nameFormControl.hasError('required')">
-                Name should be between 3 and 50 characters long
-              </mat-error>
-            </mat-form-field>
+            <div class="d-flex justify-content-between">
+              <div class="col-4">
+                <mat-form-field class="form-full-width py-2" appearance="outline">
+                  <mat-label>First name</mat-label>
+                  <input matInput placeholder="John" type="text"
+                         [formControl]="firstNameFormControl" [errorStateMatcher]="matcher">
+                  <mat-icon matSuffix>person</mat-icon>
+                  <mat-hint>Please fill in your first name</mat-hint>
+                  <mat-error *ngIf="firstNameFormControl.hasError('required')">
+                    Name is <strong>required</strong>
+                  </mat-error>
+                  <mat-error *ngIf="firstNameFormControl.invalid && !firstNameFormControl.hasError('required')">
+                    Name should be between {{ minLengthName }} and {{ maxLengthFirstName }} characters long`
+                  </mat-error>
+                </mat-form-field>
+              </div>
+
+              <div class="col-8 p-l-4">
+                <mat-form-field class="form-full-width py-2" appearance="outline">
+                  <mat-label>Last name</mat-label>
+                  <input matInput placeholder="Smith" type="text"
+                         [formControl]="lastNameFormControl" [errorStateMatcher]="matcher">
+                  <mat-icon matSuffix>person</mat-icon>
+                  <mat-hint>Please fill in your last name</mat-hint>
+                  <mat-error *ngIf="lastNameFormControl.hasError('required')">
+                    Name is <strong>required</strong>
+                  </mat-error>
+                  <mat-error *ngIf="lastNameFormControl.invalid && !lastNameFormControl.hasError('required')">
+                    Name should be between {{ minLengthName }} and {{ maxLengthLastName }} characters long
+                  </mat-error>
+                </mat-form-field>
+              </div>
+            </div>
 
 
-            <mat-form-field class="register-full-width py-2" appearance="outline">
+            <mat-form-field class="form-full-width py-2" appearance="outline">
               <mat-label>Email</mat-label>
               <input type="email" matInput [formControl]="emailFormControl" [errorStateMatcher]="matcher"
                      placeholder="john.doe@example.com">
@@ -55,7 +75,7 @@
               </mat-error>
             </mat-form-field>
 
-            <mat-form-field class="register-full-width py-2" appearance="outline">
+            <mat-form-field class="form-full-width py-2" appearance="outline">
               <mat-label>Password</mat-label>
               <input type="password" matInput [formControl]="passwordFormControl" [errorStateMatcher]="matcher"
                      [type]="hide ? 'password' : 'text'">
@@ -68,10 +88,9 @@
                 Password is <strong>required</strong>
               </mat-error>
               <mat-error *ngIf="passwordFormControl.invalid && !passwordFormControl.hasError('required')">
-                Password needs to be at least 6 characters long
+                Password needs to be at least {{ minLengthPassword }} characters long
               </mat-error>
             </mat-form-field>
-
             <button mat-flat-button color="primary" type="submit" class="half-width my-2">Create your account</button>
           </form>
         </mat-card-content>

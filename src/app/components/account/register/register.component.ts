@@ -17,10 +17,15 @@ export class RegisterErrorStateMatcher implements ErrorStateMatcher {
 })
 export class RegisterComponent implements OnInit {
   hide: boolean = true;
+  minLengthPassword: number = 6;
+  minLengthName: number = 3;
+  maxLengthFirstName: number = 50;
+  maxLengthLastName: number = 80;
 
   emailFormControl: FormControl = new FormControl('', [Validators.required, Validators.email]);
-  passwordFormControl: FormControl = new FormControl('', [Validators.required, Validators.minLength(6)]);
-  nameFormControl: FormControl = new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(50)]);
+  passwordFormControl: FormControl = new FormControl('', [Validators.required, Validators.minLength(this.minLengthPassword)]);
+  firstNameFormControl: FormControl = new FormControl('', [Validators.required, Validators.minLength(this.minLengthName), Validators.maxLength(this.maxLengthFirstName)]);
+  lastNameFormControl: FormControl = new FormControl('', [Validators.required, Validators.minLength(this.minLengthName), Validators.maxLength(this.maxLengthLastName)]);
 
   matcher: RegisterErrorStateMatcher = new RegisterErrorStateMatcher();
 

@@ -1,3 +1,41 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.p-l-4 {
+  padding-left: 4px;
+}
+
+.title {
+  text-align: center;
+}
+
+.route-active {
+  color: var(--bs-link-color);
+  background: var(--bs-bg-opacity);
+  border-bottom: 2px solid var(--bs-link-color) !important;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+
+
+.form-width {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.form-full-width {
+  width: 100%;
+}
+
+.half-width {
+  width: 50%;
+  margin-left: 25% !important;
+  margin-right: 25%;
+}
+
+.text-align-center{
+  text-align: center;
+}
