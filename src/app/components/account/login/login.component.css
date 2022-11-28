@@ -19,3 +19,13 @@
 .login-full-width {
   width: 100%;
 }
+
+.button-submit {
+  width: 50%;
+  margin-left: 25%;
+  margin-right: 25%;
+}
+
+.input-border {
+  border: 2px solid var(--bs-link-color);
+}
