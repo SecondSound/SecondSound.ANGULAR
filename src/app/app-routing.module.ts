@@ -5,6 +5,8 @@ import {LoginComponent} from "./components/account/login/login.component";
 import {RegisterComponent} from "./components/account/register/register.component";
 import {ContactComponent} from "./components/contact/contact/contact.component";
 import {InfoHelpComponent} from "./components/info/info-help/info-help.component";
+import {UserDashboardComponent} from "./components/account/dashboard/user-dashboard/user-dashboard.component";
+import {AuthGuard} from "./services/guards/auth.guard";
 
 const routes: Routes = [
   {
@@ -26,6 +28,11 @@ const routes: Routes = [
   {
     path: "info",
     component: InfoHelpComponent
+  },
+  {
+    path: "user",
+    component: UserDashboardComponent,
+    canActivate: [AuthGuard]
   }
 ];
 

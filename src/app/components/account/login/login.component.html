@@ -1,6 +1,66 @@
 <div class="container">
   <div class="row">
-    <p>Here we'll make the login page.</p>
+    <div class="col-6 mx-auto py-4">
+      <div class="title">
+        <h1>Log in to your account</h1>
+        <p>Welcome back! Please log in to your account. Don't have an account? <a routerLink="/register">Register</a> here.</p>
+      </div>
+      <mat-card>
+        <mat-card-header class="d-flex justify-content-center">
+          <div class="row py-0">
+            <div class="col">
+              <a routerLink="/login" class="route-active" mat-button>
+                Login
+              </a>
+            </div>
+            <div class="col">
+              <a routerLink="/register" routerLinkActive="route-active" mat-button>
+                Register
+              </a>
+            </div>
+          </div>
+        </mat-card-header>
+        <mat-divider></mat-divider>
+        <mat-card-content class="d-flex justify-content-center">
+          <form class="form-width">
+            <p class="half-width pt-4">Please log in with your e-mail address.</p>
+            <mat-form-field class="form-full-width pt-2" appearance="outline">
+              <mat-label>Email</mat-label>
+              <input type="email" matInput [formControl]="emailFormControl" [errorStateMatcher]="matcher"
+                     placeholder="john.doe@example.com" [(ngModel)]="email">
+              <mat-icon matSuffix>mail</mat-icon>
+              <mat-hint>Please fill in your e-mail address</mat-hint>
+              <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+                Please enter a valid email address
+              </mat-error>
+              <mat-error *ngIf="emailFormControl.hasError('required')">
+                Email is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="form-full-width py-2" appearance="outline">
+              <mat-label>Password</mat-label>
+              <input type="password" matInput [formControl]="passwordFormControl" [errorStateMatcher]="matcher"
+                     [type]="hide ? 'password' : 'text'" [(ngModel)]="password">
+              <mat-icon matSuffix (click)="displayPassword()">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+              <mat-hint>Please fill in your password</mat-hint>
+              <mat-error *ngIf="passwordFormControl.hasError('password') && !passwordFormControl.hasError('required')">
+                Please enter a valid password
+              </mat-error>
+              <mat-error *ngIf="passwordFormControl.hasError('required')">
+                Password is <strong>required</strong>
+              </mat-error>
+              <mat-error *ngIf="passwordFormControl.invalid && !passwordFormControl.hasError('required')">
+                Password needs to be at least {{ minLengthPassword }} characters long
+              </mat-error>
+            </mat-form-field>
+
+            <button mat-flat-button color="primary" type="button" class="half-width my-2"
+            (click)="logInUser()">Log in to your account</button>
+          </form>
+        </mat-card-content>
+      </mat-card>
+    </div>
   </div>
 </div>
 

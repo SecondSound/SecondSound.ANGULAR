@@ -9,6 +9,8 @@
 
 .route-active {
   color: var(--bs-link-color);
-  text-decoration: underline;
   background: var(--bs-bg-opacity);
+  border-bottom: 2px solid var(--bs-link-color) !important;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
 }
