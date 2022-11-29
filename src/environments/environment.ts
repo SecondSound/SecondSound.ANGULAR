@@ -6,7 +6,7 @@ export const environment = {
   production: false,
   BASE_URL: "http://localhost:8080",
   API_VERSION: "v1.0",
-  JWT_TOKEN_KEY: 'second_sound_web_token'
+  JWT_TOKEN_KEY: 'second_sound_user'
 };
 
 /*
