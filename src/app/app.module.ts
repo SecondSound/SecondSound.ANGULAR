@@ -19,6 +19,9 @@ import {MatInputModule} from "@angular/material/input";
 import {MatIconModule} from "@angular/material/icon";
 import {MatDividerModule} from "@angular/material/divider";
 import {MatButtonToggleModule} from "@angular/material/button-toggle";
+import {AuthService} from "./services/auth.service";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
+import {AuthorizationInterceptor} from "./services/interceptors/authorization.interceptor";
 
 @NgModule({
   declarations: [
@@ -42,9 +45,16 @@ import {MatButtonToggleModule} from "@angular/material/button-toggle";
     MatInputModule,
     MatIconModule,
     MatDividerModule,
-    MatButtonToggleModule
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    AuthService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthorizationInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
