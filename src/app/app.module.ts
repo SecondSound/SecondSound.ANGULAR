@@ -22,6 +22,8 @@ import {MatButtonToggleModule} from "@angular/material/button-toggle";
 import {AuthService} from "./services/auth.service";
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {AuthorizationInterceptor} from "./services/interceptors/authorization.interceptor";
+import { UserDashboardComponent } from './components/account/dashboard/user-dashboard/user-dashboard.component';
+import {AuthManagementService} from "./services/auth-management.service";
 
 @NgModule({
   declarations: [
@@ -32,7 +34,8 @@ import {AuthorizationInterceptor} from "./services/interceptors/authorization.in
     LoginComponent,
     RegisterComponent,
     ContactComponent,
-    InfoHelpComponent
+    InfoHelpComponent,
+    UserDashboardComponent
   ],
   imports: [
     BrowserModule,
@@ -49,6 +52,7 @@ import {AuthorizationInterceptor} from "./services/interceptors/authorization.in
   ],
   providers: [
     AuthService,
+    AuthManagementService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthorizationInterceptor,
