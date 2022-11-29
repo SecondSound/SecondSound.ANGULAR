@@ -9,10 +9,10 @@ export class AuthorizationInterceptor implements HttpInterceptor {
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     if (!(req.url.includes('public') || req.url.includes('auth'))) {
-      const jwtToken = localStorage.getItem(this.tokenKey);
+      const user = JSON.parse(localStorage.getItem(this.tokenKey) as string);
       req = req.clone({
         setHeaders: {
-          'Authorization': jwtToken ? jwtToken : ''
+          'Authorization': user ? user.accessToken : ''
         }
       });
     }
