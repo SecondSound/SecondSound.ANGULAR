@@ -3,6 +3,11 @@
     <div class="col d-flex justify-content-start">
       <div class="row">
         <div class="col">
+          <a routerLink="/" mat-button>
+            <img src="assets/images/second_sound_text.png" alt="Second Sound" class="banner-image">
+          </a>
+        </div>
+        <div class="col">
           <a routerLink="/info" routerLinkActive="route-active" mat-button>
             <span class="fa fa-info-circle icon-align"></span>
             Help & Info
@@ -32,7 +37,7 @@
         <mat-menu #userMenu="matMenu">
           <button mat-menu-item>My advertisements</button>
           <button mat-menu-item>Favorite Advertisements</button>
-          <button mat-menu-item>My Profile</button>
+          <button mat-menu-item routerLink="/user">My Profile</button>
           <button mat-menu-item>My Reviews</button>
           <button mat-menu-item (click)="logOutUser()">Logout</button>
         </mat-menu>
