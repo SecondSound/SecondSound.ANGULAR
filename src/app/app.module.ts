@@ -25,6 +25,10 @@ import {AuthorizationInterceptor} from "./services/interceptors/authorization.in
 import { UserDashboardComponent } from './components/account/dashboard/user-dashboard/user-dashboard.component';
 import {AuthManagementService} from "./services/auth-management.service";
 import {AdvertisementService} from "./services/advertisement/advertisement.service";
+import { registerLocaleData } from '@angular/common';
+import localeNL from '@angular/common/locales/nl';
+registerLocaleData(localeNL, 'nl');
+
 
 @NgModule({
   declarations: [
@@ -36,7 +40,7 @@ import {AdvertisementService} from "./services/advertisement/advertisement.servi
     RegisterComponent,
     ContactComponent,
     InfoHelpComponent,
-    UserDashboardComponent
+    UserDashboardComponent,
   ],
   imports: [
     BrowserModule,

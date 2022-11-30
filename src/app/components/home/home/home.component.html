@@ -1,15 +1,21 @@
-<div class="container">
+<div class="container mt-5">
   <div class="row">
-    <p>This is the home component where we can add fun stuff. This will load by default ('/').</p>
-  </div>
-
-  <div *ngFor="let advertisement of advertisements">
-    <div style="background-color: orange">
-      <p> {{advertisement.description}}, {{advertisement.price}}</p>
+    <div *ngFor="let advertisement of advertisements" class="col-12 col-md-6 col-lg-4 mt-2 mb-2">
+      <div class="card">
+        <img class="card-img-top" src="https://media.npr.org/assets/img/2022/08/31/nannette_streicher_piano-_slide-1cdc7e104f9414ee5d21b5a9e038a0f6a4ca65de-s800-c85.webp" alt="{{advertisement.title}}">
+        <div class="card-body">
+          <h2 class="card-title mb-0 text-truncate">{{advertisement.title}}</h2>
+          <h4>{{advertisement.price | currency: 'EUR': 'symbol': '1.2-2': 'nl'}}</h4>
+          <p class="card-text text-truncate-container" style="min-height: 60px">{{advertisement.description}}</p>
+          <div class="text-center">
+            <button mat-raised-button color="primary">Open advertentie</button>
+          </div>
+        </div>
+      </div>
     </div>
-
-
-
   </div>
 </div>
+
+
+
 
