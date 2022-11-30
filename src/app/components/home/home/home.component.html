@@ -2,5 +2,14 @@
   <div class="row">
     <p>This is the home component where we can add fun stuff. This will load by default ('/').</p>
   </div>
+
+  <div *ngFor="let advertisement of advertisements">
+    <div style="background-color: orange">
+      <p> {{advertisement.description}}, {{advertisement.price}}</p>
+    </div>
+
+
+
+  </div>
 </div>
 

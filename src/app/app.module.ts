@@ -24,6 +24,7 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {AuthorizationInterceptor} from "./services/interceptors/authorization.interceptor";
 import { UserDashboardComponent } from './components/account/dashboard/user-dashboard/user-dashboard.component';
 import {AuthManagementService} from "./services/auth-management.service";
+import {AdvertisementService} from "./services/advertisement/advertisement.service";
 
 @NgModule({
   declarations: [
@@ -53,6 +54,7 @@ import {AuthManagementService} from "./services/auth-management.service";
   providers: [
     AuthService,
     AuthManagementService,
+    AdvertisementService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthorizationInterceptor,
