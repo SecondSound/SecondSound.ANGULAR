@@ -17,10 +17,26 @@
       </div>
     </div>
     <div class="col d-flex justify-content-end">
-      <a routerLink="/login" routerLinkActive="route-active" mat-button>
-        <span class="fa fa-user icon-align"></span>
-        Log in
-      </a>
+      <ng-container *ngIf="!isLoggedIn">
+        <a routerLink="/login" routerLinkActive="route-active" mat-button>
+          <span class="fa fa-user icon-align"></span>
+          Log in
+        </a>
+      </ng-container>
+      <ng-container *ngIf="isLoggedIn">
+        <a mat-button [matMenuTriggerFor]="userMenu">
+          <span class="fa fa-user icon-align"></span>
+          {{ user?.firstName }} {{ user?.lastName }}
+          <span class="fa fa-chevron-down icon-align"></span>
+        </a>
+        <mat-menu #userMenu="matMenu">
+          <button mat-menu-item>My advertisements</button>
+          <button mat-menu-item>Favorite Advertisements</button>
+          <button mat-menu-item>My Profile</button>
+          <button mat-menu-item>My Reviews</button>
+          <button mat-menu-item (click)="logOutUser()">Logout</button>
+        </mat-menu>
+      </ng-container>
     </div>
   </div>
 </div>

@@ -18,12 +18,12 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {MatInputModule} from "@angular/material/input";
 import {MatIconModule} from "@angular/material/icon";
 import {MatDividerModule} from "@angular/material/divider";
-import {MatButtonToggleModule} from "@angular/material/button-toggle";
 import {AuthService} from "./services/auth.service";
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {AuthorizationInterceptor} from "./services/interceptors/authorization.interceptor";
 import { UserDashboardComponent } from './components/account/dashboard/user-dashboard/user-dashboard.component';
 import {AuthManagementService} from "./services/auth-management.service";
+import {MatMenuModule} from "@angular/material/menu";
 
 @NgModule({
   declarations: [
@@ -48,7 +48,8 @@ import {AuthManagementService} from "./services/auth-management.service";
     MatInputModule,
     MatIconModule,
     MatDividerModule,
-    HttpClientModule
+    HttpClientModule,
+    MatMenuModule
   ],
   providers: [
     AuthService,
