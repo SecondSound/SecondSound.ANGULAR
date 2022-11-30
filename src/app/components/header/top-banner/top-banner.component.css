@@ -8,15 +8,15 @@
 }
 
 .route-active {
-  color: var(--bs-link-color);
+  color: #132b63;
   background: var(--bs-bg-opacity);
-  border-bottom: 2px solid var(--bs-link-color) !important;
+  border-bottom: 2px solid #132b63 !important;
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
 }
 
 .mat-menu-item:hover {
-  color: var(--bs-link-color);
+  color: #132b63;
 }
 
 .banner-image {

@@ -24,6 +24,7 @@ import {AuthorizationInterceptor} from "./services/interceptors/authorization.in
 import { UserDashboardComponent } from './components/account/dashboard/user-dashboard/user-dashboard.component';
 import {AuthManagementService} from "./services/auth-management.service";
 import {MatMenuModule} from "@angular/material/menu";
+import { ProfileHeaderComponent } from './components/account/dashboard/profile-header/profile-header.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import {MatMenuModule} from "@angular/material/menu";
     RegisterComponent,
     ContactComponent,
     InfoHelpComponent,
-    UserDashboardComponent
+    UserDashboardComponent,
+    ProfileHeaderComponent
   ],
   imports: [
     BrowserModule,
