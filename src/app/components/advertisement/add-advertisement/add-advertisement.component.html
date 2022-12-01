@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12 col-md-10 col-lg-8 col-xl-6 mx-auto py-4">
+      <div class="title">
+        <h1>Advertentie plaatsen</h1>
+        <mat-card>
+          <mat-card-content class="d-flex justify-content-center">
+            <form class="form-width">
+              <mat-form-field class="form-full-width pt-2" appearance="outline">
+                <mat-label>Title</mat-label>
+                <input matInput placeholder="Ex. Crazy Piano" [errorStateMatcher]="matcher" [formControl]="titleFormControl">
+                <mat-icon matSuffix>title</mat-icon>
+                <mat-hint>Please add a title to your advertisement</mat-hint>
+                <mat-error *ngIf="titleFormControl.hasError('required')">
+                  Please enter a title.
+                </mat-error>
+              </mat-form-field>
+              <mat-form-field class="form-full-width pt-2" appearance="outline">
+                <mat-label>Description</mat-label>
+                <textarea matInput placeholder="Ex. This is the most beautiful instrument you've ever seen..." [errorStateMatcher]="matcher" [formControl]="descriptionFormControl"></textarea>
+                <mat-icon matSuffix>article</mat-icon>
+                <mat-hint>Please add a description to your advertisement</mat-hint>
+                <mat-error *ngIf="descriptionFormControl.hasError('required')">
+                  Please enter a description.
+                </mat-error>
+              </mat-form-field>
+
+
+
+
+            </form>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>

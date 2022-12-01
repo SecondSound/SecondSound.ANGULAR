@@ -27,6 +27,7 @@ import {AuthManagementService} from "./services/auth-management.service";
 import {AdvertisementService} from "./services/advertisement/advertisement.service";
 import { registerLocaleData } from '@angular/common';
 import localeNL from '@angular/common/locales/nl';
+import { AddAdvertisementComponent } from './components/advertisement/add-advertisement/add-advertisement.component';
 registerLocaleData(localeNL, 'nl');
 
 
@@ -41,6 +42,7 @@ registerLocaleData(localeNL, 'nl');
     ContactComponent,
     InfoHelpComponent,
     UserDashboardComponent,
+    AddAdvertisementComponent,
   ],
   imports: [
     BrowserModule,

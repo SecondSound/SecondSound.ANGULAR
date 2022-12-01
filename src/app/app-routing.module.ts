@@ -7,6 +7,7 @@ import {ContactComponent} from "./components/contact/contact/contact.component";
 import {InfoHelpComponent} from "./components/info/info-help/info-help.component";
 import {UserDashboardComponent} from "./components/account/dashboard/user-dashboard/user-dashboard.component";
 import {AuthGuard} from "./services/guards/auth.guard";
+import {AddAdvertisementComponent} from "./components/advertisement/add-advertisement/add-advertisement.component";
 
 const routes: Routes = [
   {
@@ -33,6 +34,11 @@ const routes: Routes = [
     path: "user",
     component: UserDashboardComponent,
     canActivate: [AuthGuard]
+  },
+  {
+    path: "advertisement/create",
+    component: AddAdvertisementComponent,
+    // canActivate: [AuthGuard]
   }
 ];
 
