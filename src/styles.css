@@ -10,6 +10,11 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   text-align: center;
 }
 
+.png-logo {
+  max-height: 100px;
+  margin: 8px;
+}
+
 .route-active {
   color: var(--bs-link-color);
   background: var(--bs-bg-opacity);
