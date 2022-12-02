@@ -10,6 +10,11 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   text-align: center;
 }
 
+.png-logo {
+  max-height: 100px;
+  margin: 8px;
+}
+
 .route-active {
   color: var(--bs-link-color);
   background: var(--bs-bg-opacity);
@@ -37,3 +42,12 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .text-align-center{
   text-align: center;
 }
+
+.text-truncate-container {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+

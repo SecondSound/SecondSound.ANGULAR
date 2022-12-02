@@ -18,12 +18,20 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {MatInputModule} from "@angular/material/input";
 import {MatIconModule} from "@angular/material/icon";
 import {MatDividerModule} from "@angular/material/divider";
-import {MatButtonToggleModule} from "@angular/material/button-toggle";
 import {AuthService} from "./services/auth.service";
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {AuthorizationInterceptor} from "./services/interceptors/authorization.interceptor";
 import { UserDashboardComponent } from './components/account/dashboard/user-dashboard/user-dashboard.component';
 import {AuthManagementService} from "./services/auth-management.service";
+import {AdvertisementService} from "./services/advertisement/advertisement.service";
+import { registerLocaleData } from '@angular/common';
+import localeNL from '@angular/common/locales/nl';
+registerLocaleData(localeNL, 'nl');
+import {MatMenuModule} from "@angular/material/menu";
+import { ProfileHeaderComponent } from './components/account/dashboard/profile-header/profile-header.component';
+import { ConfirmRegistrationComponent } from './components/account/register/confirm-registration/confirm-registration.component';
+import { RegistrationConfirmedComponent } from './components/account/register/registration-confirmed/registration-confirmed.component';
+import { RegisterFormComponent } from './components/account/register/register-form/register-form.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +43,12 @@ import {AuthManagementService} from "./services/auth-management.service";
     RegisterComponent,
     ContactComponent,
     InfoHelpComponent,
-    UserDashboardComponent
+    UserDashboardComponent,
+    UserDashboardComponent,
+    ProfileHeaderComponent,
+    ConfirmRegistrationComponent,
+    RegistrationConfirmedComponent,
+    RegisterFormComponent
   ],
   imports: [
     BrowserModule,
@@ -48,11 +61,13 @@ import {AuthManagementService} from "./services/auth-management.service";
     MatInputModule,
     MatIconModule,
     MatDividerModule,
-    HttpClientModule
+    HttpClientModule,
+    MatMenuModule
   ],
   providers: [
     AuthService,
     AuthManagementService,
+    AdvertisementService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthorizationInterceptor,

@@ -1,0 +1,9 @@
+h1 {
+  color: #132b63;
+  font-weight: bold;
+  margin-left: 16px;
+}
+
+.width-profile-tabs {
+  max-width: 100%;
+}
