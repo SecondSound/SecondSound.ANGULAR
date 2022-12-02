@@ -6,6 +6,7 @@ import {LoginResponse} from "../shared/models/login-response.model";
 import {LoginCredentials} from "../shared/models/login-credentials.model";
 import {Router} from "@angular/router";
 import * as moment from "moment";
+import {Register} from "../shared/models/register.model";
 
 @Injectable()
 export class AuthManagementService {
@@ -61,5 +62,17 @@ export class AuthManagementService {
     this.isUserLoggedIn.next(false);
     this.user.next(this.emptyUser);
     this.router.navigate(['login']);
+  }
+
+  registerUser(user: Register) {
+    this.authService.postRegisterUser(user).subscribe( () => {
+      this.router.navigate(['register/confirm']);
+    });
+  }
+
+  confirmUser(token: string) {
+    this.authService.getConfirmRegistration(token).subscribe( () => {
+      this.router.navigate(['register/confirmed'])
+    });
   }
 }

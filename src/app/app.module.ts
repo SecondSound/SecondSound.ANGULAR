@@ -29,7 +29,9 @@ import localeNL from '@angular/common/locales/nl';
 registerLocaleData(localeNL, 'nl');
 import {MatMenuModule} from "@angular/material/menu";
 import { ProfileHeaderComponent } from './components/account/dashboard/profile-header/profile-header.component';
-
+import { ConfirmRegistrationComponent } from './components/account/register/confirm-registration/confirm-registration.component';
+import { RegistrationConfirmedComponent } from './components/account/register/registration-confirmed/registration-confirmed.component';
+import { RegisterFormComponent } from './components/account/register/register-form/register-form.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +45,10 @@ import { ProfileHeaderComponent } from './components/account/dashboard/profile-h
     InfoHelpComponent,
     UserDashboardComponent,
     UserDashboardComponent,
-    ProfileHeaderComponent
+    ProfileHeaderComponent,
+    ConfirmRegistrationComponent,
+    RegistrationConfirmedComponent,
+    RegisterFormComponent
   ],
   imports: [
     BrowserModule,
