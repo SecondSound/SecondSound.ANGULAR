@@ -9,19 +9,28 @@
               <mat-form-field class="form-full-width pt-2" appearance="outline">
                 <mat-label>Title</mat-label>
                 <input matInput placeholder="Ex. Crazy Piano" [errorStateMatcher]="matcher" [formControl]="titleFormControl">
-                <mat-icon matSuffix>title</mat-icon>
-                <mat-hint>Please add a title to your advertisement</mat-hint>
+                <mat-icon color="primary" matSuffix>title</mat-icon>
+                <mat-hint>Please add a title</mat-hint>
                 <mat-error *ngIf="titleFormControl.hasError('required')">
-                  Please enter a title.
+                  A <strong>title</strong> is <strong>required</strong>
                 </mat-error>
               </mat-form-field>
               <mat-form-field class="form-full-width pt-2" appearance="outline">
                 <mat-label>Description</mat-label>
                 <textarea matInput placeholder="Ex. This is the most beautiful instrument you've ever seen..." [errorStateMatcher]="matcher" [formControl]="descriptionFormControl"></textarea>
-                <mat-icon matSuffix>article</mat-icon>
-                <mat-hint>Please add a description to your advertisement</mat-hint>
+                <mat-icon color="primary" matSuffix>article</mat-icon>
+                <mat-hint>Please add a description</mat-hint>
                 <mat-error *ngIf="descriptionFormControl.hasError('required')">
-                  Please enter a description.
+                  A <strong>description</strong> is <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+              <mat-form-field class="form-full-width pt-2" appearance="outline">
+                <mat-label>Price</mat-label>
+                <input type="number" step=".01" matInput placeholder="Ex. Crazy Piano" [errorStateMatcher]="matcher" [formControl]="priceFormControl" ]>
+                <mat-icon color="primary" matSuffix>euro</mat-icon>
+                <mat-hint>Please add a price</mat-hint>
+                <mat-error *ngIf="priceFormControl.hasError('required')">
+                  A <strong>price</strong> is <strong>required</strong>
                 </mat-error>
               </mat-form-field>
 

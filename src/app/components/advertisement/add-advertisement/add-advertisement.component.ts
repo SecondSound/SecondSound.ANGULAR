@@ -21,6 +21,7 @@ export class AddAdvertisementComponent implements OnInit {
 
   titleFormControl: FormControl = new FormControl('', [Validators.required]);
   descriptionFormControl: FormControl = new FormControl('', [Validators.required]);
+  priceFormControl: FormControl = new FormControl('', [Validators.required]);
 
   matcher = new MyErrorStateMatcher();
 
