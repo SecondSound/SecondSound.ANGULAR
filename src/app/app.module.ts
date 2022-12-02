@@ -28,7 +28,9 @@ import {AdvertisementService} from "./services/advertisement/advertisement.servi
 import { registerLocaleData } from '@angular/common';
 import localeNL from '@angular/common/locales/nl';
 import { AddAdvertisementComponent } from './components/advertisement/add-advertisement/add-advertisement.component';
+import {MatTableModule} from "@angular/material/table";
 registerLocaleData(localeNL, 'nl');
+import {CurrencyPipe} from "@angular/common";
 
 
 @NgModule({
@@ -55,12 +57,14 @@ registerLocaleData(localeNL, 'nl');
     MatInputModule,
     MatIconModule,
     MatDividerModule,
-    HttpClientModule
+    HttpClientModule,
+    MatTableModule,
   ],
   providers: [
     AuthService,
     AuthManagementService,
     AdvertisementService,
+    CurrencyPipe,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthorizationInterceptor,
@@ -69,4 +73,11 @@ registerLocaleData(localeNL, 'nl');
   ],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }
+
+
+
+
+
+
