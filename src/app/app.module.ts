@@ -23,8 +23,13 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {AuthorizationInterceptor} from "./services/interceptors/authorization.interceptor";
 import { UserDashboardComponent } from './components/account/dashboard/user-dashboard/user-dashboard.component';
 import {AuthManagementService} from "./services/auth-management.service";
+import {AdvertisementService} from "./services/advertisement/advertisement.service";
+import { registerLocaleData } from '@angular/common';
+import localeNL from '@angular/common/locales/nl';
+registerLocaleData(localeNL, 'nl');
 import {MatMenuModule} from "@angular/material/menu";
 import { ProfileHeaderComponent } from './components/account/dashboard/profile-header/profile-header.component';
+
 
 @NgModule({
   declarations: [
@@ -36,6 +41,7 @@ import { ProfileHeaderComponent } from './components/account/dashboard/profile-h
     RegisterComponent,
     ContactComponent,
     InfoHelpComponent,
+    UserDashboardComponent,
     UserDashboardComponent,
     ProfileHeaderComponent
   ],
@@ -56,6 +62,7 @@ import { ProfileHeaderComponent } from './components/account/dashboard/profile-h
   providers: [
     AuthService,
     AuthManagementService,
+    AdvertisementService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthorizationInterceptor,
