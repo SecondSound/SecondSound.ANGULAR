@@ -17,7 +17,6 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {MatInputModule} from "@angular/material/input";
 import {MatIconModule} from "@angular/material/icon";
 import {MatDividerModule} from "@angular/material/divider";
-import {MatButtonToggleModule} from "@angular/material/button-toggle";
 import {AuthService} from "./services/auth.service";
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {AuthorizationInterceptor} from "./services/interceptors/authorization.interceptor";
@@ -30,7 +29,11 @@ import { AddAdvertisementComponent } from './components/advertisement/add-advert
 registerLocaleData(localeNL, 'nl');
 import {MatDialogModule} from "@angular/material/dialog";
 import { AdvertisementDialogComponent } from './dialogs/advertisement-dialog/advertisement-dialog.component';
-
+import {MatMenuModule} from "@angular/material/menu";
+import { ProfileHeaderComponent } from './components/account/dashboard/profile-header/profile-header.component';
+import { ConfirmRegistrationComponent } from './components/account/register/confirm-registration/confirm-registration.component';
+import { RegistrationConfirmedComponent } from './components/account/register/registration-confirmed/registration-confirmed.component';
+import { RegisterFormComponent } from './components/account/register/register-form/register-form.component';
 
 @NgModule({
   declarations: [
@@ -45,9 +48,12 @@ import { AdvertisementDialogComponent } from './dialogs/advertisement-dialog/adv
     UserDashboardComponent,
     AddAdvertisementComponent,
     AdvertisementDialogComponent,
-  ],
-  entryComponents: [
-    AdvertisementDialogComponent
+    AdvertisementDialogComponent,
+    UserDashboardComponent,
+    ProfileHeaderComponent,
+    ConfirmRegistrationComponent,
+    RegistrationConfirmedComponent,
+    RegisterFormComponent
   ],
   imports: [
     BrowserModule,
@@ -62,6 +68,7 @@ import { AdvertisementDialogComponent } from './dialogs/advertisement-dialog/adv
     MatDividerModule,
     HttpClientModule,
     MatDialogModule,
+    MatMenuModule
   ],
   providers: [
     AuthService,

@@ -1,20 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {Form, FormControl, FormGroupDirective, NgForm, Validators} from "@angular/forms";
-import {ErrorStateMatcher} from "@angular/material/core";
+import {FormControl, Validators} from "@angular/forms";
 import {LoginCredentials} from "../../../shared/models/login-credentials.model";
-import {AuthService} from "../../../services/auth.service";
-import {LoginResponse} from "../../../shared/models/login-response.model";
-import {environment} from "../../../../environments/environment";
-import {BehaviorSubject, Observable} from "rxjs";
-import {Router} from "@angular/router";
 import {AuthManagementService} from "../../../services/auth-management.service";
-
-export class LoginErrorStateMatcher implements ErrorStateMatcher {
-  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
-    const isSubmitted = form && form.submitted;
-    return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
-  }
-}
+import {FormErrorStateMatcher} from "../../../shared/error-state-matcher/FormErrorStateMatcher";
 
 @Component({
   selector: 'app-login',
@@ -23,14 +11,14 @@ export class LoginErrorStateMatcher implements ErrorStateMatcher {
 })
 export class LoginComponent implements OnInit {
   hide: boolean = true;
-  minLengthPassword: number = 6;
+  minLengthPassword: number = 8;
   email: string = '';
   password: string = '';
 
   emailFormControl: FormControl = new FormControl('', [Validators.required, Validators.email]);
   passwordFormControl: FormControl = new FormControl('', [Validators.required, Validators.minLength(this.minLengthPassword)]);
 
-  matcher: LoginErrorStateMatcher = new LoginErrorStateMatcher();
+  matcher: FormErrorStateMatcher = new FormErrorStateMatcher();
 
   constructor(private authManagementService: AuthManagementService) { }
 
@@ -48,5 +36,9 @@ export class LoginComponent implements OnInit {
     }
 
     this.authManagementService.logInUser(credentials);
+  }
+
+  getFormState(): boolean {
+    return this.emailFormControl.valid && this.passwordFormControl.valid;
   }
 }
