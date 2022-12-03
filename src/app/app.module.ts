@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TopBannerComponent } from './components/header/top-banner/top-banner.component';
@@ -28,9 +27,9 @@ import {AdvertisementService} from "./services/advertisement/advertisement.servi
 import { registerLocaleData } from '@angular/common';
 import localeNL from '@angular/common/locales/nl';
 import { AddAdvertisementComponent } from './components/advertisement/add-advertisement/add-advertisement.component';
-import {MatTableModule} from "@angular/material/table";
 registerLocaleData(localeNL, 'nl');
-import {CurrencyPipe} from "@angular/common";
+import {MatDialogModule} from "@angular/material/dialog";
+import { AdvertisementDialogComponent } from './dialogs/advertisement-dialog/advertisement-dialog.component';
 
 
 @NgModule({
@@ -45,6 +44,10 @@ import {CurrencyPipe} from "@angular/common";
     InfoHelpComponent,
     UserDashboardComponent,
     AddAdvertisementComponent,
+    AdvertisementDialogComponent,
+  ],
+  entryComponents: [
+    AdvertisementDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -58,13 +61,12 @@ import {CurrencyPipe} from "@angular/common";
     MatIconModule,
     MatDividerModule,
     HttpClientModule,
-    MatTableModule,
+    MatDialogModule,
   ],
   providers: [
     AuthService,
     AuthManagementService,
     AdvertisementService,
-    CurrencyPipe,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthorizationInterceptor,

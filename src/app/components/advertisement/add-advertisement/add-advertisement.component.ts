@@ -1,7 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, FormGroupDirective, NgForm, Validators} from "@angular/forms";
 import {ErrorStateMatcher} from '@angular/material/core';
-import {CurrencyPipe} from "@angular/common";
+import {AdvertisementService} from "../../../services/advertisement/advertisement.service";
+import {MatDialog} from "@angular/material/dialog";
+import {AdvertisementDialogComponent} from "../../../dialogs/advertisement-dialog/advertisement-dialog.component";
+import {AppComponent} from "../../../app.component";
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -19,12 +22,13 @@ export class AddAdvertisementComponent implements OnInit {
 
   myForm: FormGroup;
 
-
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder,
+              public appComponent: AppComponent,
+              private advertisementService: AdvertisementService,
+              public dialog: MatDialog) { }
 
 
   matcher = new MyErrorStateMatcher();
-
 
   ngOnInit(): void {
     this.myForm = this.fb.group({
@@ -32,20 +36,23 @@ export class AddAdvertisementComponent implements OnInit {
       description: ['', Validators.required],
       price: ['', Validators.required]
     });
-
-
-
   }
 
-  onSubmit(){
-    console.log(this.myForm)
+  openDialog(): void {
+    let dialogRef = this.dialog.open(AdvertisementDialogComponent, {data: {title: this.myForm.get('title').value, price: this.myForm.get('price').value}});
+
+    dialogRef.afterClosed().subscribe( result => {
+      if (result == 'true') {
+        console.log("YES")
+        // this.advertisementService.postAdvertisement(this.myForm)
+      }
+      else {return}
+    });
   }
 
-  validate(event: any){
-    const t = event.target.value;
-    event.target.value =
-      t.indexOf(',') >= 0
-        ? t.substr(0, t.indexOf(',')) + t.substr(t.indexOf(','), 2)
-          : t;
-    };
+  // public transformToCurrency(input: number) {
+  //   let result = input.toFixed(2);
+  //   result = result.replace('.', ',')
+  //   return result
+  // }
 }
