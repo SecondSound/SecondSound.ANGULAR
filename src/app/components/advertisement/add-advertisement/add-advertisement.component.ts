@@ -5,6 +5,9 @@ import {AdvertisementService} from "../../../services/advertisement/advertisemen
 import {MatDialog} from "@angular/material/dialog";
 import {AdvertisementDialogComponent} from "../../../dialogs/advertisement-dialog/advertisement-dialog.component";
 import {AppFunctions} from "../../../shared/app-functions";
+import {Register} from "../../../shared/models/register.model";
+import {AdvertisementModel} from "../../../shared/models/advertisement-model.model";
+import {Router} from "@angular/router";
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -20,32 +23,48 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 })
 export class AddAdvertisementComponent implements OnInit {
 
-  myForm: FormGroup;
+  title: string = '';
+  description: string = '';
+  price: number;
+
+  titleFormControl: FormControl = new FormControl('', [Validators.required]);
+  descriptionFormControl: FormControl = new FormControl('', [Validators.required]);
+  priceFormControl: FormControl = new FormControl('', [Validators.required]);
 
   constructor(private fb: FormBuilder,
               private appFunctions: AppFunctions,
               private advertisementService: AdvertisementService,
-              public dialog: MatDialog) { }
+              public dialog: MatDialog,
+              private router: Router) { }
 
 
   matcher = new MyErrorStateMatcher();
 
   ngOnInit(): void {
-    this.myForm = this.fb.group({
-      title: ['', Validators.required],
-      description: ['', Validators.required],
-      price: ['', Validators.required]
-    });
   }
 
   openDialog(): void {
-    let dialogRef = this.dialog.open(AdvertisementDialogComponent, {data: {title: this.myForm.get('title').value, price: this.appFunctions.transformToCurrency(this.myForm.get('price').value)}});
+    let dialogPrice = this.appFunctions.transformToCurrency(this.price)
+    let databasePrice = this.price.toFixed(2).toString()
+    let dialogRef = this.dialog.open(AdvertisementDialogComponent, {data: {title: this.title, price: dialogPrice}});
 
     dialogRef.afterClosed().subscribe( result => {
       if (result == 'true') {
-        this.advertisementService.postAdvertisement(this.myForm)
+        const newAdvertisement: AdvertisementModel = {
+          title: this.title,
+          description: this.description,
+          price: databasePrice,
+        }
+        this.advertisementService.postAdvertisement(newAdvertisement).subscribe( () => {
+          this.router.navigate(['']);
+        });
       }
       else {return}
     });
+  }
+
+  getFormState(): boolean {
+    return this.titleFormControl.valid && this.descriptionFormControl.valid &&
+      this.priceFormControl.valid;
   }
 }

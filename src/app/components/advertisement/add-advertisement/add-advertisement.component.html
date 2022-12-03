@@ -7,36 +7,36 @@
             <h1>Place Advertisement</h1>
           </mat-card-header>
           <mat-card-content class="d-flex justify-content-center">
-            <form [formGroup]="myForm" class="form-width">
+            <form class="form-width">
               <mat-form-field class="form-full-width pt-2" appearance="outline">
                 <mat-label>Title</mat-label>
-                <input matInput placeholder="Ex. Crazy Piano" [errorStateMatcher]="matcher" formControlName="title" maxlength="128">
+                <input matInput placeholder="Ex. Crazy Piano" [errorStateMatcher]="matcher" [formControl]="titleFormControl" maxlength="128" [(ngModel)]="title">
                 <mat-icon color="primary" matSuffix>title</mat-icon>
                 <mat-hint>Please add a title</mat-hint>
-                <mat-error>
+                <mat-error *ngIf="titleFormControl.hasError('password')">
                   A <strong>title</strong> is <strong>required</strong>
                 </mat-error>
               </mat-form-field>
               <mat-form-field class="form-full-width pt-2" appearance="outline">
                 <mat-label>Description</mat-label>
-                <textarea matInput placeholder="Ex. This is the most beautiful instrument you've ever seen..." [errorStateMatcher]="matcher" formControlName="description" cdkTextareaAutosize
-                          cdkAutosizeMinRows="8"></textarea>
+                <textarea matInput placeholder="Ex. This is the most beautiful instrument you've ever seen..." [errorStateMatcher]="matcher" [formControl]="descriptionFormControl" cdkTextareaAutosize
+                          cdkAutosizeMinRows="8" [(ngModel)]="description"></textarea>
                 <mat-icon color="primary" matSuffix>article</mat-icon>
                 <mat-hint>Please add a description</mat-hint>
-                <mat-error>
+                <mat-error *ngIf="descriptionFormControl.hasError('password')">
                   A <strong>description</strong> is <strong>required</strong>
                 </mat-error>
               </mat-form-field>
               <mat-form-field class="form-full-width pt-2" appearance="outline">
                 <mat-label>Price</mat-label>
-                <input type="number" step="0.01" matInput placeholder="Ex. 2500,00" [errorStateMatcher]="matcher" formControlName="price">
+                <input type="number" step="0.01" matInput placeholder="Ex. 2500,00" [errorStateMatcher]="matcher" [formControl]="priceFormControl" [(ngModel)]="price">
                 <mat-icon color="primary" matSuffix>euro</mat-icon>
                 <mat-hint>Please add a price</mat-hint>
-                <mat-error>
+                <mat-error *ngIf="priceFormControl.hasError('password')">
                   A <strong>price</strong> is <strong>required</strong>
                 </mat-error>
               </mat-form-field>
-              <button (click)="openDialog()" [disabled]="!myForm.valid" mat-flat-button color="primary" type="button" class="justify-content-center my-2">
+              <button (click)="openDialog()" [disabled]="!getFormState()" mat-flat-button color="primary" type="button" class="justify-content-center my-2">
                 Place Advertisement
               </button>
             </form>
