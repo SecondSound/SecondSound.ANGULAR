@@ -1,0 +1,5 @@
+export interface AdvertisementModel {
+  title: string;
+  description: string;
+  price: number;
+}
