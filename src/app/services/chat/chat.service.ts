@@ -16,7 +16,7 @@ export class ChatService {
 
   public getAllChats() {
     let userID = "test"
-    return this.http.get(this.baseUrl + "/api/" + this.apiVersion + "/public/chat");
+    return this.http.get(this.baseUrl + "/api/" + this.apiVersion + "/chat");
   }
 
 
