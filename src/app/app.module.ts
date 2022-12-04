@@ -34,6 +34,7 @@ import { ProfileHeaderComponent } from './components/account/dashboard/profile-h
 import { ConfirmRegistrationComponent } from './components/account/register/confirm-registration/confirm-registration.component';
 import { RegistrationConfirmedComponent } from './components/account/register/registration-confirmed/registration-confirmed.component';
 import { RegisterFormComponent } from './components/account/register/register-form/register-form.component';
+import { MessengerDashboardComponent } from './components/account/messenger/messenger-dashboard/messenger-dashboard.component';
 import {MatSelectModule} from "@angular/material/select";
 import { AdvertisementDetailsComponent } from './components/advertisement/advertisement-details/advertisement-details.component';
 import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.component';
@@ -59,6 +60,8 @@ import { SelectedAdvertisementsComponent } from './components/advertisement/sele
     ProfileHeaderComponent,
     ConfirmRegistrationComponent,
     RegistrationConfirmedComponent,
+    RegisterFormComponent,
+    MessengerDashboardComponent
     RegisterFormComponent,
     AdvertisementDetailsComponent,
     PagenotfoundComponent,

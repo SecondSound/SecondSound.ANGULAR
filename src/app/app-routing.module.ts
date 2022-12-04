@@ -11,6 +11,7 @@ import {AddAdvertisementComponent} from "./components/advertisement/add-advertis
 import {ConfirmRegistrationComponent} from "./components/account/register/confirm-registration/confirm-registration.component";
 import {RegistrationConfirmedComponent} from "./components/account/register/registration-confirmed/registration-confirmed.component";
 import {RegisterFormComponent} from "./components/account/register/register-form/register-form.component";
+import {MessengerDashboardComponent} from "./components/account/messenger/messenger-dashboard/messenger-dashboard.component";
 import {AdvertisementDetailsComponent} from "./components/advertisement/advertisement-details/advertisement-details.component";
 import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.component';
 
@@ -57,6 +58,11 @@ const routes: Routes = [
   {
     path: "advertisement/create",
     component: AddAdvertisementComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: "messenger",
+    component: MessengerDashboardComponent,
     canActivate: [AuthGuard]
   },
   {
