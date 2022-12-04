@@ -7,12 +7,9 @@ import {ContactComponent} from "./components/contact/contact/contact.component";
 import {InfoHelpComponent} from "./components/info/info-help/info-help.component";
 import {UserDashboardComponent} from "./components/account/dashboard/user-dashboard/user-dashboard.component";
 import {AuthGuard} from "./services/guards/auth.guard";
-import {
-  ConfirmRegistrationComponent
-} from "./components/account/register/confirm-registration/confirm-registration.component";
-import {
-  RegistrationConfirmedComponent
-} from "./components/account/register/registration-confirmed/registration-confirmed.component";
+import {AddAdvertisementComponent} from "./components/advertisement/add-advertisement/add-advertisement.component";
+import {ConfirmRegistrationComponent} from "./components/account/register/confirm-registration/confirm-registration.component";
+import {RegistrationConfirmedComponent} from "./components/account/register/registration-confirmed/registration-confirmed.component";
 import {RegisterFormComponent} from "./components/account/register/register-form/register-form.component";
 
 const routes: Routes = [
@@ -53,6 +50,11 @@ const routes: Routes = [
   {
     path: "user",
     component: UserDashboardComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: "advertisement/create",
+    component: AddAdvertisementComponent,
     canActivate: [AuthGuard]
   }
 ];

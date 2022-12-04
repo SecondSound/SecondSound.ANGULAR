@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TopBannerComponent } from './components/header/top-banner/top-banner.component';
@@ -26,7 +25,10 @@ import {AuthManagementService} from "./services/auth-management.service";
 import {AdvertisementService} from "./services/advertisement/advertisement.service";
 import { registerLocaleData } from '@angular/common';
 import localeNL from '@angular/common/locales/nl';
+import { AddAdvertisementComponent } from './components/advertisement/add-advertisement/add-advertisement.component';
 registerLocaleData(localeNL, 'nl');
+import {MatDialogModule} from "@angular/material/dialog";
+import { AdvertisementDialogComponent } from './dialogs/advertisement-dialog/advertisement-dialog.component';
 import {MatMenuModule} from "@angular/material/menu";
 import { ProfileHeaderComponent } from './components/account/dashboard/profile-header/profile-header.component';
 import { ConfirmRegistrationComponent } from './components/account/register/confirm-registration/confirm-registration.component';
@@ -44,6 +46,9 @@ import { RegisterFormComponent } from './components/account/register/register-fo
     ContactComponent,
     InfoHelpComponent,
     UserDashboardComponent,
+    AddAdvertisementComponent,
+    AdvertisementDialogComponent,
+    AdvertisementDialogComponent,
     UserDashboardComponent,
     ProfileHeaderComponent,
     ConfirmRegistrationComponent,
@@ -62,6 +67,7 @@ import { RegisterFormComponent } from './components/account/register/register-fo
     MatIconModule,
     MatDividerModule,
     HttpClientModule,
+    MatDialogModule,
     MatMenuModule
   ],
   providers: [
@@ -76,4 +82,11 @@ import { RegisterFormComponent } from './components/account/register/register-fo
   ],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }
+
+
+
+
+
+
