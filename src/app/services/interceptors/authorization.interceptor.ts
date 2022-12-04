@@ -12,7 +12,7 @@ export class AuthorizationInterceptor implements HttpInterceptor {
       const user = JSON.parse(localStorage.getItem(this.tokenKey) as string);
       req = req.clone({
         setHeaders: {
-          'Authorization': user ? user.accessToken : ''
+          'Authorization': user ? 'Bearer ' + user.accessToken : ''
         }
       });
     }
