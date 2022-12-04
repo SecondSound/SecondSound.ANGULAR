@@ -26,6 +26,7 @@ export class AddAdvertisementComponent implements OnInit {
   title: string = '';
   description: string = '';
   price: number;
+  imgFile: String = "../../../../assets/images/no-image-square.png";
 
   titleFormControl: FormControl = new FormControl('', [Validators.required]);
   descriptionFormControl: FormControl = new FormControl('', [Validators.required]);
@@ -66,5 +67,16 @@ export class AddAdvertisementComponent implements OnInit {
   getFormState(): boolean {
     return this.titleFormControl.valid && this.descriptionFormControl.valid &&
       this.priceFormControl.valid;
+  }
+
+  onSelectFile(event) {
+    if (event.target.files) {
+      let reader = new FileReader();
+      reader.readAsDataURL(event.target.files[0]);
+      reader.onload=(event:any) => {
+        this.imgFile=event.target.result;
+      }
+    }
+
   }
 }

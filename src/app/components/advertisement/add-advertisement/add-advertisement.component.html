@@ -3,11 +3,16 @@
     <div class="col-12 col-md-10 col-lg-8 col-xl-6 mx-auto py-4">
       <div class="title">
         <mat-card>
-          <mat-card-header class="justify-content-center">
+          <img src="../../../../assets/images/second_sound_logo.png" alt="Logo Second Sound" class="png-logo">
+          <mat-card-header class="justify-content-center flex-column">
             <h1>Place Advertisement</h1>
           </mat-card-header>
           <mat-card-content class="d-flex justify-content-center">
             <form class="form-width">
+              <div>
+                <img [src]="imgFile" style="height:200px" alt="uploaded image" class="mb-3 mt-3">
+              </div>
+              <input type="file" (change)="onSelectFile($event)" >
               <mat-form-field class="form-full-width pt-2" appearance="outline">
                 <mat-label>Title</mat-label>
                 <input matInput placeholder="Ex. Crazy Piano" [errorStateMatcher]="matcher" [formControl]="titleFormControl" maxlength="128" [(ngModel)]="title">
@@ -36,7 +41,7 @@
                   A <strong>price</strong> is <strong>required</strong>
                 </mat-error>
               </mat-form-field>
-              <button (click)="openDialog()" [disabled]="!getFormState()" mat-flat-button color="primary" type="button" class="justify-content-center my-2">
+              <button (click)="openDialog()" [disabled]="!getFormState()" mat-flat-button color="primary" type="button" class="justify-content-center my-2 mb-5">
                 Place Advertisement
               </button>
             </form>
