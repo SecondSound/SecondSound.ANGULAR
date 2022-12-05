@@ -15,7 +15,7 @@ export class AdvertisementService {
   constructor(private http: HttpClient) {
   }
 
-  public getAllAdvertisements() {
+  public getAllAdvertisements(): Observable<any> {
     return this.http.get(this.baseUrl + "/api/" + this.apiVersion + "/public/advertisement");
   }
 

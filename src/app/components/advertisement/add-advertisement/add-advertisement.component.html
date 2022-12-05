@@ -12,13 +12,13 @@
               <div>
                 <img [src]="imgFile" style="height:200px" alt="uploaded image" class="mb-3 mt-3">
               </div>
-              <input type="file" (change)="onSelectFile($event)" >
+              <input type="file" (change)="onSelectFile($event)" [formControl]="imageFormControl">
               <mat-form-field class="form-full-width pt-2" appearance="outline">
                 <mat-label>Title</mat-label>
                 <input matInput placeholder="Ex. Crazy Piano" [errorStateMatcher]="matcher" [formControl]="titleFormControl" maxlength="128" [(ngModel)]="title">
                 <mat-icon color="primary" matSuffix>title</mat-icon>
                 <mat-hint>Please add a title</mat-hint>
-                <mat-error *ngIf="titleFormControl.hasError('password')">
+                <mat-error *ngIf="titleFormControl.hasError('required')">
                   A <strong>title</strong> is <strong>required</strong>
                 </mat-error>
               </mat-form-field>
@@ -28,7 +28,7 @@
                           cdkAutosizeMinRows="8" [(ngModel)]="description"></textarea>
                 <mat-icon color="primary" matSuffix>article</mat-icon>
                 <mat-hint>Please add a description</mat-hint>
-                <mat-error *ngIf="descriptionFormControl.hasError('password')">
+                <mat-error *ngIf="descriptionFormControl.hasError('required')">
                   A <strong>description</strong> is <strong>required</strong>
                 </mat-error>
               </mat-form-field>
@@ -37,7 +37,7 @@
                 <input type="number" step="0.01" matInput placeholder="Ex. 2500,00" [errorStateMatcher]="matcher" [formControl]="priceFormControl" [(ngModel)]="price">
                 <mat-icon color="primary" matSuffix>euro</mat-icon>
                 <mat-hint>Please add a price</mat-hint>
-                <mat-error *ngIf="priceFormControl.hasError('password')">
+                <mat-error *ngIf="priceFormControl.hasError('required')">
                   A <strong>price</strong> is <strong>required</strong>
                 </mat-error>
               </mat-form-field>

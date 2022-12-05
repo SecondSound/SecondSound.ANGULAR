@@ -26,11 +26,12 @@ export class AddAdvertisementComponent implements OnInit {
   title: string = '';
   description: string = '';
   price: number;
-  imgFile: String = "../../../../assets/images/no-image-square.png";
+  imgFile: string = "../../../../assets/images/no-image-square.png";
 
   titleFormControl: FormControl = new FormControl('', [Validators.required]);
   descriptionFormControl: FormControl = new FormControl('', [Validators.required]);
   priceFormControl: FormControl = new FormControl('', [Validators.required]);
+  imageFormControl: FormControl = new FormControl
 
   constructor(private fb: FormBuilder,
               private appFunctions: AppFunctions,
@@ -55,6 +56,7 @@ export class AddAdvertisementComponent implements OnInit {
           title: this.title,
           description: this.description,
           price: databasePrice,
+          imgFile: this.imgFile
         }
         this.advertisementService.postAdvertisement(newAdvertisement).subscribe( () => {
           this.router.navigate(['']);

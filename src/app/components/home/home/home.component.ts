@@ -18,6 +18,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.advertisements = this.advertisementService.getAllAdvertisements().subscribe(data => {this.advertisements = data; } )
+    console.log(this.advertisements)
   }
 
 }
