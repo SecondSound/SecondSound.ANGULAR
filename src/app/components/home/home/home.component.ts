@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {AfterViewInit, Component, OnInit} from '@angular/core';
 import {AdvertisementService} from "../../../services/advertisement/advertisement.service";
 
 @Component({
@@ -6,7 +6,7 @@ import {AdvertisementService} from "../../../services/advertisement/advertisemen
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, AfterViewInit {
 
   public advertisements: any;
 
