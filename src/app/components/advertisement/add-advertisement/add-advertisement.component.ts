@@ -46,7 +46,6 @@ export class AddAdvertisementComponent implements OnInit {
 
   openDialog(): void {
     const formData = new FormData();
-    console.log(this.imgFile)
     formData.append('file', this.imgFile)
 
     let dialogPrice = this.appFunctions.transformToCurrency(Number(this.advertisementForm.get('price').value))

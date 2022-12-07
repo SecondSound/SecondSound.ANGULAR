@@ -5,6 +5,7 @@ import {AdvertisementDto} from "../../shared/models/advertisementDto.model";
 import {FormGroup} from "@angular/forms";
 import {Observable} from "rxjs";
 import {Router} from "@angular/router";
+import {HomeComponent} from "../../components/home/home/home.component";
 
 
 
@@ -19,7 +20,7 @@ export class AdvertisementService {
               private router: Router) {
   }
 
-  public getAllAdvertisements(): Observable<any> {
+  public getAllAdvertisements() {
     return this.http.get(this.baseUrl + "/api/" + this.apiVersion + "/public/advertisement");
   }
 
@@ -30,7 +31,7 @@ export class AdvertisementService {
     this.http.post<AdvertisementDto>(this.baseUrl + "/api/" + this.apiVersion + "/advertisement", data)
       .subscribe((response) => {
         advertisementId = response.id;
-        this.http.post<String>(this.baseUrl + "/api/" + this.apiVersion + "/resource/advertisement/"+advertisementId, file)
+        this.http.post<String>(this.baseUrl + "/api/" + this.apiVersion + "/resource/advertisement/"+advertisementId, file, {responseType: 'text' as 'json'})
           .subscribe()
       });
 
