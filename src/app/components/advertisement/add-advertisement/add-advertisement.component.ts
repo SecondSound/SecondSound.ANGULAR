@@ -24,23 +24,19 @@ export class AddAdvertisementComponent implements OnInit {
   advertisementForm: FormGroup
   imgFile: any;
   uploadedFile: string = "../../../../assets/images/no-image-square.png";
-
+  matcher = new MyErrorStateMatcher();
 
   constructor(private fb: FormBuilder,
               private appFunctions: AppFunctions,
               private advertisementService: AdvertisementService,
               public dialog: MatDialog,
               private router: Router) { }
-
-
-  matcher = new MyErrorStateMatcher();
-
+  
   ngOnInit(): void {
     this.advertisementForm = this.fb.group({
       title: ['', Validators.required],
       description: ['', Validators.required],
-      price: ['', Validators.required],
-      file: ['']
+      price: ['', Validators.required]
       })
   }
 
@@ -51,11 +47,10 @@ export class AddAdvertisementComponent implements OnInit {
     let dialogPrice = this.appFunctions.transformToCurrency(Number(this.advertisementForm.get('price').value))
     let databasePrice = this.advertisementForm.get('price').value.toString()
     let dialogRef = this.dialog.open(AdvertisementDialogComponent, {data: {title: this.advertisementForm.get('title').value, price: dialogPrice}});
+
     dialogRef.afterClosed().subscribe( result => {
       if (result == 'true') {
-
         this.advertisementService.postAdvertisement(this.advertisementForm, databasePrice, formData)
-
       }
     });
   }
@@ -70,6 +65,5 @@ export class AddAdvertisementComponent implements OnInit {
         this.uploadedFile=event.target.result;
       }
     }
-
   }
 }
