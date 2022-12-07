@@ -31,7 +31,7 @@ export class AddAdvertisementComponent implements OnInit {
               private advertisementService: AdvertisementService,
               public dialog: MatDialog,
               private router: Router) { }
-  
+
   ngOnInit(): void {
     this.advertisementForm = this.fb.group({
       title: ['', Validators.required],
