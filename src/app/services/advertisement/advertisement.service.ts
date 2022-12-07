@@ -1,8 +1,10 @@
-import {Injectable, OnInit} from '@angular/core';
-import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {Injectable} from '@angular/core';
+import {HttpClient} from "@angular/common/http";
 import {environment} from "../../../environments/environment";
-import {AdvertisementModel} from "../../shared/models/advertisement-model.model";
-import {Observable} from "rxjs";
+import {AdvertisementDto} from "../../shared/models/advertisementDto.model";
+import {FormGroup} from "@angular/forms";
+import {Router} from "@angular/router";
+
 
 
 @Injectable({
@@ -12,19 +14,27 @@ export class AdvertisementService {
   private baseUrl = environment.BASE_URL;
   private apiVersion = environment.API_VERSION
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient,
+              private router: Router) {
   }
 
   public getAllAdvertisements() {
     return this.http.get(this.baseUrl + "/api/" + this.apiVersion + "/public/advertisement");
   }
 
-  public postAdvertisement(advertisement: AdvertisementModel) : Observable<any>{
+  public postAdvertisement(advertisementForm: FormGroup, price: string, file: FormData) {
 
-    console.log(advertisement.title, advertisement.description, advertisement.price)
-    return this.http.post(this.baseUrl + "/api/" + this.apiVersion + "/advertisement", advertisement);
+    let advertisementId: Number
+    const data = {title: advertisementForm.get('title').value, description: advertisementForm.get('description').value, price: price};
+    this.http.post<AdvertisementDto>(this.baseUrl + "/api/" + this.apiVersion + "/advertisement", data)
+      .subscribe((response) => {
+        advertisementId = response.id;
+        this.http.post<String>(this.baseUrl + "/api/" + this.apiVersion + "/resource/advertisement/" + advertisementId, file, {responseType: 'text' as 'json'})
+          .subscribe()
+      });
+
+    return this.router.navigate([''])
   }
-
 
 }
 

@@ -1,6 +1,10 @@
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-color: #f6f6f6
+}
 
 .p-l-4 {
   padding-left: 4px;
@@ -8,6 +12,9 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .title {
   text-align: center;
+}
+.search{
+  background-color: white;
 }
 
 .png-logo {
