@@ -7,6 +7,7 @@
           <img class="card-img-top responsive advertisementImage" src="{{advertisement.imgFile}}" alt="{{advertisement.title}}">
         </div>
         <div class="card-body">
+          <h5>{{advertisement.subCategory.category.name}} <span>&#8594;</span> {{advertisement.subCategory.name}}</h5>
           <h2 class="card-title mb-0 text-truncate">{{advertisement.title}}</h2>
           <h4>{{advertisement.price | currency: 'EUR': 'symbol': '1.2-2': 'nl'}}</h4>
           <p class="card-text text-truncate-container" style="min-height: 60px">{{advertisement.description}}</p>

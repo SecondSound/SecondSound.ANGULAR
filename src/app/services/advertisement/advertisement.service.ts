@@ -3,9 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {environment} from "../../../environments/environment";
 import {AdvertisementDto} from "../../shared/models/advertisementDto.model";
 import {FormGroup} from "@angular/forms";
-import {Observable} from "rxjs";
 import {Router} from "@angular/router";
-import {HomeComponent} from "../../components/home/home/home.component";
 
 
 
@@ -31,7 +29,7 @@ export class AdvertisementService {
     this.http.post<AdvertisementDto>(this.baseUrl + "/api/" + this.apiVersion + "/advertisement", data)
       .subscribe((response) => {
         advertisementId = response.id;
-        this.http.post<String>(this.baseUrl + "/api/" + this.apiVersion + "/resource/advertisement/"+advertisementId, file, {responseType: 'text' as 'json'})
+        this.http.post<String>(this.baseUrl + "/api/" + this.apiVersion + "/resource/advertisement/" + advertisementId, file, {responseType: 'text' as 'json'})
           .subscribe()
       });
 

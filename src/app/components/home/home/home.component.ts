@@ -22,7 +22,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
   }
 
   public getAllAdvertisements() {
-   this.advertisementService.getAllAdvertisements().subscribe(data => {this.advertisements = data; } )
+   this.advertisementService.getAllAdvertisements().subscribe(data => {this.advertisements = data; console.log(this.advertisements)} )
   }
 
   ngAfterViewInit() {
