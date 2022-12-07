@@ -5,12 +5,7 @@ import {AdvertisementService} from "../../../services/advertisement/advertisemen
 import {MatDialog} from "@angular/material/dialog";
 import {AdvertisementDialogComponent} from "../../../dialogs/advertisement-dialog/advertisement-dialog.component";
 import {AppFunctions} from "../../../shared/app-functions";
-import {Register} from "../../../shared/models/register.model";
-import {AdvertisementModel} from "../../../shared/models/advertisementModel.model";
 import {Router} from "@angular/router";
-import {AdvertisementDto} from "../../../shared/models/advertisementDto.model";
-import {LoginCredentials} from "../../../shared/models/login-credentials.model";
-import {BehaviorSubject, map, Observable} from "rxjs";
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -45,25 +40,22 @@ export class AddAdvertisementComponent implements OnInit {
       title: ['', Validators.required],
       description: ['', Validators.required],
       price: ['', Validators.required],
+      file: ['']
       })
   }
 
   openDialog(): void {
     const formData = new FormData();
     console.log(this.imgFile)
-    formData.append('file', this.imgFile, this.imgFile.name)
+    formData.append('file', this.imgFile)
 
-    // this.advertisementForm.get('image').setValue(formData);
-
-    let dialogPrice = this.appFunctions.transformToCurrency(Number(this.advertisementForm.get('price')))
-    let databasePrice = Number(this.advertisementForm.get('price')).toFixed(2).toString();
-    let dialogRef = this.dialog.open(AdvertisementDialogComponent, {data: {title: this.advertisementForm.get('title'), price: dialogPrice}});
-
+    let dialogPrice = this.appFunctions.transformToCurrency(Number(this.advertisementForm.get('price').value))
+    let databasePrice = this.advertisementForm.get('price').value.toString()
+    let dialogRef = this.dialog.open(AdvertisementDialogComponent, {data: {title: this.advertisementForm.get('title').value, price: dialogPrice}});
     dialogRef.afterClosed().subscribe( result => {
       if (result == 'true') {
 
-        this.advertisementService.postAdvertisement(this.advertisementForm, formData)
-          .subscribe();
+        this.advertisementService.postAdvertisement(this.advertisementForm, databasePrice, formData)
 
       }
     });

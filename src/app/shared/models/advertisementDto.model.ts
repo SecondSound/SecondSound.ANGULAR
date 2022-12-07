@@ -2,7 +2,7 @@ export interface AdvertisementDto {
   id: number;
   title: string;
   description: string
-  price: number
+  price: string
   imgFile: string;
   user: number
 }
