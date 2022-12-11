@@ -34,6 +34,7 @@ import { ProfileHeaderComponent } from './components/account/dashboard/profile-h
 import { ConfirmRegistrationComponent } from './components/account/register/confirm-registration/confirm-registration.component';
 import { RegistrationConfirmedComponent } from './components/account/register/registration-confirmed/registration-confirmed.component';
 import { RegisterFormComponent } from './components/account/register/register-form/register-form.component';
+import {MatSelectModule} from "@angular/material/select";
 
 @NgModule({
   declarations: [
@@ -55,21 +56,22 @@ import { RegisterFormComponent } from './components/account/register/register-fo
     RegistrationConfirmedComponent,
     RegisterFormComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    MatButtonModule,
-    MatCardModule,
-    MatFormFieldModule,
-    ReactiveFormsModule,
-    MatInputModule,
-    MatIconModule,
-    MatDividerModule,
-    HttpClientModule,
-    MatDialogModule,
-    MatMenuModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        MatButtonModule,
+        MatCardModule,
+        MatFormFieldModule,
+        ReactiveFormsModule,
+        MatInputModule,
+        MatIconModule,
+        MatDividerModule,
+        HttpClientModule,
+        MatDialogModule,
+        MatMenuModule,
+        MatSelectModule
+    ],
   providers: [
     AuthService,
     AuthManagementService,

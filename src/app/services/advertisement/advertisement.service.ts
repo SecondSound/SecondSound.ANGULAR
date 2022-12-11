@@ -22,10 +22,10 @@ export class AdvertisementService {
     return this.http.get(this.baseUrl + "/api/" + this.apiVersion + "/public/advertisement");
   }
 
-  public postAdvertisement(advertisementForm: FormGroup, price: string, file: FormData) {
+  public postAdvertisement(advertisementForm: FormGroup, price: string, file: FormData, subcategoryId: Number) {
 
     let advertisementId: Number
-    const data = {title: advertisementForm.get('title').value, description: advertisementForm.get('description').value, price: price};
+    const data = {title: advertisementForm.get('title').value, description: advertisementForm.get('description').value, price: price, subCategoryId: subcategoryId};
     this.http.post<AdvertisementDto>(this.baseUrl + "/api/" + this.apiVersion + "/advertisement", data)
       .subscribe((response) => {
         advertisementId = response.id;
@@ -36,6 +36,16 @@ export class AdvertisementService {
     return this.router.navigate([''])
   }
 
+  public getCategories() {
+    return this.http.get(this.baseUrl + "/api/" + this.apiVersion + "/public/categories");
+  }
+
+  public getSubCategories(id: Number) {
+
+    const data = {id: id};
+
+    return this.http.get(this.baseUrl + "/api/" + this.apiVersion + "/public/subcategories/" + id);
+  }
 }
 
 
