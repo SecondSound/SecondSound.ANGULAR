@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {AdvertisementService} from "../../../services/advertisement/advertisement.service";
+import {catchError, NotFoundError} from "rxjs";
 
 @Component({
   selector: 'app-advertisement-details',
@@ -10,6 +11,7 @@ import {AdvertisementService} from "../../../services/advertisement/advertisemen
 export class AdvertisementDetailsComponent implements OnInit {
   advertisementFromURL: {id: number};
   advertisement: any
+  error = null;
 
   constructor(private route: ActivatedRoute,
               private advertisementService: AdvertisementService,) {
@@ -22,7 +24,9 @@ export class AdvertisementDetailsComponent implements OnInit {
     };
 
     this.advertisementService.getAdvertisement(this.advertisementFromURL.id)
-      .subscribe(data => { this.advertisement = data; console.log(data)})
+      .subscribe(data => {
+        this.advertisement = data; }, error => {this.error = error; })
+
   }
 
 }

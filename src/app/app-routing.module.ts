@@ -11,9 +11,8 @@ import {AddAdvertisementComponent} from "./components/advertisement/add-advertis
 import {ConfirmRegistrationComponent} from "./components/account/register/confirm-registration/confirm-registration.component";
 import {RegistrationConfirmedComponent} from "./components/account/register/registration-confirmed/registration-confirmed.component";
 import {RegisterFormComponent} from "./components/account/register/register-form/register-form.component";
-import {
-  AdvertisementDetailsComponent
-} from "./components/advertisement/advertisement-details/advertisement-details.component";
+import {AdvertisementDetailsComponent} from "./components/advertisement/advertisement-details/advertisement-details.component";
+import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.component';
 
 const routes: Routes = [
   {
@@ -63,6 +62,11 @@ const routes: Routes = [
   {
     path: "advertisement/details/:id",
     component: AdvertisementDetailsComponent
+  },
+  {
+    path: "**",
+    pathMatch: 'full',
+    component: PagenotfoundComponent
   }
 
 ];

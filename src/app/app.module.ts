@@ -36,6 +36,7 @@ import { RegistrationConfirmedComponent } from './components/account/register/re
 import { RegisterFormComponent } from './components/account/register/register-form/register-form.component';
 import {MatSelectModule} from "@angular/material/select";
 import { AdvertisementDetailsComponent } from './components/advertisement/advertisement-details/advertisement-details.component';
+import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { AdvertisementDetailsComponent } from './components/advertisement/advert
     ConfirmRegistrationComponent,
     RegistrationConfirmedComponent,
     RegisterFormComponent,
-    AdvertisementDetailsComponent
+    AdvertisementDetailsComponent,
+    PagenotfoundComponent
   ],
     imports: [
         BrowserModule,
