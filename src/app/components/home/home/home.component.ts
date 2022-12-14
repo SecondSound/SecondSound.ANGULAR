@@ -18,7 +18,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
   }
 
   update() {
-    setTimeout(() => this.getAllAdvertisements(), 750)
+    setTimeout(() => this.getAllAdvertisements(), 500)
   }
 
   public getAllAdvertisements() {

@@ -35,6 +35,7 @@ import { ConfirmRegistrationComponent } from './components/account/register/conf
 import { RegistrationConfirmedComponent } from './components/account/register/registration-confirmed/registration-confirmed.component';
 import { RegisterFormComponent } from './components/account/register/register-form/register-form.component';
 import {MatSelectModule} from "@angular/material/select";
+import { AdvertisementDetailsComponent } from './components/advertisement/advertisement-details/advertisement-details.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import {MatSelectModule} from "@angular/material/select";
     ProfileHeaderComponent,
     ConfirmRegistrationComponent,
     RegistrationConfirmedComponent,
-    RegisterFormComponent
+    RegisterFormComponent,
+    AdvertisementDetailsComponent
   ],
     imports: [
         BrowserModule,

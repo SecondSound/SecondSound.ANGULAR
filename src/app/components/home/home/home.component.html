@@ -12,7 +12,7 @@
           <h4>{{advertisement.price | currency: 'EUR': 'symbol': '1.2-2': 'nl'}}</h4>
           <p class="card-text text-truncate-container" style="min-height: 60px">{{advertisement.description}}</p>
           <div class="text-center">
-            <button mat-raised-button color="primary">Open advertentie</button>
+            <button mat-raised-button color="primary" routerLink="/advertisement/details/{{advertisement.id}}">Open advertentie</button>
           </div>
         </div>
       </div>

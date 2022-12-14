@@ -46,6 +46,10 @@ export class AdvertisementService {
 
     return this.http.get(this.baseUrl + "/api/" + this.apiVersion + "/public/subcategories/" + id);
   }
+
+  public getAdvertisement(id: number) {
+    return this.http.get(this.baseUrl + "/api/" + this.apiVersion + "/public/advertisement/" + id);
+  }
 }
 
 
