@@ -1,5 +1,8 @@
 import {AfterViewInit, Component, OnInit} from '@angular/core';
 import {AdvertisementService} from "../../../services/advertisement/advertisement.service";
+import {Observable} from "rxjs";
+import {AdvertisementDto} from "../../../shared/models/advertisementDto.model";
+
 
 @Component({
   selector: 'app-home',
@@ -8,13 +11,14 @@ import {AdvertisementService} from "../../../services/advertisement/advertisemen
 })
 export class HomeComponent implements OnInit, AfterViewInit {
 
-  public advertisements: any;
+  public advertisements: AdvertisementDto[];
+
 
   constructor(private advertisementService: AdvertisementService) {
+    this.getAllAdvertisements()
   }
 
   ngOnInit(): void {
-    this.getAllAdvertisements()
   }
 
   update() {
@@ -22,7 +26,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
   }
 
   public getAllAdvertisements() {
-   this.advertisementService.getAllAdvertisements().subscribe(data => {this.advertisements = data; } )
+   return this.advertisementService.getAllAdvertisements().subscribe(data => { this.advertisements = data });
   }
 
   ngAfterViewInit() {

@@ -37,6 +37,8 @@ import { RegisterFormComponent } from './components/account/register/register-fo
 import {MatSelectModule} from "@angular/material/select";
 import { AdvertisementDetailsComponent } from './components/advertisement/advertisement-details/advertisement-details.component';
 import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.component';
+import {MatTreeModule} from "@angular/material/tree";
+import { FiltertreeComponent } from './components/filtertree/filtertree.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +60,8 @@ import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.co
     RegistrationConfirmedComponent,
     RegisterFormComponent,
     AdvertisementDetailsComponent,
-    PagenotfoundComponent
+    PagenotfoundComponent,
+    FiltertreeComponent
   ],
     imports: [
         BrowserModule,
@@ -74,7 +77,8 @@ import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.co
         HttpClientModule,
         MatDialogModule,
         MatMenuModule,
-        MatSelectModule
+        MatSelectModule,
+        MatTreeModule
     ],
   providers: [
     AuthService,

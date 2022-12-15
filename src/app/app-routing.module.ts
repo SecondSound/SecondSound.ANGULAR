@@ -64,6 +64,10 @@ const routes: Routes = [
     component: AdvertisementDetailsComponent
   },
   {
+    path: "advertisement/details/:id",
+    component: AdvertisementDetailsComponent
+  },
+  {
     path: "**",
     pathMatch: 'full',
     component: PagenotfoundComponent
