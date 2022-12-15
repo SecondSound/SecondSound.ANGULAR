@@ -1,7 +1,7 @@
 import {AfterViewInit, Component, OnInit} from '@angular/core';
 import {AdvertisementService} from "../../../services/advertisement/advertisement.service";
 import {Observable} from "rxjs";
-import {AdvertisementDto} from "../../../shared/models/advertisementDto.model";
+import {AdvertisementDto} from "../../../shared/models/AdvertisementDto";
 
 
 @Component({

@@ -1,11 +1,11 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {environment} from "../../../environments/environment";
-import {AdvertisementDto} from "../../shared/models/advertisementDto.model";
+import {AdvertisementDto} from "../../shared/models/AdvertisementDto";
 import {FormGroup} from "@angular/forms";
 import {Router} from "@angular/router";
 import {Observable} from "rxjs";
-import {CategoryModel} from "../../shared/models/CategoryModel.model";
+import {Category} from "../../shared/models/Category";
 
 @Injectable({
   providedIn: 'root'
@@ -40,8 +40,8 @@ export class AdvertisementService {
     return this.http.get(this.baseUrl + "/api/" + this.apiVersion + "/public/categories");
   }
 
-  public getCategoryDto() : Observable<CategoryModel[]> {
-    return this.http.get<CategoryModel[]>(this.baseUrl + "/api/" + this.apiVersion + "/public/categories/dto");
+  public getCategoryDto() : Observable<Category[]> {
+    return this.http.get<Category[]>(this.baseUrl + "/api/" + this.apiVersion + "/public/categories/dto");
   }
 
   public getSubCategories(id: Number) {

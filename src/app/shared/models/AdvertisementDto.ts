@@ -1,4 +1,4 @@
-import {SubCategoryModel} from "./SubCategoryModel.model";
+import {SubCategory} from "./SubCategory";
 
 export interface AdvertisementDto {
   id: number;
@@ -7,5 +7,5 @@ export interface AdvertisementDto {
   price: string
   imgFile: string;
   user: number;
-  subCategory: SubCategoryModel;
+  subCategory: SubCategory;
 }

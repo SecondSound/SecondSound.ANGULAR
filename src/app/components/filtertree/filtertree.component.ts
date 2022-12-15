@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {NestedTreeControl} from "@angular/cdk/tree";
 import {MatTreeNestedDataSource} from "@angular/material/tree";
 import {AdvertisementService} from "../../services/advertisement/advertisement.service";
-import {CategoryModel} from "../../shared/models/CategoryModel.model";
+import {Category} from "../../shared/models/Category";
 
 @Component({
   selector: 'app-filtertree',
@@ -12,14 +12,14 @@ import {CategoryModel} from "../../shared/models/CategoryModel.model";
 export class FiltertreeComponent implements OnInit {
 
   public advertisements: any;
-  treeControl = new NestedTreeControl<CategoryModel>(node => node.children);
-  dataSource = new MatTreeNestedDataSource<CategoryModel>();
+  treeControl = new NestedTreeControl<Category>(node => node.children);
+  dataSource = new MatTreeNestedDataSource<Category>();
 
 
   constructor(private advertisementService: AdvertisementService) {
     this.getAllCategoryDto()
   }
-  hasChild = (_: number, node: CategoryModel) => !!node.children && node.children.length > 0;
+  hasChild = (_: number, node: Category) => !!node.children && node.children.length > 0;
   ngOnInit(): void {
     this.getAllAdvertisements()
   }
