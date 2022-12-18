@@ -30,7 +30,7 @@ export class SelectedAdvertisementsComponent implements OnInit {
 
   public getAllAdvertisements() {
     this.advertisementService.subCategoriesSelected.subscribe(data => {
-      if (data == undefined) {
+      if (data.value == undefined) {
         this.advertisementService.getAllAdvertisements().subscribe(data => { this.advertisements = data });
       } else {
         this.selectedSubCategories = data.value;
