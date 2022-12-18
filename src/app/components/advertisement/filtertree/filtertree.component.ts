@@ -38,9 +38,9 @@ export class FiltertreeComponent implements OnInit {
       .subscribe(data => { this.dataSource.data = data } );
   }
 
-  submit() {
-    this.advertisementService.subCategoriesSelected.emit(this.selectedSubCategories);
-  }
+  // submit() {
+  //   this.advertisementService.subCategoriesSelected.emit(this.subCategoriesSelected.value);
+  // }
 
   onCheckboxChange(e) {
     this.selectedSubCategories = this.subCategoriesSelected.get('selectedSubCategories') as FormArray;
@@ -51,5 +51,7 @@ export class FiltertreeComponent implements OnInit {
       const index = this.selectedSubCategories.controls.findIndex(x => x.value === e.target.value);
       this.selectedSubCategories.removeAt(index);
     }
+
+    this.advertisementService.subCategoriesSelected.emit(this.selectedSubCategories);
   }
 }
