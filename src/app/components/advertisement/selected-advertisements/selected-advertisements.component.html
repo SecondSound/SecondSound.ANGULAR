@@ -1,0 +1,21 @@
+<div *ngIf="NoAdsFound" class="alert alert-danger text-align-center mt-2" role="alert">
+  No advertisements were fitting your requirements, please select other subcategories!
+</div>
+<div class="row">
+  <div *ngFor="let advertisement of advertisements" class="col-12 col-md-6 col-lg-4 mt-2 mb-2">
+    <div class="card">
+      <div class="advertisementImageDiv">
+        <img class="card-img-top responsive advertisementImage" src="{{advertisement.imgFile}}" alt="{{advertisement.title}}">
+      </div>
+      <div class="card-body">
+        <h5>{{advertisement.subCategory.category.name}} <span>&#8594;</span> {{advertisement.subCategory.name}}</h5>
+        <h2 class="card-title mb-0 text-truncate">{{advertisement.title}}</h2>
+        <h4>{{advertisement.price | currency: 'EUR': 'symbol': '1.2-2': 'nl'}}</h4>
+        <p class="card-text text-truncate-container" style="min-height: 60px">{{advertisement.description}}</p>
+        <div class="text-center">
+          <button mat-raised-button color="primary" routerLink="/advertisement/details/{{advertisement.id}}">Open advertentie</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

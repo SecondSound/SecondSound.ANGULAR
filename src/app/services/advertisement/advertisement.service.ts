@@ -1,11 +1,12 @@
-import {Injectable} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {EventEmitter, Injectable} from '@angular/core';
+import {HttpClient, HttpEvent} from "@angular/common/http";
 import {environment} from "../../../environments/environment";
 import {AdvertisementDto} from "../../shared/models/AdvertisementDto";
-import {FormGroup} from "@angular/forms";
+import {FormArray, FormGroup} from "@angular/forms";
 import {Router} from "@angular/router";
 import {Observable} from "rxjs";
 import {Category} from "../../shared/models/Category";
+import {SubCategory} from "../../shared/models/SubCategory";
 
 @Injectable({
   providedIn: 'root'
@@ -13,13 +14,14 @@ import {Category} from "../../shared/models/Category";
 export class AdvertisementService {
   private baseUrl = environment.BASE_URL;
   private apiVersion = environment.API_VERSION
+  subCategoriesSelected = new EventEmitter<FormArray>();
 
   constructor(private http: HttpClient,
               private router: Router) {
   }
 
-  public getAllAdvertisements() : Observable<AdvertisementDto[]>{
-    return this.http.get<AdvertisementDto[]>(this.baseUrl + "/api/" + this.apiVersion + "/public/advertisement");
+  public getAllAdvertisements() :  Observable<AdvertisementDto[]> {
+     return this.http.get<AdvertisementDto[]>(this.baseUrl + "/api/" + this.apiVersion + "/public/advertisement")
   }
 
   public postAdvertisement(advertisementForm: FormGroup, price: string, file: FormData, subcategoryId: Number) {
@@ -54,6 +56,7 @@ export class AdvertisementService {
   public getAdvertisement(id: number) {
     return this.http.get(this.baseUrl + "/api/" + this.apiVersion + "/public/advertisement/" + id);
   }
+
 }
 
 

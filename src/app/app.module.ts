@@ -38,7 +38,8 @@ import {MatSelectModule} from "@angular/material/select";
 import { AdvertisementDetailsComponent } from './components/advertisement/advertisement-details/advertisement-details.component';
 import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.component';
 import {MatTreeModule} from "@angular/material/tree";
-import { FiltertreeComponent } from './components/filtertree/filtertree.component';
+import { FiltertreeComponent } from './components/advertisement/filtertree/filtertree.component';
+import { SelectedAdvertisementsComponent } from './components/advertisement/selected-advertisements/selected-advertisements.component';
 
 @NgModule({
   declarations: [
@@ -61,7 +62,8 @@ import { FiltertreeComponent } from './components/filtertree/filtertree.componen
     RegisterFormComponent,
     AdvertisementDetailsComponent,
     PagenotfoundComponent,
-    FiltertreeComponent
+    FiltertreeComponent,
+    SelectedAdvertisementsComponent
   ],
     imports: [
         BrowserModule,
