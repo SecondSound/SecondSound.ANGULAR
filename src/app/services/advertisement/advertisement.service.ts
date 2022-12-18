@@ -1,5 +1,5 @@
 import {EventEmitter, Injectable} from '@angular/core';
-import {HttpClient, HttpEvent} from "@angular/common/http";
+import {HttpClient} from "@angular/common/http";
 import {environment} from "../../../environments/environment";
 import {AdvertisementDto} from "../../shared/models/AdvertisementDto";
 import {FormArray, FormGroup} from "@angular/forms";
