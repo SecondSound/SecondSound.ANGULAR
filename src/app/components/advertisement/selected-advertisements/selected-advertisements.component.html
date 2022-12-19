@@ -1,6 +1,11 @@
-<div *ngIf="NoAdsFound" class="alert alert-danger text-align-center mt-2" role="alert">
-  No advertisements were fitting your requirements, please select other subcategories!
+<div *ngIf="!NoAdsFound == false" class="container text-align-center">
+  <img src="../../../../assets/images/second_sound_logo.png" id="image-id" alt="Logo Second Sound" class="png-logo">
+  <br>
+  <h3 style="font-family: 'Courier New',monospace">
+    No advertisements were fitting your requirements. <br> Please select other subcategories!
+  </h3>
 </div>
+
 <div class="row">
   <div *ngFor="let advertisement of advertisements" class="col-12 col-md-6 col-lg-4 mt-2 mb-2">
     <div class="card">

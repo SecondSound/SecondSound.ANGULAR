@@ -18,7 +18,6 @@ export class SelectedAdvertisementsComponent implements OnInit {
   public NoAdsFound: Boolean = false;
 
   ngOnInit(): void {
-
   }
 
   update() {
@@ -26,33 +25,32 @@ export class SelectedAdvertisementsComponent implements OnInit {
   }
 
   public getAllAdvertisements() {
+    console.log("getAll: " + this.NoAdsFound)
     this.advertisementService.subCategoriesSelected.subscribe(data => {
       this.selectedSubCategories = data?.value;
-      if (data.value == null) {
-        this.advertisementService.getAllAdvertisements().subscribe(data => { this.advertisements = data });
-      } else {
-        this.advertisementService.getAllAdvertisements().subscribe(data => {
-            let selectedAdList: AdvertisementDto[] = []
-            for (var i = 0; i < data.length; i++) {
-              for (let x = 0; x < this.selectedSubCategories?.length; x++) {
-                // console.log(data[i].id + "/" + selectedSubs[x])
-                if (data[i].subCategory.id == this.selectedSubCategories[x]) {
-                  selectedAdList.push(data[i])
-                }
-              }
-            }
-            this.advertisements = selectedAdList;
-            this.NoAdsFound = false;
-            if (this.advertisements.length == 0) {
-              this.NoAdsFound = true;
-              this.advertisementService.getAllAdvertisements().subscribe(data => { this.advertisements = data });
+      this.advertisementService.getAllAdvertisements().subscribe(ads => {
+        this.advertisements = ads;
+        let selectedAdList: AdvertisementDto[] = []
+        for (let i = 0; i < ads.length; i++) {
+          for (let x = 0; x < this.selectedSubCategories?.length; x++) {
+            if (ads[i].subCategory.id == this.selectedSubCategories[x]) {
+              selectedAdList.push(ads[i])
             }
           }
-        );
-      }
+        }
+
+        if (this.selectedSubCategories == null || this.selectedSubCategories == 0){
+          this.NoAdsFound = false;
+        } else if (selectedAdList.length == 0){
+          this.NoAdsFound = true;
+          this.advertisements = selectedAdList;
+        } else {
+          this.NoAdsFound = false;
+          this.advertisements = selectedAdList;
+        }
+      });
     })
   }
-
 
   ngAfterViewInit() {
     this.update()
