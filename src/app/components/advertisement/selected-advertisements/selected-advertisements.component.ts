@@ -14,7 +14,6 @@ export class SelectedAdvertisementsComponent implements OnInit {
   }
 
   public advertisements: AdvertisementDto[];
-  public selectedSubCategories: any;
   public NoAdsFound: Boolean = false;
 
   ngOnInit(): void {
@@ -25,25 +24,35 @@ export class SelectedAdvertisementsComponent implements OnInit {
   }
 
   public getAllAdvertisements() {
-    console.log("getAll: " + this.NoAdsFound)
-    this.advertisementService.subCategoriesSelected.subscribe(data => {
-      this.selectedSubCategories = data?.value;
+      // Get the value of the selected checkboxes
+    this.advertisementService.subCategoriesSelected.subscribe(selectedSubCategories => {
+
+        // Get advertisements from database
       this.advertisementService.getAllAdvertisements().subscribe(ads => {
+
+          // Save advertisements in variable
         this.advertisements = ads;
         let selectedAdList: AdvertisementDto[] = []
+
+          // Add advertisements from selected subcategories in new list
         for (let i = 0; i < ads.length; i++) {
-          for (let x = 0; x < this.selectedSubCategories?.length; x++) {
-            if (ads[i].subCategory.id == this.selectedSubCategories[x]) {
+          for (let x = 0; x < selectedSubCategories.value.length; x++) {
+            if (ads[i].subCategory.id == selectedSubCategories.value[x]) {
               selectedAdList.push(ads[i])
             }
           }
         }
 
-        if (this.selectedSubCategories == null || this.selectedSubCategories == 0){
+          // if there are no selections, show the whole list and don't show message
+        if (selectedSubCategories.value == null || selectedSubCategories.value.length == 0){
           this.NoAdsFound = false;
+
+          // if there are selections, but no matching advertisements, show message and empty list
         } else if (selectedAdList.length == 0){
           this.NoAdsFound = true;
           this.advertisements = selectedAdList;
+
+          // if there are selections and matching advertisements, hide message and show advertisements
         } else {
           this.NoAdsFound = false;
           this.advertisements = selectedAdList;
