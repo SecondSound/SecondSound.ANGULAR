@@ -20,6 +20,8 @@ export class SelectedAdvertisementsComponent implements OnInit {
   }
 
   update() {
+
+      // added timeout because photos of new ads were not showing due delay
     setTimeout(() => this.getAllAdvertisements(), 500)
   }
 
