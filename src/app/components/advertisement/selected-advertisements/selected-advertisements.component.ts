@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {AdvertisementService} from "../../../services/advertisement/advertisement.service";
 import {AdvertisementDto} from "../../../shared/models/AdvertisementDto";
+import {AuthManagementService} from "../../../services/auth-management.service";
+import {LoginResponse} from "../../../shared/models/login-response.model";
 
 @Component({
   selector: 'app-selected-advertisements',
@@ -9,15 +11,28 @@ import {AdvertisementDto} from "../../../shared/models/AdvertisementDto";
 })
 export class SelectedAdvertisementsComponent implements OnInit {
 
-  constructor(private advertisementService: AdvertisementService) {
+  constructor(private advertisementService: AdvertisementService,
+              private authManagementService: AuthManagementService) {
+    this.authManagementService.isUserLoggedIn$.subscribe((loggedIn: boolean) => {;
+      this.isLoggedIn = loggedIn;
+    });
+
+    this.authManagementService.user$.subscribe((user: LoginResponse) => {
+      this.user = user;
+    });
+
     this.getAllAdvertisements();
   }
 
   public advertisements: AdvertisementDto[];
   public NoAdsFound: Boolean = false;
   public likeStatus: String = "../../../../assets/images/heart-transparant.png";
+  isLoggedIn: boolean = false;
+  user: LoginResponse | undefined;
 
   ngOnInit(): void {
+    console.log("Logged in? " + this.isLoggedIn)
+    console.log("User: " + this.user.firstName + " " + this.user.lastName)
   }
 
   update() {
@@ -37,11 +52,13 @@ export class SelectedAdvertisementsComponent implements OnInit {
         this.advertisements = ads;
         let selectedAdList: AdvertisementDto[] = []
 
+        if (selectedSubCategories.length != null) {
           // Add advertisements from selected subcategories in new list
-        for (let i = 0; i < ads.length; i++) {
-          for (let x = 0; x < selectedSubCategories.value.length; x++) {
-            if (ads[i].subCategory.id == selectedSubCategories.value[x]) {
-              selectedAdList.push(ads[i])
+          for (let i = 0; i < ads.length; i++) {
+            for (let x = 0; x < selectedSubCategories.value.length; x++) {
+              if (ads[i].subCategory.id == selectedSubCategories.value[x]) {
+                selectedAdList.push(ads[i])
+              }
             }
           }
         }

@@ -11,7 +11,7 @@
     <div class="card">
       <div class="advertisementImageDiv">
         <img class="card-img-top responsive advertisementImage" src="{{advertisement.imgFile}}" alt="{{advertisement.title}}" style="display: block">
-        <div class="des">
+        <div *ngIf="isLoggedIn" class="des">
           <a (click)="switchLikeButton()" style="cursor: pointer"><img src="{{likeStatus}}" id="like-ad" alt="Logo Second Sound"></a>
         </div>
       </div>
