@@ -12,7 +12,12 @@
       <div class="advertisementImageDiv">
         <img class="card-img-top responsive advertisementImage" src="{{advertisement.imgFile}}" alt="{{advertisement.title}}" style="display: block">
         <div *ngIf="isLoggedIn" class="des">
-          <a (click)="switchLikeButton()" style="cursor: pointer"><img src="{{likeStatus}}" id="like-ad" alt="Logo Second Sound"></a>
+          <div *ngIf=advertisement.isSaved>
+            <a (click)="switchLikeButton(advertisement.id)" style="cursor: pointer"><img src="../../../../assets/images/heart-red.png" class="like-ad" alt="dislike"></a>
+          </div>
+          <div *ngIf=!advertisement.isSaved>
+            <a (click)="switchLikeButton(advertisement.id)" style="cursor: pointer"><img src="../../../../assets/images/heart-transparant.png" class="like-ad" alt="like"></a>
+          </div>
         </div>
       </div>
       <div class="card-body">

@@ -13,7 +13,7 @@
   text-align: right;
 }
 
-#like-ad {
+.like-ad {
   height: 20px;
   width: 20px;
   position: absolute;

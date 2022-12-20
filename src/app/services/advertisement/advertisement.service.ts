@@ -20,14 +20,19 @@ export class AdvertisementService {
               private router: Router) {
   }
 
-  public getAllAdvertisements() :  Observable<AdvertisementDto[]> {
-     return this.http.get<AdvertisementDto[]>(this.baseUrl + "/api/" + this.apiVersion + "/public/advertisement")
+  public getAllAdvertisements(): Observable<AdvertisementDto[]> {
+    return this.http.get<AdvertisementDto[]>(this.baseUrl + "/api/" + this.apiVersion + "/public/advertisement")
   }
 
   public postAdvertisement(advertisementForm: FormGroup, price: string, file: FormData, subcategoryId: Number) {
 
     let advertisementId: Number
-    const data = {title: advertisementForm.get('title').value, description: advertisementForm.get('description').value, price: price, subCategoryId: subcategoryId};
+    const data = {
+      title: advertisementForm.get('title').value,
+      description: advertisementForm.get('description').value,
+      price: price,
+      subCategoryId: subcategoryId
+    };
     this.http.post<AdvertisementDto>(this.baseUrl + "/api/" + this.apiVersion + "/advertisement", data)
       .subscribe((response) => {
         advertisementId = response.id;
@@ -42,7 +47,7 @@ export class AdvertisementService {
     return this.http.get(this.baseUrl + "/api/" + this.apiVersion + "/public/categories");
   }
 
-  public getCategoryDto() : Observable<Category[]> {
+  public getCategoryDto(): Observable<Category[]> {
     return this.http.get<Category[]>(this.baseUrl + "/api/" + this.apiVersion + "/public/categories/dto");
   }
 
@@ -57,6 +62,13 @@ export class AdvertisementService {
     return this.http.get(this.baseUrl + "/api/" + this.apiVersion + "/public/advertisement/" + id);
   }
 
+  public getSavedAdvertisements(): Observable<any> {
+    return this.http.get<any>(this.baseUrl + "/api/" + this.apiVersion + "/advertisement/saved/get")
+  }
+
+  public saveAdvertisement(advertisementId: Number) : Observable<boolean>{
+    return this.http.post<boolean>(this.baseUrl + "/api/" + this.apiVersion + "/advertisement/saved/post", advertisementId);
+  }
 }
 
 
