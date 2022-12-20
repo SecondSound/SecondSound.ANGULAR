@@ -10,8 +10,10 @@
   <div *ngFor="let advertisement of advertisements" class="col-12 col-md-6 col-lg-6 col-xl-4 col-xxl-4 mt-2 mb-2">
     <div class="card">
       <div class="advertisementImageDiv">
-
-        <img class="card-img-top responsive advertisementImage" src="{{advertisement.imgFile}}" alt="{{advertisement.title}}">
+        <img class="card-img-top responsive advertisementImage" src="{{advertisement.imgFile}}" alt="{{advertisement.title}}" style="display: block">
+        <div class="des">
+          <a (click)="switchLikeButton()" style="cursor: pointer"><img src="{{likeStatus}}" id="like-ad" alt="Logo Second Sound"></a>
+        </div>
       </div>
       <div class="card-body">
         <h5>{{advertisement.subCategory.category.name}} <span>&#8594;</span> {{advertisement.subCategory.name}}</h5>

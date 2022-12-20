@@ -15,6 +15,7 @@ export class SelectedAdvertisementsComponent implements OnInit {
 
   public advertisements: AdvertisementDto[];
   public NoAdsFound: Boolean = false;
+  public likeStatus: String = "../../../../assets/images/heart-transparant.png";
 
   ngOnInit(): void {
   }
@@ -65,5 +66,16 @@ export class SelectedAdvertisementsComponent implements OnInit {
 
   ngAfterViewInit() {
     this.update()
+  }
+
+  switchLikeButton() {
+  const like: String = "../../../../assets/images/heart-red.png";
+  const disLike: String = "../../../../assets/images/heart-transparant.png";
+
+    if (this.likeStatus == like) {
+      this.likeStatus = disLike;
+    } else {
+      this.likeStatus = like;
+    }
   }
 }
