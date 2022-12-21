@@ -42,6 +42,7 @@ import {MatTreeModule} from "@angular/material/tree";
 import { FiltertreeComponent } from './components/advertisement/filtertree/filtertree.component';
 import { SelectedAdvertisementsComponent } from './components/advertisement/selected-advertisements/selected-advertisements.component';
 import { ChatsComponent } from './components/account/messenger/chats/chats.component';
+import { ChatScreenComponent } from './components/account/messenger/chat-screen/chat-screen.component';
 
 @NgModule({
   declarations: [
@@ -68,7 +69,8 @@ import { ChatsComponent } from './components/account/messenger/chats/chats.compo
     PagenotfoundComponent,
     FiltertreeComponent,
     SelectedAdvertisementsComponent,
-    ChatsComponent
+    ChatsComponent,
+    ChatScreenComponent
   ],
     imports: [
         BrowserModule,

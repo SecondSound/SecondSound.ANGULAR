@@ -12,6 +12,7 @@ import {ConfirmRegistrationComponent} from "./components/account/register/confir
 import {RegistrationConfirmedComponent} from "./components/account/register/registration-confirmed/registration-confirmed.component";
 import {RegisterFormComponent} from "./components/account/register/register-form/register-form.component";
 import {MessengerDashboardComponent} from "./components/account/messenger/messenger-dashboard/messenger-dashboard.component";
+import {ChatScreenComponent} from "./components/account/messenger/chat-screen/chat-screen.component";
 import {AdvertisementDetailsComponent} from "./components/advertisement/advertisement-details/advertisement-details.component";
 import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.component';
 
@@ -63,6 +64,11 @@ const routes: Routes = [
   {
     path: "messenger",
     component: MessengerDashboardComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: "messenger/chat-screen/:id",
+    component: ChatScreenComponent,
     canActivate: [AuthGuard]
   },
   {

@@ -8,7 +8,7 @@
         <h4>Seller: {{chat.receiver.firstName }}</h4>
         <p class="card-text text-truncate-container" style="min-height: 60px">{{chat.advertisement.description}}</p>
         <div class="text-center">
-          <button mat-raised-button color="primary">Open chat</button>
+          <button mat-raised-button color="primary" routerLink="/messenger/chat-screen/{{chat.advertisement.id}}">Open chat</button>
         </div>
       </div>
     </div>
