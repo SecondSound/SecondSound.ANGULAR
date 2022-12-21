@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {ActivatedRoute} from "@angular/router";
+import {MessageDto} from "../../../../shared/models/MessageDto";
+import {MessageService} from "../../../../services/message/Message.service";
 
 @Component({
   selector: 'app-chat-screen',
@@ -6,10 +9,23 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./chat-screen.component.css']
 })
 export class ChatScreenComponent implements OnInit {
+  chatId: {id: number};
+  public messages: MessageDto[];
+  error = null;
 
-  constructor() { }
+  constructor(private route: ActivatedRoute, private messageService: MessageService) {}
 
-  ngOnInit(): void {
-  }
+    ngOnInit(): void {
+    this.chatId = {
+          id: this.route.snapshot.params['id']
+    };
+    this.messageService.getMessagesByChatId(this.chatId.id)
+          .subscribe(data => {
+            this.messages = data; }, error => {this.error = error; })
+
+      }
+
+
 
 }
+
