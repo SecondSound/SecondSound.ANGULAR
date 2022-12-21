@@ -1,0 +1,16 @@
+<div class="row">
+  <p>found 1</p>
+  <div *ngFor="let chat of chats" class="col-12 col-md-6 col-lg-4 mt-2 mb-2">
+    <div class="card">
+      <img class="card-img-top responsive advertisementImage" src="{{chat.advertisement.imgFile}}" alt="{{chat.advertisement.title}}">
+      <div class="card-body">
+        <h2 class="card-title mb-0 text-truncate">Buyer: {{chat.sender.firstName}}</h2>
+        <h4>Seller: {{chat.receiver.firstName }}</h4>
+        <p class="card-text text-truncate-container" style="min-height: 60px">{{chat.advertisement.description}}</p>
+        <div class="text-center">
+          <button mat-raised-button color="primary">Open chat</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

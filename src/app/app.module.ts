@@ -41,6 +41,7 @@ import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.co
 import {MatTreeModule} from "@angular/material/tree";
 import { FiltertreeComponent } from './components/advertisement/filtertree/filtertree.component';
 import { SelectedAdvertisementsComponent } from './components/advertisement/selected-advertisements/selected-advertisements.component';
+import { ChatsComponent } from './components/account/messenger/chats/chats.component';
 
 @NgModule({
   declarations: [
@@ -61,12 +62,13 @@ import { SelectedAdvertisementsComponent } from './components/advertisement/sele
     ConfirmRegistrationComponent,
     RegistrationConfirmedComponent,
     RegisterFormComponent,
-    MessengerDashboardComponent
+    MessengerDashboardComponent,
     RegisterFormComponent,
     AdvertisementDetailsComponent,
     PagenotfoundComponent,
     FiltertreeComponent,
-    SelectedAdvertisementsComponent
+    SelectedAdvertisementsComponent,
+    ChatsComponent
   ],
     imports: [
         BrowserModule,

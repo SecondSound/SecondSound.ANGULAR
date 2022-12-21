@@ -1,8 +1,10 @@
 import {Injectable, OnInit} from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {environment} from "../../../environments/environment";
-import {AdvertisementModel} from "../../shared/models/advertisement-model.model";
+
 import {Observable} from "rxjs";
+import {AdvertisementDto} from "../../shared/models/AdvertisementDto";
+import {ChatDto} from "../../shared/models/ChatDto";
 
 @Injectable({
   providedIn: 'root'
@@ -15,8 +17,7 @@ export class ChatService {
   }
 
   public getAllChats() {
-    let userID = "test"
-    return this.http.get(this.baseUrl + "/api/" + this.apiVersion + "/chat");
+    return this.http.get<ChatDto[]>(this.baseUrl + "/api/" + this.apiVersion + "/public/chat");
   }
 
 
