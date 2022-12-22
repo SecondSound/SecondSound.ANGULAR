@@ -8,5 +8,5 @@ export interface AdvertisementDto {
   imgFile: string;
   user: number;
   subCategory: SubCategory;
-  isSaved: boolean;
+  saved: boolean;
 }

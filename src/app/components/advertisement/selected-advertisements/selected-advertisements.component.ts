@@ -26,7 +26,7 @@ export class SelectedAdvertisementsComponent implements OnInit {
 
   public advertisements: AdvertisementDto[];
   public NoAdsFound: Boolean = false;
-  public likeStatus: String = "../../../../assets/images/heart-transparant.png";
+  public likeStatus: String = "../../../../assets/images/heart-transparent.png";
   isLoggedIn: boolean = false;
   user: LoginResponse | undefined;
 
@@ -44,8 +44,9 @@ export class SelectedAdvertisementsComponent implements OnInit {
     this.advertisementService.subCategoriesSelected.subscribe(selectedSubCategories => {
 
         // Get advertisements from database
-      this.advertisementService.getAllAdvertisements().subscribe(ads => {
-
+      this.advertisementService.getAllAdvertisements(this.isLoggedIn).subscribe(ads => {
+        console.log("is logged in: " + this.isLoggedIn)
+        console.log(ads.filter(x => x.id == 1))
           // Save advertisements in variable
         this.advertisements = ads;
         let selectedAdList: AdvertisementDto[] = []
@@ -87,11 +88,11 @@ export class SelectedAdvertisementsComponent implements OnInit {
 
     this.advertisementService.saveAdvertisement(advertisementId).subscribe(data => {
       let advertisement = this.advertisements.filter(x => x.id = advertisementId);
-      advertisement[0].isSaved = data;
+      advertisement[0].saved = data;
     });
 
     const like: String = "../../../../assets/images/heart-red.png";
-    const disLike: String = "../../../../assets/images/heart-transparant.png";
+    const disLike: String = "../../../../assets/images/heart-transparent.png";
 
 
       if (this.likeStatus == like) {

@@ -12,15 +12,16 @@
       <div class="advertisementImageDiv">
         <img class="card-img-top responsive advertisementImage" src="{{advertisement.imgFile}}" alt="{{advertisement.title}}" style="display: block">
         <div *ngIf="isLoggedIn" class="des">
-          <div *ngIf=advertisement.isSaved>
+          <div *ngIf="advertisement.saved == true">
             <a (click)="switchLikeButton(advertisement.id)" style="cursor: pointer"><img src="../../../../assets/images/heart-red.png" class="like-ad" alt="dislike"></a>
           </div>
-          <div *ngIf=!advertisement.isSaved>
-            <a (click)="switchLikeButton(advertisement.id)" style="cursor: pointer"><img src="../../../../assets/images/heart-transparant.png" class="like-ad" alt="like"></a>
+          <div *ngIf="advertisement.saved == false">
+            <a (click)="switchLikeButton(advertisement.id)" style="cursor: pointer"><img src="../../../../assets/images/heart-transparent.png" class="like-ad" alt="like"></a>
           </div>
         </div>
       </div>
       <div class="card-body">
+        <p>{{advertisement.saved}}</p>
         <h5>{{advertisement.subCategory.category.name}} <span>&#8594;</span> {{advertisement.subCategory.name}}</h5>
         <h2 class="card-title mb-0 text-truncate">{{advertisement.title}}</h2>
         <h4>{{advertisement.price | currency: 'EUR': 'symbol': '1.2-2': 'nl'}}</h4>

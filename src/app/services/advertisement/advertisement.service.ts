@@ -20,8 +20,14 @@ export class AdvertisementService {
               private router: Router) {
   }
 
-  public getAllAdvertisements(): Observable<AdvertisementDto[]> {
-    return this.http.get<AdvertisementDto[]>(this.baseUrl + "/api/" + this.apiVersion + "/public/advertisement")
+  public getAllAdvertisements(isLoggedIn: boolean): Observable<AdvertisementDto[]> {
+
+    if (isLoggedIn == true) {
+      return this.http.get<AdvertisementDto[]>(this.baseUrl + "/api/" + this.apiVersion + "/advertisement")
+    } else {
+      return this.http.get<AdvertisementDto[]>(this.baseUrl + "/api/" + this.apiVersion + "/public/advertisement")
+    }
+
   }
 
   public postAdvertisement(advertisementForm: FormGroup, price: string, file: FormData, subcategoryId: Number) {
@@ -67,6 +73,7 @@ export class AdvertisementService {
   }
 
   public saveAdvertisement(advertisementId: Number) : Observable<boolean>{
+    console.log("Saved ad: " + advertisementId)
     return this.http.post<boolean>(this.baseUrl + "/api/" + this.apiVersion + "/advertisement/saved/post", advertisementId);
   }
 }
