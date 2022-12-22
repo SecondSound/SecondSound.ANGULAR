@@ -3,6 +3,7 @@ import {AdvertisementService} from "../../../services/advertisement/advertisemen
 import {AdvertisementDto} from "../../../shared/models/AdvertisementDto";
 import {AuthManagementService} from "../../../services/auth-management.service";
 import {LoginResponse} from "../../../shared/models/login-response.model";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-selected-advertisements',
@@ -12,7 +13,8 @@ import {LoginResponse} from "../../../shared/models/login-response.model";
 export class SelectedAdvertisementsComponent implements OnInit {
 
   constructor(private advertisementService: AdvertisementService,
-              private authManagementService: AuthManagementService) {
+              private authManagementService: AuthManagementService,
+              private router: Router) {
     this.authManagementService.isUserLoggedIn$.subscribe((loggedIn: boolean) => {;
       this.isLoggedIn = loggedIn;
     });
@@ -45,8 +47,6 @@ export class SelectedAdvertisementsComponent implements OnInit {
 
         // Get advertisements from database
       this.advertisementService.getAllAdvertisements(this.isLoggedIn).subscribe(ads => {
-        console.log("is logged in: " + this.isLoggedIn)
-        console.log(ads.filter(x => x.id == 1))
           // Save advertisements in variable
         this.advertisements = ads;
         let selectedAdList: AdvertisementDto[] = []
@@ -86,19 +86,8 @@ export class SelectedAdvertisementsComponent implements OnInit {
 
   switchLikeButton(advertisementId: number) {
 
-    this.advertisementService.saveAdvertisement(advertisementId).subscribe(data => {
-      let advertisement = this.advertisements.filter(x => x.id = advertisementId);
-      advertisement[0].saved = data;
+    this.advertisementService.saveAdvertisement(advertisementId).subscribe(() => {
+      location.reload();
     });
-
-    const like: String = "../../../../assets/images/heart-red.png";
-    const disLike: String = "../../../../assets/images/heart-transparent.png";
-
-
-      if (this.likeStatus == like) {
-        this.likeStatus = disLike;
-      } else {
-        this.likeStatus = like;
-      }
   }
 }
