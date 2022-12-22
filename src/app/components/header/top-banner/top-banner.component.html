@@ -1,19 +1,24 @@
-<div class="container">
+<div class="container mb-3">
+  <div class="col-12 d-block d-md-none d-sm-block text-align-center my-3">
+    <a routerLink="/">
+      <img src="../../../../assets/images/second_sound_text.png" alt="Logo Second Sound" style="width: 45%">
+    </a>
+  </div>
   <div class="row">
-    <div class="col d-flex justify-content-start">
+    <div class="col-7 justify-content-start">
       <div class="row">
-        <div class="col">
+        <div class="d-none d-md-block col-md-5 col-3">
           <a routerLink="/" mat-button>
             <img src="assets/images/second_sound_text.png" alt="Second Sound" class="banner-image">
           </a>
         </div>
-        <div class="col">
+        <div class="col-md-4 col-4">
           <a routerLink="/info" routerLinkActive="route-active" mat-button>
             <span class="fa fa-info-circle icon-align"></span>
             Help & Info
           </a>
         </div>
-        <div class="col">
+        <div class="col-md-3 col-5">
           <a routerLink="/contact" routerLinkActive="route-active" mat-button>
             <span class="fa fa-envelope icon-align"></span>
             Contact
@@ -21,7 +26,7 @@
         </div>
       </div>
     </div>
-    <div class="col d-flex justify-content-end">
+    <div class="col-5 d-flex justify-content-end">
       <ng-container *ngIf="!isLoggedIn">
         <a routerLink="/login" routerLinkActive="route-active" mat-button>
           <span class="fa fa-user icon-align"></span>
@@ -46,5 +51,4 @@
     </div>
   </div>
 </div>
-<hr class="m-0">
 
