@@ -13,6 +13,9 @@ import {RegistrationConfirmedComponent} from "./components/account/register/regi
 import {RegisterFormComponent} from "./components/account/register/register-form/register-form.component";
 import {AdvertisementDetailsComponent} from "./components/advertisement/advertisement-details/advertisement-details.component";
 import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.component';
+import {
+  SavedAdvertisementsComponent
+} from "./components/advertisement/saved-advertisements/saved-advertisements.component";
 
 const routes: Routes = [
   {
@@ -64,8 +67,9 @@ const routes: Routes = [
     component: AdvertisementDetailsComponent
   },
   {
-    path: "advertisement/details/:id",
-    component: AdvertisementDetailsComponent
+    path: "advertisement/saved",
+    component: SavedAdvertisementsComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: "**",

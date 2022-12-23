@@ -68,13 +68,12 @@ export class AdvertisementService {
     return this.http.get(this.baseUrl + "/api/" + this.apiVersion + "/public/advertisement/" + id);
   }
 
-  public getSavedAdvertisements(): Observable<any> {
-    return this.http.get<any>(this.baseUrl + "/api/" + this.apiVersion + "/advertisement/saved/get")
+  public getSavedAdvertisements(): Observable<AdvertisementDto[]> {
+    return this.http.get<AdvertisementDto[]>(this.baseUrl + "/api/" + this.apiVersion + "/advertisement/saved")
   }
 
   public saveAdvertisement(advertisementId: Number) : Observable<boolean>{
-    console.log("Saved ad: " + advertisementId)
-    return this.http.post<boolean>(this.baseUrl + "/api/" + this.apiVersion + "/advertisement/saved/post", advertisementId);
+    return this.http.post<boolean>(this.baseUrl + "/api/" + this.apiVersion + "/advertisement/saved", advertisementId);
   }
 }
 

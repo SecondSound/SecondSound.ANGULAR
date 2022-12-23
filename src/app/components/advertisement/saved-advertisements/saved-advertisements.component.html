@@ -1,0 +1,39 @@
+<app-header></app-header>
+<div class="container text-align-center mt-5">
+  <h1 class="m-0">Welcome <strong>{{user.firstName}}</strong></h1>
+  <h2>These are your favorite advertisements</h2>
+  <div *ngIf="advertisements == null" class="container text-align-center mt-5">
+    <img src="../../../../assets/images/second_sound_logo.png" id="image-id" alt="Logo Second Sound" width="60%">
+    <br>
+    <h1 class="mt-5">
+      No favorite advertisements found!
+    </h1>
+  </div>
+
+  <div class="row">
+    <div *ngFor="let advertisement of advertisements" class="col-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-2 mb-2">
+      <div class="card">
+        <div class="advertisementImageDiv">
+          <img class="card-img-top responsive advertisementImage" src="{{advertisement.imgFile}}" alt="{{advertisement.title}}" style="display: block">
+          <div *ngIf="isLoggedIn" class="des">
+            <div *ngIf="advertisement.saved == true">
+              <a (click)="switchLikeButton(advertisement.id)" style="cursor: pointer"><img src="../../../../assets/images/heart-red.png" class="like-ad" alt="dislike"></a>
+            </div>
+            <div *ngIf="advertisement.saved == false">
+              <a (click)="switchLikeButton(advertisement.id)" style="cursor: pointer"><img src="../../../../assets/images/heart-transparent.png" class="like-ad" alt="like"></a>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <h5>{{advertisement.subCategory.category.name}} <span>&#8594;</span> {{advertisement.subCategory.name}}</h5>
+          <h2 class="card-title mb-0 text-truncate">{{advertisement.title}}</h2>
+          <h4>{{advertisement.price | currency: 'EUR': 'symbol': '1.2-2': 'nl'}}</h4>
+          <p class="card-text text-truncate-container" style="min-height: 60px">{{advertisement.description}}</p>
+          <div class="text-center">
+            <button mat-raised-button color="primary" routerLink="/advertisement/details/{{advertisement.id}}">Open advertisement</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

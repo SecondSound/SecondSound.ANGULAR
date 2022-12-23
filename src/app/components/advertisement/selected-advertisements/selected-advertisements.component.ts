@@ -13,9 +13,8 @@ import {Router} from "@angular/router";
 export class SelectedAdvertisementsComponent implements OnInit {
 
   constructor(private advertisementService: AdvertisementService,
-              private authManagementService: AuthManagementService,
-              private router: Router) {
-    this.authManagementService.isUserLoggedIn$.subscribe((loggedIn: boolean) => {;
+              private authManagementService: AuthManagementService) {
+    this.authManagementService.isUserLoggedIn$.subscribe((loggedIn: boolean) => {
       this.isLoggedIn = loggedIn;
     });
 
@@ -28,7 +27,6 @@ export class SelectedAdvertisementsComponent implements OnInit {
 
   public advertisements: AdvertisementDto[];
   public NoAdsFound: Boolean = false;
-  public likeStatus: String = "../../../../assets/images/heart-transparent.png";
   isLoggedIn: boolean = false;
   user: LoginResponse | undefined;
 
@@ -51,7 +49,7 @@ export class SelectedAdvertisementsComponent implements OnInit {
         this.advertisements = ads;
         let selectedAdList: AdvertisementDto[] = []
 
-        if (selectedSubCategories.length != null) {
+        if (selectedSubCategories.value != null) {
           // Add advertisements from selected subcategories in new list
           for (let i = 0; i < ads.length; i++) {
             for (let x = 0; x < selectedSubCategories.value.length; x++) {

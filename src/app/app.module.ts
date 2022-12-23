@@ -40,6 +40,7 @@ import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.co
 import {MatTreeModule} from "@angular/material/tree";
 import { FiltertreeComponent } from './components/advertisement/filtertree/filtertree.component';
 import { SelectedAdvertisementsComponent } from './components/advertisement/selected-advertisements/selected-advertisements.component';
+import { SavedAdvertisementsComponent } from './components/advertisement/saved-advertisements/saved-advertisements.component';
 
 @NgModule({
   declarations: [
@@ -63,7 +64,8 @@ import { SelectedAdvertisementsComponent } from './components/advertisement/sele
     AdvertisementDetailsComponent,
     PagenotfoundComponent,
     FiltertreeComponent,
-    SelectedAdvertisementsComponent
+    SelectedAdvertisementsComponent,
+    SavedAdvertisementsComponent
   ],
     imports: [
         BrowserModule,
