@@ -17,8 +17,9 @@ export class ChatService {
   }
 
   public getAllChats() {
-    return this.http.get<ChatDto[]>(this.baseUrl + "/api/" + this.apiVersion + "/public/chat");
+    return this.http.get<ChatDto[]>(this.baseUrl + "/api/" + this.apiVersion + "/chat");
   }
+
 
 
 }
