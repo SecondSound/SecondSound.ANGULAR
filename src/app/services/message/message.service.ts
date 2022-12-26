@@ -1,7 +1,7 @@
 import {Injectable, OnInit} from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {environment} from "../../../environments/environment";
-
+import {Router} from "@angular/router";
 import {Observable} from "rxjs";
 import {AdvertisementDto} from "../../shared/models/AdvertisementDto";
 import {MessageDto} from "../../shared/models/MessageDto";
@@ -12,10 +12,12 @@ import {MessageDto} from "../../shared/models/MessageDto";
 })
 export class MessageService {
 
+
   private baseUrl = environment.BASE_URL;
   private apiVersion = environment.API_VERSION
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,
+              private router: Router) { }
 
   public getAllMessages() {
       return this.http.get<MessageDto[]>(this.baseUrl + "/api/" + this.apiVersion + "/public/message");
@@ -23,6 +25,15 @@ export class MessageService {
 
   public getMessagesByChatId(id: number) {
       return this.http.get<MessageDto[]>(this.baseUrl + "/api/" + this.apiVersion + "/public/message/" + id);
+    }
+
+  public postByChatMessage(message: string, id: number) {
+
+      const data = {chatId: id, message: message};
+      console.log(data);
+      console.log(this.baseUrl + "/api/" + this.apiVersion + "/message");
+      this.http.post<String>(this.baseUrl + "/api/" + this.apiVersion + "/message", data, {responseType: 'text' as 'json'}).subscribe();
+
     }
 
 }
