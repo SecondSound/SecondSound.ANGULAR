@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {AdvertisementService} from "../../../services/advertisement/advertisement.service";
+import {ChatService} from "../../../services/chat/chat.service";
 import {catchError, NotFoundError} from "rxjs";
 
 @Component({
@@ -14,7 +15,8 @@ export class AdvertisementDetailsComponent implements OnInit {
   error = null;
 
   constructor(private route: ActivatedRoute,
-              private advertisementService: AdvertisementService,) {
+              private advertisementService: AdvertisementService,
+              private chatService: ChatService) {
 
   }
 
@@ -27,6 +29,11 @@ export class AdvertisementDetailsComponent implements OnInit {
       .subscribe(data => {
         this.advertisement = data; console.log(data)}, error => {this.error = error; })
 
+  }
+
+  startChat(): void {
+
+    this.chatService.newChat(this.advertisementFromURL.id)
   }
 
 }

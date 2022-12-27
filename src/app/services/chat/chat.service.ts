@@ -20,6 +20,17 @@ export class ChatService {
     return this.http.get<ChatDto[]>(this.baseUrl + "/api/" + this.apiVersion + "/chat");
   }
 
+  public newChat(id: number){
+    console.log(id)
+
+    const data = {
+          id: id
+        };
+
+    return this.http.post(this.baseUrl + "/api/" + this.apiVersion + "/chat/create/" + id, data, {responseType: 'text' as 'json'}).subscribe();
+  }
+
+
 
 
 }

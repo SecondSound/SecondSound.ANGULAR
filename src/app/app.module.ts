@@ -69,9 +69,8 @@ import { ChatScreenComponent } from './components/account/messenger/chat-screen/
     AdvertisementDetailsComponent,
     PagenotfoundComponent,
     FiltertreeComponent,
-    SelectedAdvertisementsComponent,
     ChatsComponent,
-    ChatScreenComponent
+    ChatScreenComponent,
     SelectedAdvertisementsComponent,
     SavedAdvertisementsComponent
   ],

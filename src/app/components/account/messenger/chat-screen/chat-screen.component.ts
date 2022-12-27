@@ -38,7 +38,7 @@ export class ChatScreenComponent implements OnInit {
       let message = this.messageForm.get('message').value.toString()
       console.log(message)
       this.messageService.postByChatMessage(message, this.chatId.id)
-window.location.reload();
+      window.location.reload();
     }
 
 }

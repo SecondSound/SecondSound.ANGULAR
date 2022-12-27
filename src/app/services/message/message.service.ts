@@ -30,8 +30,6 @@ export class MessageService {
   public postByChatMessage(message: string, id: number) {
 
       const data = {chatId: id, message: message};
-      console.log(data);
-      console.log(this.baseUrl + "/api/" + this.apiVersion + "/message");
       this.http.post<String>(this.baseUrl + "/api/" + this.apiVersion + "/message", data, {responseType: 'text' as 'json'}).subscribe();
 
     }
