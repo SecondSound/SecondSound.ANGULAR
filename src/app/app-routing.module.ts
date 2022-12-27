@@ -15,6 +15,9 @@ import {MessengerDashboardComponent} from "./components/account/messenger/messen
 import {ChatScreenComponent} from "./components/account/messenger/chat-screen/chat-screen.component";
 import {AdvertisementDetailsComponent} from "./components/advertisement/advertisement-details/advertisement-details.component";
 import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.component';
+import {
+  SavedAdvertisementsComponent
+} from "./components/advertisement/saved-advertisements/saved-advertisements.component";
 
 const routes: Routes = [
   {
@@ -76,8 +79,9 @@ const routes: Routes = [
     component: AdvertisementDetailsComponent
   },
   {
-    path: "advertisement/details/:id",
-    component: AdvertisementDetailsComponent
+    path: "advertisement/saved",
+    component: SavedAdvertisementsComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: "**",

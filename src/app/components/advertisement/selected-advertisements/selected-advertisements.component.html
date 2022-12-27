@@ -1,11 +1,24 @@
-<div *ngIf="NoAdsFound" class="alert alert-danger text-align-center mt-2" role="alert">
-  No advertisements were fitting your requirements, please select other subcategories!
+<div *ngIf="!NoAdsFound == false" class="container text-align-center">
+  <img src="../../../../assets/images/second_sound_logo.png" id="image-id" alt="Logo Second Sound" class="png-logo">
+  <br>
+  <h3 style="font-family: 'Courier New',monospace">
+    No advertisements were fitting your requirements. <br> Please select other subcategories!
+  </h3>
 </div>
+
 <div class="row">
-  <div *ngFor="let advertisement of advertisements" class="col-12 col-md-6 col-lg-4 mt-2 mb-2">
+  <div *ngFor="let advertisement of advertisements" class="col-12 col-md-6 col-lg-6 col-xl-4 col-xxl-4 mt-2 mb-2">
     <div class="card">
       <div class="advertisementImageDiv">
-        <img class="card-img-top responsive advertisementImage" src="{{advertisement.imgFile}}" alt="{{advertisement.title}}">
+        <img class="card-img-top responsive advertisementImage" src="{{advertisement.imgFile}}" alt="{{advertisement.title}}" style="display: block">
+        <div *ngIf="isLoggedIn" class="des">
+          <div *ngIf="advertisement.saved == true">
+            <a (click)="switchLikeButton(advertisement.id)" style="cursor: pointer"><img src="../../../../assets/images/heart-red.png" class="like-ad" alt="dislike"></a>
+          </div>
+          <div *ngIf="advertisement.saved == false">
+            <a (click)="switchLikeButton(advertisement.id)" style="cursor: pointer"><img src="../../../../assets/images/heart-transparent.png" class="like-ad" alt="like"></a>
+          </div>
+        </div>
       </div>
       <div class="card-body">
         <h5>{{advertisement.subCategory.category.name}} <span>&#8594;</span> {{advertisement.subCategory.name}}</h5>
@@ -13,7 +26,7 @@
         <h4>{{advertisement.price | currency: 'EUR': 'symbol': '1.2-2': 'nl'}}</h4>
         <p class="card-text text-truncate-container" style="min-height: 60px">{{advertisement.description}}</p>
         <div class="text-center">
-          <button mat-raised-button color="primary" routerLink="/advertisement/details/{{advertisement.id}}">Open advertentie</button>
+          <button mat-raised-button color="primary" routerLink="/advertisement/details/{{advertisement.id}}">Open advertisement</button>
         </div>
       </div>
     </div>

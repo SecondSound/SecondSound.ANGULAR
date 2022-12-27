@@ -25,7 +25,7 @@ export class AdvertisementDetailsComponent implements OnInit {
 
     this.advertisementService.getAdvertisement(this.advertisementFromURL.id)
       .subscribe(data => {
-        this.advertisement = data; }, error => {this.error = error; })
+        this.advertisement = data; console.log(data)}, error => {this.error = error; })
 
   }
 

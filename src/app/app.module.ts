@@ -41,6 +41,7 @@ import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.co
 import {MatTreeModule} from "@angular/material/tree";
 import { FiltertreeComponent } from './components/advertisement/filtertree/filtertree.component';
 import { SelectedAdvertisementsComponent } from './components/advertisement/selected-advertisements/selected-advertisements.component';
+import { SavedAdvertisementsComponent } from './components/advertisement/saved-advertisements/saved-advertisements.component';
 import { ChatsComponent } from './components/account/messenger/chats/chats.component';
 import { ChatScreenComponent } from './components/account/messenger/chat-screen/chat-screen.component';
 
@@ -71,6 +72,8 @@ import { ChatScreenComponent } from './components/account/messenger/chat-screen/
     SelectedAdvertisementsComponent,
     ChatsComponent,
     ChatScreenComponent
+    SelectedAdvertisementsComponent,
+    SavedAdvertisementsComponent
   ],
     imports: [
         BrowserModule,
