@@ -7,6 +7,8 @@ import {Router} from "@angular/router";
 import {Observable} from "rxjs";
 import {Category} from "../../shared/models/Category";
 import {SubCategory} from "../../shared/models/SubCategory";
+import {BidDto} from "../../shared/models/BidDto";
+import {Bid} from "../../shared/models/Bid";
 
 @Injectable({
   providedIn: 'root'
@@ -64,8 +66,8 @@ export class AdvertisementService {
     return this.http.get(this.baseUrl + "/api/" + this.apiVersion + "/public/subcategories/" + id);
   }
 
-  public getAdvertisement(id: number) {
-    return this.http.get(this.baseUrl + "/api/" + this.apiVersion + "/public/advertisement/" + id);
+  public getAdvertisement(id: number) : Observable<AdvertisementDto>{
+    return this.http.get<AdvertisementDto>(this.baseUrl + "/api/" + this.apiVersion + "/public/advertisement/" + id);
   }
 
   public getSavedAdvertisements(): Observable<AdvertisementDto[]> {
@@ -74,6 +76,22 @@ export class AdvertisementService {
 
   public saveAdvertisement(advertisementId: Number) : Observable<boolean>{
     return this.http.post<boolean>(this.baseUrl + "/api/" + this.apiVersion + "/advertisement/saved", advertisementId);
+  }
+
+  public getBids(advertisementId: Number) : Observable<BidDto[]> {
+    return this.http.get<BidDto[]>(this.baseUrl + "/api/" + this.apiVersion + "/public/bids/" + advertisementId);
+  }
+
+  public postBid(amount: string, advertisementId: number) {
+    const data = {
+      amount: amount,
+      advertisementId: advertisementId
+    };
+    this.http.post<Bid>(this.baseUrl + "/api/" + this.apiVersion + "/bids", data).subscribe()
+  }
+
+  public deleteBid(id: Number) {
+    this.http.delete<Number>(this.baseUrl + "/api/" + this.apiVersion + "/bids/" + id).subscribe();
   }
 }
 

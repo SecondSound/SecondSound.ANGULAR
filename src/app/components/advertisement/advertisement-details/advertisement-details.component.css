@@ -1,0 +1,76 @@
+.bidAmount {
+  font-weight: bold;
+  font-size: 1.2vh;
+}
+
+.bidDate {
+  font-size: 0.8vh;
+  color: #767676;
+  margin-bottom: 0;
+}
+
+.bidder {
+  margin-bottom: 0;
+  font-size: 1vh;
+}
+
+h3 {
+  font-family: 'Courier New',monospace;
+  font-size: 2vh;
+}
+
+hr {
+  width: 85%;
+  color: #1B3F92;
+  margin-top: 12px;
+  margin-bottom: 12px;
+}
+
+.eur {
+  position: relative;
+  box-shadow: 0 0 40px rgba(51, 51, 51, .1);
+  border: 1px solid #1B3F92;
+  border-radius: 4px;
+  align-items: center;
+  width: 80%;
+  margin-left: 10% !important;
+  margin-right: 10%;
+}
+
+.eur input {
+  height: 48px;
+  border: none;
+}
+
+.eur input:focus {
+  box-shadow: none;
+}
+
+.eur .fa-eur {
+  margin-left: 12px;
+}
+
+.eur button {
+  margin-right: 2px;
+  padding: 4px 16px;
+  background: #1B3F92;
+}
+
+.eur button:hover {
+  background: #132b63;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.btn-primary {
+  font-size: 14px;
+}
+
+.removeBid {
+  color: #FE6762;
+  cursor: pointer;
+}

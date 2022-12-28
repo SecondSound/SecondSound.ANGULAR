@@ -13,7 +13,7 @@ import { ContactComponent } from './components/contact/contact/contact.component
 import { InfoHelpComponent } from './components/info/info-help/info-help.component';
 import {MatCardModule} from "@angular/material/card";
 import {MatFormFieldModule} from "@angular/material/form-field";
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatInputModule} from "@angular/material/input";
 import {MatIconModule} from "@angular/material/icon";
 import {MatDividerModule} from "@angular/material/divider";
@@ -41,6 +41,7 @@ import {MatTreeModule} from "@angular/material/tree";
 import { FiltertreeComponent } from './components/advertisement/filtertree/filtertree.component';
 import { SelectedAdvertisementsComponent } from './components/advertisement/selected-advertisements/selected-advertisements.component';
 import { SavedAdvertisementsComponent } from './components/advertisement/saved-advertisements/saved-advertisements.component';
+import { BidDialogComponent } from './dialogs/bid-dialog/bid-dialog.component';
 
 @NgModule({
   declarations: [
@@ -65,7 +66,8 @@ import { SavedAdvertisementsComponent } from './components/advertisement/saved-a
     PagenotfoundComponent,
     FiltertreeComponent,
     SelectedAdvertisementsComponent,
-    SavedAdvertisementsComponent
+    SavedAdvertisementsComponent,
+    BidDialogComponent
   ],
     imports: [
         BrowserModule,
@@ -82,7 +84,8 @@ import { SavedAdvertisementsComponent } from './components/advertisement/saved-a
         MatDialogModule,
         MatMenuModule,
         MatSelectModule,
-        MatTreeModule
+        MatTreeModule,
+        FormsModule
     ],
   providers: [
     AuthService,
