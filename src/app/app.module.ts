@@ -45,6 +45,7 @@ import { BidDialogComponent } from './dialogs/bid-dialog/bid-dialog.component';
 import { BidElementComponent } from './components/advertisement/ad-elements/bid-element/bid-element.component';
 import { SellerElementComponent } from './components/advertisement/ad-elements/seller-element/seller-element.component';
 import { AdvertisementElementComponent } from './components/advertisement/ad-elements/advertisement-element/advertisement-element.component';
+import { AdCardComponent } from './components/advertisement/ad-elements/ad-card/ad-card.component';
 
 @NgModule({
   declarations: [
@@ -73,7 +74,8 @@ import { AdvertisementElementComponent } from './components/advertisement/ad-ele
     BidDialogComponent,
     BidElementComponent,
     SellerElementComponent,
-    AdvertisementElementComponent
+    AdvertisementElementComponent,
+    AdCardComponent
   ],
     imports: [
         BrowserModule,

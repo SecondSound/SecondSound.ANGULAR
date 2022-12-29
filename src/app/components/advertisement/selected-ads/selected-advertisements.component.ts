@@ -18,9 +18,6 @@ export class SelectedAdvertisementsComponent implements OnInit {
       this.isLoggedIn = loggedIn;
     });
 
-    this.authManagementService.user$.subscribe((user: LoginResponse) => {
-      this.user = user;
-    });
 
     this.getAllAdvertisements();
   }
@@ -28,13 +25,11 @@ export class SelectedAdvertisementsComponent implements OnInit {
   public advertisements: AdvertisementDto[];
   public NoAdsFound: Boolean = false;
   isLoggedIn: boolean = false;
-  user: LoginResponse | undefined;
 
   ngOnInit(): void {
   }
 
   update() {
-
       // added timeout because photos of new ads were not showing due delay
     setTimeout(() => this.getAllAdvertisements(), 500)
   }
@@ -80,12 +75,5 @@ export class SelectedAdvertisementsComponent implements OnInit {
 
   ngAfterViewInit() {
     this.update()
-  }
-
-  switchLikeButton(advertisementId: number) {
-
-    this.advertisementService.saveAdvertisement(advertisementId).subscribe(() => {
-      location.reload();
-    });
   }
 }
