@@ -46,6 +46,9 @@ import { BidElementComponent } from './components/advertisement/ad-elements/bid-
 import { SellerElementComponent } from './components/advertisement/ad-elements/seller-element/seller-element.component';
 import { AdvertisementElementComponent } from './components/advertisement/ad-elements/advertisement-element/advertisement-element.component';
 import { AdCardComponent } from './components/advertisement/ad-elements/ad-card/ad-card.component';
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
+import { UserDetailsFormComponent } from './components/account/dashboard/user-dashboard/user-details-form/user-details-form.component';
+import {MatSlideToggleModule} from "@angular/material/slide-toggle";
 
 @NgModule({
   declarations: [
@@ -75,26 +78,29 @@ import { AdCardComponent } from './components/advertisement/ad-elements/ad-card/
     BidElementComponent,
     SellerElementComponent,
     AdvertisementElementComponent,
-    AdCardComponent
+    AdCardComponent,
+    UserDetailsFormComponent
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        BrowserAnimationsModule,
-        MatButtonModule,
-        MatCardModule,
-        MatFormFieldModule,
-        ReactiveFormsModule,
-        MatInputModule,
-        MatIconModule,
-        MatDividerModule,
-        HttpClientModule,
-        MatDialogModule,
-        MatMenuModule,
-        MatSelectModule,
-        MatTreeModule,
-        FormsModule
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MatButtonModule,
+    MatCardModule,
+    MatFormFieldModule,
+    ReactiveFormsModule,
+    MatInputModule,
+    MatIconModule,
+    MatDividerModule,
+    HttpClientModule,
+    MatDialogModule,
+    MatMenuModule,
+    MatSelectModule,
+    MatTreeModule,
+    FormsModule,
+    MatProgressSpinnerModule,
+    MatSlideToggleModule
+  ],
   providers: [
     AuthService,
     AuthManagementService,

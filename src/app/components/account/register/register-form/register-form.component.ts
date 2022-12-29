@@ -20,9 +20,9 @@ export class RegisterFormComponent implements OnInit {
   registrationStarted: boolean = false;
   passwordsMatch: boolean = false;
   minLengthPassword: number = 8;
-  minLengthName: number = 3;
+  minLengthName: number = 2;
   maxLengthFirstName: number = 50;
-  maxLengthLastName: number = 80;
+  maxLengthLastName: number = 100;
   email: string = '';
   password: string = '';
   confirmPassword: string = '';
