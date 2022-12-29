@@ -5,6 +5,7 @@ import {AdvertisementDto} from "../../../shared/models/AdvertisementDto";
 import {AuthManagementService} from "../../../services/auth-management.service";
 import {LoginResponse} from "../../../shared/models/login-response.model";
 import {BidDto} from "../../../shared/models/BidDto";
+import {SellerBidderDto} from "../../../shared/models/SellerBidderDto";
 
 @Component({
   selector: 'app-advertisement-details',
@@ -12,7 +13,7 @@ import {BidDto} from "../../../shared/models/BidDto";
   styleUrls: ['./advertisement-details.component.css']
 })
 export class AdvertisementDetailsComponent implements OnInit {
-  advertisementFromURL: {id: number};
+  advertisementFromURL: { id: number };
   advertisement: AdvertisementDto;
   bids: BidDto[] = [];
   error = null;
@@ -30,6 +31,8 @@ export class AdvertisementDetailsComponent implements OnInit {
       this.advertisement = data;
       this.advertisementService.getBids(this.advertisement.id)
         .subscribe(data => {
-          this.bids = data}) }, error => {this.error = error})
+          this.bids = data;
+        })
+    })
   }
 }

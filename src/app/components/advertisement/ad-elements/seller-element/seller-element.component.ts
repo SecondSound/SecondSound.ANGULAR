@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {AdvertisementDto} from "../../../../shared/models/AdvertisementDto";
+import {SellerBidderDto} from "../../../../shared/models/SellerBidderDto";
 
 @Component({
   selector: 'app-seller-element',
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SellerElementComponent implements OnInit {
 
-  constructor() { }
+  @Input() advertisement: AdvertisementDto;
+  @Input() seller: SellerBidderDto;
+
+  constructor() {}
 
   ngOnInit(): void {
+
   }
 
 }

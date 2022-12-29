@@ -9,6 +9,7 @@ import {Category} from "../../shared/models/Category";
 import {SubCategory} from "../../shared/models/SubCategory";
 import {BidDto} from "../../shared/models/BidDto";
 import {Bid} from "../../shared/models/Bid";
+import {SellerBidderDto} from "../../shared/models/SellerBidderDto";
 
 @Injectable({
   providedIn: 'root'
@@ -92,6 +93,10 @@ export class AdvertisementService {
 
   public deleteBid(id: Number) {
     this.http.delete<Number>(this.baseUrl + "/api/" + this.apiVersion + "/bids/" + id).subscribe();
+  }
+
+  public getSeller(id: Number) : Observable<SellerBidderDto> {
+    return this.http.get<SellerBidderDto>(this.baseUrl + "/api/" + this.apiVersion + "/public/advertisement/seller/" + id);
   }
 }
 

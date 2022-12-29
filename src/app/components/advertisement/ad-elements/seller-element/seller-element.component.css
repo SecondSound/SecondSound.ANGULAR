@@ -1,0 +1,11 @@
+h3 {
+  font-family: 'Courier New',monospace;
+  font-size: 2vh;
+}
+
+hr {
+  width: 85%;
+  color: #1B3F92;
+  margin-top: 12px;
+  margin-bottom: 12px;
+}
