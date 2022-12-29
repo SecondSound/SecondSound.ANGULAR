@@ -1,0 +1,56 @@
+<app-header></app-header>
+<div *ngIf="error != null">
+  <app-pagenotfound></app-pagenotfound>
+</div>
+
+
+<div *ngIf="advertisement != null" class="container mt-2">
+  <div class="mb-5 text-align-center">
+    <h5>{{advertisement.subCategory.category.name}} <span>&#8594;</span> <strong>{{advertisement.subCategory.name}}</strong></h5>
+  </div>
+  <div class="row justify-content-center">
+
+<!--  On X-large screens and higher-->
+    <div class="d-none d-xl-block col-lg-3">
+      <app-bid-element></app-bid-element>
+    </div>
+    <div class="d-none d-xl-block col-lg-6">
+      <app-advertisement-element></app-advertisement-element>
+    </div>
+    <div class="d-none d-xl-block col-md-3 ">
+      <app-seller-element></app-seller-element>
+    </div>
+
+<!--    On medium/large screens-->
+    <div class="d-none d-sm-block d-xl-none col-md-11">
+      <app-advertisement-element></app-advertisement-element>
+    </div>
+    <div class="d-none d-sm-block d-xl-none col-md-5 mt-3">
+      <app-bid-element></app-bid-element>
+    </div>
+    <div class="d-none d-sm-block d-xl-none col-md-6 mt-3">
+      <app-seller-element></app-seller-element>
+    </div>
+  </div>
+
+<!--  On small screens-->
+  <div class="d-block d-sm-none col-12">
+    <app-advertisement-element></app-advertisement-element>
+  </div>
+  <div class="d-block d-sm-none col-12 mt-3">
+    <app-bid-element></app-bid-element>
+  </div>
+  <div class="d-block d-sm-none col-12 mt-3">
+    <app-seller-element></app-seller-element>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+

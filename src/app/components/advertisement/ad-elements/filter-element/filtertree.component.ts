@@ -1,10 +1,10 @@
 import {Component, OnInit, Output} from '@angular/core';
 import {NestedTreeControl} from "@angular/cdk/tree";
 import {MatTreeNestedDataSource} from "@angular/material/tree";
-import {AdvertisementService} from "../../../services/advertisement/advertisement.service";
-import {Category} from "../../../shared/models/Category";
+import {AdvertisementService} from "../../../../services/advertisement/advertisement.service";
+import {Category} from "../../../../shared/models/Category";
 import {FormArray, FormBuilder, FormControl, FormGroup} from "@angular/forms";
-import {HomeComponent} from "../../home/home/home.component";
+import {HomeComponent} from "../../../home/home/home.component";
 
 @Component({
   selector: 'app-filtertree',

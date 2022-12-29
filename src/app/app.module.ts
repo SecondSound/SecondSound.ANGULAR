@@ -25,7 +25,7 @@ import {AuthManagementService} from "./services/auth-management.service";
 import {AdvertisementService} from "./services/advertisement/advertisement.service";
 import { registerLocaleData } from '@angular/common';
 import localeNL from '@angular/common/locales/nl';
-import { AddAdvertisementComponent } from './components/advertisement/add-advertisement/add-advertisement.component';
+import { AddAdvertisementComponent } from './components/advertisement/create-ad/add-advertisement.component';
 registerLocaleData(localeNL, 'nl');
 import {MatDialogModule} from "@angular/material/dialog";
 import { AdvertisementDialogComponent } from './dialogs/advertisement-dialog/advertisement-dialog.component';
@@ -35,13 +35,16 @@ import { ConfirmRegistrationComponent } from './components/account/register/conf
 import { RegistrationConfirmedComponent } from './components/account/register/registration-confirmed/registration-confirmed.component';
 import { RegisterFormComponent } from './components/account/register/register-form/register-form.component';
 import {MatSelectModule} from "@angular/material/select";
-import { AdvertisementDetailsComponent } from './components/advertisement/advertisement-details/advertisement-details.component';
+import { AdvertisementDetailsComponent } from './components/advertisement/ad-details/advertisement-details.component';
 import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.component';
 import {MatTreeModule} from "@angular/material/tree";
-import { FiltertreeComponent } from './components/advertisement/filtertree/filtertree.component';
-import { SelectedAdvertisementsComponent } from './components/advertisement/selected-advertisements/selected-advertisements.component';
-import { SavedAdvertisementsComponent } from './components/advertisement/saved-advertisements/saved-advertisements.component';
+import { FiltertreeComponent } from './components/advertisement/ad-elements/filter-element/filtertree.component';
+import { SelectedAdvertisementsComponent } from './components/advertisement/selected-ads/selected-advertisements.component';
+import { SavedAdvertisementsComponent } from './components/advertisement/saved-ads/saved-advertisements.component';
 import { BidDialogComponent } from './dialogs/bid-dialog/bid-dialog.component';
+import { BidElementComponent } from './components/advertisement/ad-elements/bid-element/bid-element.component';
+import { SellerElementComponent } from './components/advertisement/ad-elements/seller-element/seller-element.component';
+import { AdvertisementElementComponent } from './components/advertisement/ad-elements/advertisement-element/advertisement-element.component';
 
 @NgModule({
   declarations: [
@@ -67,7 +70,10 @@ import { BidDialogComponent } from './dialogs/bid-dialog/bid-dialog.component';
     FiltertreeComponent,
     SelectedAdvertisementsComponent,
     SavedAdvertisementsComponent,
-    BidDialogComponent
+    BidDialogComponent,
+    BidElementComponent,
+    SellerElementComponent,
+    AdvertisementElementComponent
   ],
     imports: [
         BrowserModule,
