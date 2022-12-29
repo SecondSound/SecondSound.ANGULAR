@@ -32,7 +32,9 @@ export class AuthManagementService {
     this.authService.postLogin(credentials).subscribe( (response) => {
       this.storeLoggedInUser(response);
       this.user.next(response);
-      this.router.navigate(['']);
+      this.router.navigate(['']).then(() => {
+        window.location.reload();
+      });
     });
   }
 
