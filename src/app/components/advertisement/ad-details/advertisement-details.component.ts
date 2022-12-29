@@ -4,6 +4,7 @@ import {AdvertisementService} from "../../../services/advertisement/advertisemen
 import {AdvertisementDto} from "../../../shared/models/AdvertisementDto";
 import {AuthManagementService} from "../../../services/auth-management.service";
 import {LoginResponse} from "../../../shared/models/login-response.model";
+import {BidDto} from "../../../shared/models/BidDto";
 
 @Component({
   selector: 'app-advertisement-details',
@@ -13,6 +14,7 @@ import {LoginResponse} from "../../../shared/models/login-response.model";
 export class AdvertisementDetailsComponent implements OnInit {
   advertisementFromURL: {id: number};
   advertisement: AdvertisementDto;
+  bids: BidDto[] = [];
   error = null;
 
   constructor(private route: ActivatedRoute,
@@ -24,8 +26,10 @@ export class AdvertisementDetailsComponent implements OnInit {
       id: this.route.snapshot.params['id']
     };
 
-    this.advertisementService.getAdvertisement(this.advertisementFromURL.id)
-      .subscribe(data => {
-        this.advertisement = data;}, error => {this.error = error; })
+    this.advertisementService.getAdvertisement(this.advertisementFromURL.id).subscribe(data => {
+      this.advertisement = data;
+      this.advertisementService.getBids(this.advertisement.id)
+        .subscribe(data => {
+          this.bids = data}) }, error => {this.error = error})
   }
 }

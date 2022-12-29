@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {BidDialogComponent} from "../../../../dialogs/bid-dialog/bid-dialog.component";
 import {BidDto} from "../../../../shared/models/BidDto";
 import {AppFunctions} from "../../../../shared/app-functions";
@@ -17,15 +17,10 @@ import {AuthManagementService} from "../../../../services/auth-management.servic
 })
 export class BidElementComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute,
-              private appFunctions: AppFunctions,
+  constructor(private appFunctions: AppFunctions,
               public dialog: MatDialog,
               private advertisementService: AdvertisementService,
               private authManagementService: AuthManagementService) {
-
-    this.advertisementFromURL = {
-      id: this.route.snapshot.params['id']
-    };
 
     this.authManagementService.isUserLoggedIn$.subscribe((loggedIn: boolean) => {
       this.isLoggedIn = loggedIn;
@@ -39,17 +34,13 @@ export class BidElementComponent implements OnInit {
 
 
   bidFormControl: FormControl = new FormControl('', [Validators.required]);
-  advertisement: AdvertisementDto;
-  bids: BidDto[];
-  advertisementFromURL: {id: number};
+  @Input() advertisement: AdvertisementDto;
+  @Input() bids: BidDto[] = [];
   isLoggedIn: any;
   user: LoginResponse | undefined;
 
 
   ngOnInit(): void {
-    this.advertisementService.getBids(this.advertisementFromURL.id)
-      .subscribe(data => {
-        this.bids = data})
   }
 
 

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {AdvertisementService} from "../../../../services/advertisement/advertisement.service";
 import {AdvertisementDto} from "../../../../shared/models/AdvertisementDto";
@@ -10,23 +10,13 @@ import {AdvertisementDto} from "../../../../shared/models/AdvertisementDto";
 })
 export class AdvertisementElementComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute,
-              private advertisementService: AdvertisementService) { }
+  @Input() advertisement: AdvertisementDto;
 
-  advertisementFromURL: {id: number};
-  advertisement: AdvertisementDto;
-  error = null;
+  constructor() { }
+
+
 
   ngOnInit(): void {
-
-    this.advertisementFromURL = {
-      id: this.route.snapshot.params['id']
-    };
-
-    this.advertisementService.getAdvertisement(this.advertisementFromURL.id)
-      .subscribe(data => {
-        this.advertisement = data;}, error => {this.error = error; })
-
   }
 
 }

@@ -18,7 +18,6 @@ export class SelectedAdvertisementsComponent implements OnInit {
       this.isLoggedIn = loggedIn;
     });
 
-
     this.getAllAdvertisements();
   }
 
