@@ -1,3 +1,4 @@
+
 h3 {
   font-family: 'Courier New',monospace;
   font-size: 2vh;
@@ -8,4 +9,13 @@ hr {
   color: #1B3F92;
   margin-top: 12px;
   margin-bottom: 12px;
+}
+
+.map-frame {
+  height: 180px;
+  border: 1px solid #C6CFE4;
+}
+
+#map {
+  height: 100%;
 }

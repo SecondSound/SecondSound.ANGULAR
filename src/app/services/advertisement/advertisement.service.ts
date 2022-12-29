@@ -98,6 +98,10 @@ export class AdvertisementService {
   public getSeller(id: Number) : Observable<SellerBidderDto> {
     return this.http.get<SellerBidderDto>(this.baseUrl + "/api/" + this.apiVersion + "/public/advertisement/seller/" + id);
   }
+
+  public getLatLong(seller: SellerBidderDto): Observable<any> {
+    return this.http.get<any>("https://nominatim.openstreetmap.org/search?format=json&limit=1&q=" + seller.street + " " + seller.city);
+  }
 }
 
 
