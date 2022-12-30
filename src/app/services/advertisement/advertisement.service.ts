@@ -4,7 +4,7 @@ import {environment} from "../../../environments/environment";
 import {AdvertisementDto} from "../../shared/models/AdvertisementDto";
 import {FormArray, FormGroup} from "@angular/forms";
 import {Router} from "@angular/router";
-import {Observable} from "rxjs";
+import {Observable, timeout} from "rxjs";
 import {Category} from "../../shared/models/Category";
 import {SubCategory} from "../../shared/models/SubCategory";
 import {BidDto} from "../../shared/models/BidDto";
@@ -62,11 +62,11 @@ export class AdvertisementService {
         advertisementId = response.id;
         this.http.post<String>(this.baseUrl + "/api/" + this.apiVersion + "/resource/advertisement/" + advertisementId, file, {responseType: 'text' as 'json'})
           .subscribe(() => {
-          this.notifierService.notify('success', 'Advertisement created!');
+            setTimeout(() => this.notifierService.notify('success', 'Advertisement created!'), 785);
         });
       });
 
-    return this.router.navigate([''])
+    setTimeout(() => this.router.navigate(['']), 785);
   }
 
   public getCategories() {
