@@ -1,0 +1,42 @@
+<mat-card class="mb-3">
+  <h3 class="text-align-center fw-bold">SELLER</h3>
+  <div class="row">
+    <hr class="mx-auto">
+    <div>
+      <i class="fa fa-user me-2"></i>
+      <strong>Name</strong>
+    </div>
+    <p>{{seller.firstName}} {{seller.lastName}}</p>
+    <br>
+    <div>
+      <i class="fa fa-home me-2"></i>
+      <strong>City</strong>
+    </div>
+    <p>{{seller.city}}</p>
+    <br>
+    <div>
+      <i class="fa fa-phone me-2"></i>
+      <strong>Phone</strong>
+    </div>
+    <p>{{seller.phoneNumber}}</p>
+    <br>
+    <div>
+      <i class="fa fa-envelope me-2"></i>
+      <strong>Email</strong>
+    </div>
+    <p>{{seller.email}}</p>
+  </div>
+
+  <h3 class="text-align-center fw-bold mt-4">OTHER ADS</h3>
+  <div class="row">
+    <hr class="mx-auto">
+  </div>
+  <h3 class="text-align-center fw-bold mt-4">LOCATION</h3>
+  <div class="row">
+    <div class="map-container">
+      <div class="map-frame">
+        <div id="map"></div>
+      </div>
+    </div>
+  </div>
+</mat-card>

@@ -1,4 +1,4 @@
-import {Component, Inject, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, FormGroupDirective, NgForm, Validators} from "@angular/forms";
 import {ErrorStateMatcher} from '@angular/material/core';
 import {AdvertisementService} from "../../../services/advertisement/advertisement.service";
@@ -25,6 +25,8 @@ export class AddAdvertisementComponent implements OnInit {
   imgFile: any;
   uploadedFile: string = "../../../../assets/images/no-image-square.png";
   matcher = new MyErrorStateMatcher();
+  categories: any;
+  subCategories: any;
 
   constructor(private fb: FormBuilder,
               private appFunctions: AppFunctions,
@@ -36,7 +38,19 @@ export class AddAdvertisementComponent implements OnInit {
     this.advertisementForm = this.fb.group({
       title: ['', Validators.required],
       description: ['', Validators.required],
-      price: ['', Validators.required]
+      price: ['', Validators.required],
+      category: ['', Validators.required],
+      subCategory: ['', Validators.required],
+      })
+
+    this.advertisementService.getCategories()
+      .subscribe(data => { this.categories = data; });
+    this.advertisementForm.get('category').valueChanges
+      .subscribe(categoryId => {
+        this.advertisementService.getSubCategories(categoryId.id)
+          .subscribe(data => {
+            this.subCategories = data;
+          });
       })
   }
 
@@ -50,7 +64,7 @@ export class AddAdvertisementComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe( result => {
       if (result == 'true') {
-        this.advertisementService.postAdvertisement(this.advertisementForm, databasePrice, formData)
+        this.advertisementService.postAdvertisement(this.advertisementForm, databasePrice, formData, this.advertisementForm.get('subCategory').value.id)
       }
     });
   }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, Validators} from "@angular/forms";
+import {UserService} from "../../../../services/user/user.service";
+import {User} from "../../../../shared/models/user.model";
 
 @Component({
   selector: 'app-user-dashboard',
@@ -7,10 +8,16 @@ import {FormControl, Validators} from "@angular/forms";
   styleUrls: ['./user-dashboard.component.css']
 })
 export class UserDashboardComponent implements OnInit {
+  user: User;
+  loading: boolean = true;
 
-  constructor() { }
+  constructor(private userService: UserService) { }
 
   ngOnInit(): void {
+    this.userService.getUser().subscribe((user) => {
+      this.user = user;
+      this.loading = false;
+    });
   }
 
 }

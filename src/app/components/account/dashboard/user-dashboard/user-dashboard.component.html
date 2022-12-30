@@ -1,7 +1,24 @@
 <app-profile-header></app-profile-header>
 <div class="container">
-  <div class="row">
-    <p>User dashboard works!</p>
-  </div>
+    <ng-container *ngIf="loading">
+     <div class="d-flex justify-content-center m-xl-5">
+       <mat-spinner></mat-spinner>
+     </div>
+    </ng-container>
+    <ng-container *ngIf="!loading">
+      <div class="row m-xl-3">
+        <div class="offset-2 col-lg-8 align-self-center">
+        <mat-card>
+          <h3 class="text-align-center fw-bold">Welcome back, {{user.firstName}}!</h3>
+          <div class="row">
+            <hr class="mx-auto">
+          </div>
+          <mat-card-content class="mb-5">
+            <app-user-details-form [user]="user"></app-user-details-form>
+          </mat-card-content>
+        </mat-card>
+        </div>
+      </div>
+    </ng-container>
 </div>
 

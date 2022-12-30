@@ -1,0 +1,8 @@
+<h2 mat-dialog-title>{{data.action | titlecase}} bid</h2>
+<mat-dialog-content>
+  <h4>Are your sure you want to {{data.action}} a bid of <strong>€{{data.amount}}</strong></h4>
+</mat-dialog-content>
+<mat-dialog-actions class="justify-content-center">
+  <button color="primary" mat-button mat-dialog-close="true">Yes</button>
+  <button color="warn" mat-button mat-dialog-close="false">No</button>
+</mat-dialog-actions>

@@ -7,6 +7,7 @@ import {LoginCredentials} from "../shared/models/login-credentials.model";
 import {Router} from "@angular/router";
 import * as moment from "moment";
 import {Register} from "../shared/models/register.model";
+import {NotifierService} from "angular-notifier";
 
 @Injectable()
 export class AuthManagementService {
@@ -24,7 +25,7 @@ export class AuthManagementService {
   private user: BehaviorSubject<LoginResponse> = new BehaviorSubject<LoginResponse>(this.emptyUser);
   user$: Observable<LoginResponse> = this.user.asObservable();
 
-  constructor(private authService: AuthService, private router: Router) {
+  constructor(private authService: AuthService, private router: Router, private notifierService: NotifierService) {
     this.isLoggedIn();
   }
 
@@ -32,7 +33,10 @@ export class AuthManagementService {
     this.authService.postLogin(credentials).subscribe( (response) => {
       this.storeLoggedInUser(response);
       this.user.next(response);
-      this.router.navigate(['user']);
+      this.router.navigate(['']).then(() => {
+        window.location.reload();
+      });
+      this.notifierService.notify('success', 'Successfully logged in!');
     });
   }
 

@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {AdvertisementService} from "../../../services/advertisement/advertisement.service";
 
 @Component({
@@ -6,28 +6,13 @@ import {AdvertisementService} from "../../../services/advertisement/advertisemen
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit, AfterViewInit {
+export class HomeComponent implements OnInit {
 
-  public advertisements: any;
-
-  constructor(private advertisementService: AdvertisementService) {
-  }
+  constructor() { }
 
   ngOnInit(): void {
-    this.getAllAdvertisements()
   }
 
-  update() {
-    setTimeout(() => this.getAllAdvertisements(), 750)
-  }
-
-  public getAllAdvertisements() {
-   this.advertisementService.getAllAdvertisements().subscribe(data => {this.advertisements = data; console.log(this.advertisements)} )
-  }
-
-  ngAfterViewInit() {
-    this.update()
-  }
 }
 
 

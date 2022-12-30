@@ -22,13 +22,32 @@
                   A <strong>title</strong> is <strong>required</strong>
                 </mat-error>
               </mat-form-field>
+
+              <div class="d-flex justify-content-center mt-4">
+                <mat-form-field class="me-3 form-full-width" appearance="outline">
+                  <mat-select placeholder="Category" formControlName="category" required>
+                    <mat-option *ngFor="let category of categories" [value]="category">
+                      {{category.name}}
+                    </mat-option>
+                  </mat-select>
+                  <mat-error *ngIf="advertisementForm.get('category').hasError('required')">Please choose a category</mat-error>
+                </mat-form-field>
+                <mat-form-field class="form-full-width" appearance="outline" >
+                  <mat-select placeholder="Subcategory" formControlName="subCategory" required [disabled]="!advertisementForm.get('category').valid">
+                    <mat-option *ngFor="let subcategory of subCategories" [value]="subcategory">
+                      {{subcategory.name}}
+                    </mat-option>
+                  </mat-select>
+                  <mat-error *ngIf="advertisementForm.get('subCategory').hasError('required')">Please choose a subcategory</mat-error>
+                </mat-form-field>
+              </div>
               <mat-form-field class="form-full-width pt-2" appearance="outline">
                 <mat-label>Description</mat-label>
                 <textarea matInput placeholder="Ex. This is the most beautiful instrument you've ever seen..." [errorStateMatcher]="matcher" formControlName="description" cdkTextareaAutosize
                           cdkAutosizeMinRows="8"></textarea>
                 <mat-icon color="primary" matSuffix>article</mat-icon>
                 <mat-hint>Please add a description</mat-hint>
-                <mat-error *ngIf="advertisementForm.get('description').hasError('required')">
+                <mat-error *ngIf="advertisementForm.get('subCategory').hasError('required')">
                   A <strong>description</strong> is <strong>required</strong>
                 </mat-error>
               </mat-form-field>

@@ -1,0 +1,16 @@
+<mat-card>
+  <h3 class="text-align-center fw-bold">{{advertisement.title | uppercase}} </h3>
+  <div class="row">
+    <hr class="mx-auto">
+  </div>
+  <img class="card-img-top responsive rounded" src="{{advertisement.imgFile}}" alt="{{advertisement.title}}">
+  <hr class="mx-auto">
+  <mat-card-content class="mb-5">
+
+    <h4 class="mt-3 fw-bold">Asking price: {{advertisement.price | currency: 'EUR': 'symbol': '1.2-2': 'nl'}}</h4>
+    <p style="text-align: justify">
+      {{advertisement.description}}
+    </p>
+  </mat-card-content>
+  <p class="bidDate">Adnr: {{advertisement.id}}</p>
+</mat-card>
