@@ -4,6 +4,7 @@ import {FormErrorStateMatcher} from "../../../../../shared/error-state-matcher/F
 import {AdvertisementDto} from "../../../../../shared/models/AdvertisementDto";
 import {User} from "../../../../../shared/models/user.model";
 import {UserService} from "../../../../../services/user/user.service";
+import {NotifierService} from "angular-notifier";
 
 @Component({
   selector: 'app-user-details-form',
@@ -29,7 +30,7 @@ export class UserDetailsFormComponent implements OnInit {
   emailFormControl: FormControl = new FormControl('', [Validators.required, Validators.email]);
   matcher: FormErrorStateMatcher = new FormErrorStateMatcher();
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, private notifierService: NotifierService) { }
 
   ngOnInit(): void {
 
@@ -55,8 +56,7 @@ export class UserDetailsFormComponent implements OnInit {
 
   updateUser() {
     this.userService.putUser(this.user).subscribe(() => {
-      //todo: replace with proper success message
-      console.log('user updated!');
+      this.notifierService.notify('success', 'Successfully updated details!');
     });
   }
 }

@@ -49,6 +49,8 @@ import { AdCardComponent } from './components/advertisement/ad-elements/ad-card/
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import { UserDetailsFormComponent } from './components/account/dashboard/user-dashboard/user-details-form/user-details-form.component';
 import {MatSlideToggleModule} from "@angular/material/slide-toggle";
+import {NotifierModule} from "angular-notifier";
+import {ErrorHandlerInterceptor} from "./services/interceptors/error-handler.interceptor";
 
 @NgModule({
   declarations: [
@@ -99,7 +101,8 @@ import {MatSlideToggleModule} from "@angular/material/slide-toggle";
     MatTreeModule,
     FormsModule,
     MatProgressSpinnerModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    NotifierModule
   ],
   providers: [
     AuthService,
@@ -108,6 +111,11 @@ import {MatSlideToggleModule} from "@angular/material/slide-toggle";
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthorizationInterceptor,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ErrorHandlerInterceptor,
       multi: true
     }
   ],

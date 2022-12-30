@@ -10,6 +10,7 @@ import {SubCategory} from "../../shared/models/SubCategory";
 import {BidDto} from "../../shared/models/BidDto";
 import {Bid} from "../../shared/models/Bid";
 import {SellerBidderDto} from "../../shared/models/SellerBidderDto";
+import {NotifierService} from "angular-notifier";
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +21,9 @@ export class AdvertisementService {
   subCategoriesSelected = new EventEmitter<FormArray>();
 
   constructor(private http: HttpClient,
-              private router: Router) {
+              private router: Router,
+              private notifierService: NotifierService
+  ) {
   }
 
   public getAllAdvertisements(isLoggedIn: boolean): Observable<AdvertisementDto[]> {
@@ -46,7 +49,9 @@ export class AdvertisementService {
       .subscribe((response) => {
         advertisementId = response.id;
         this.http.post<String>(this.baseUrl + "/api/" + this.apiVersion + "/resource/advertisement/" + advertisementId, file, {responseType: 'text' as 'json'})
-          .subscribe()
+          .subscribe(() => {
+          this.notifierService.notify('success', 'Advertisement created!');
+        });
       });
 
     return this.router.navigate([''])
