@@ -52,6 +52,7 @@ import {MatSlideToggleModule} from "@angular/material/slide-toggle";
 import {NotifierModule} from "angular-notifier";
 import {ErrorHandlerInterceptor} from "./services/interceptors/error-handler.interceptor";
 import { AdHorizontalCardComponent } from './components/advertisement/ad-elements/ad-horizontal-card/ad-horizontal-card.component';
+import { UserAdvertisementsComponent } from './components/account/dashboard/user-advertisements/user-advertisements.component';
 
 @NgModule({
   declarations: [
@@ -83,7 +84,8 @@ import { AdHorizontalCardComponent } from './components/advertisement/ad-element
     AdvertisementElementComponent,
     AdCardComponent,
     UserDetailsFormComponent,
-    AdHorizontalCardComponent
+    AdHorizontalCardComponent,
+    UserAdvertisementsComponent
   ],
   imports: [
     BrowserModule,
