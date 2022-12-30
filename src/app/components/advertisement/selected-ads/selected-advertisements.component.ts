@@ -14,6 +14,7 @@ import {SearchService} from "../../../services/search/search.service";
 })
 export class SelectedAdvertisementsComponent implements OnInit {
   searchQuery: string;
+  loading: boolean = true;
 
   constructor(private advertisementService: AdvertisementService,
               private authManagementService: AuthManagementService,
@@ -27,7 +28,6 @@ export class SelectedAdvertisementsComponent implements OnInit {
       this.searchAdvertisements();
     });
 
-    this.getAllAdvertisements();
   }
 
   public advertisements: AdvertisementDto[];
@@ -35,11 +35,7 @@ export class SelectedAdvertisementsComponent implements OnInit {
   isLoggedIn: boolean = false;
 
   ngOnInit(): void {
-  }
-
-  update() {
-      // added timeout because photos of new ads were not showing due delay
-    setTimeout(() => this.getAllAdvertisements(), 500)
+    this.getAllAdvertisements();
   }
 
   public getAllAdvertisements() {
@@ -77,21 +73,20 @@ export class SelectedAdvertisementsComponent implements OnInit {
           this.NoAdsFound = false;
           this.advertisements = selectedAdList;
         }
+        this.loading = false;
       });
-    })
+    });
   }
 
   searchAdvertisements() {
+    this.loading = true;
     this.NoAdsFound = false;
     this.advertisementService.getAllAdvertisements(this.isLoggedIn, this.searchQuery).subscribe(ads => {
       this.advertisements = ads;
       if (this.advertisements.length == 0) {
         this.NoAdsFound = true;
       }
+      this.loading = false;
     });
-  }
-
-  ngAfterViewInit() {
-    this.update()
   }
 }
