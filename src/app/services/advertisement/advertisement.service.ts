@@ -63,10 +63,9 @@ export class AdvertisementService {
         this.http.post<String>(this.baseUrl + "/api/" + this.apiVersion + "/resource/advertisement/" + advertisementId, file, {responseType: 'text' as 'json'})
           .subscribe(() => {
           this.notifierService.notify('success', 'Advertisement created!');
+          this.router.navigate(['']);
         });
       });
-
-    return this.router.navigate([''])
   }
 
   public getCategories() {
