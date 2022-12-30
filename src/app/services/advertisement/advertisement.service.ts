@@ -62,11 +62,10 @@ export class AdvertisementService {
         advertisementId = response.id;
         this.http.post<String>(this.baseUrl + "/api/" + this.apiVersion + "/resource/advertisement/" + advertisementId, file, {responseType: 'text' as 'json'})
           .subscribe(() => {
-            setTimeout(() => this.notifierService.notify('success', 'Advertisement created!'), 785);
+          this.notifierService.notify('success', 'Advertisement created!');
+          this.router.navigate(['']);
         });
       });
-
-    setTimeout(() => this.router.navigate(['']), 785);
   }
 
   public getCategories() {

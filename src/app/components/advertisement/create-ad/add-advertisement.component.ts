@@ -20,7 +20,7 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
   styleUrls: ['./add-advertisement.component.css']
 })
 export class AddAdvertisementComponent implements OnInit {
-
+  loading: boolean = false;
   advertisementForm: FormGroup
   imgFile: any;
   uploadedFile: string = "../../../../assets/images/no-image-square.png";
@@ -61,10 +61,11 @@ export class AddAdvertisementComponent implements OnInit {
     let dialogPrice = this.appFunctions.transformToCurrency(Number(this.advertisementForm.get('price').value))
     let databasePrice = this.advertisementForm.get('price').value.toString()
     let dialogRef = this.dialog.open(AdvertisementDialogComponent, {data: {title: this.advertisementForm.get('title').value, price: dialogPrice}});
+    this.loading = true;
 
     dialogRef.afterClosed().subscribe( result => {
       if (result == 'true') {
-        this.advertisementService.postAdvertisement(this.advertisementForm, databasePrice, formData, this.advertisementForm.get('subCategory').value.id)
+        this.advertisementService.postAdvertisement(this.advertisementForm, databasePrice, formData, this.advertisementForm.get('subCategory').value.id);
       }
     });
   }
