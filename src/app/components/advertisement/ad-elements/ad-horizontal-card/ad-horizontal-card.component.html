@@ -1,0 +1,11 @@
+<mat-card *ngIf="advertisement.id != thisAdvertisementId" class="horizontal-ad-card p-0" routerLink="/advertisement/details/{{advertisement.id}}">
+  <div class="row">
+    <div class="col-4 pe-0">
+      <img class="card-img-top rounded-1 horizontalCardImage" src="{{advertisement.imgFile}}" alt="{{advertisement.title}}">
+    </div>
+    <div class="col-8">
+      <p class="text-truncate m-0 mt-1 pe-3" style="font-size: 12px">{{advertisement.title}}</p>
+      <p class="fw-bold m-0 pe-3" style="font-size: 12px">{{advertisement.price | currency: 'EUR': 'symbol': '1.2-2': 'nl'}}</p>
+    </div>
+  </div>
+</mat-card>

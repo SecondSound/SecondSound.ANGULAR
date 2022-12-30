@@ -24,19 +24,24 @@
       <i class="fa fa-envelope me-2"></i>
       <strong>Email</strong>
     </div>
-    <p>{{seller.email}}</p>
+    <p class="mb-0">{{seller.email}}</p>
   </div>
-
-  <h3 class="text-align-center fw-bold mt-4">OTHER ADS</h3>
+  <h3 class="text-align-center fw-bold mt-4 mb-0">LOCATION</h3>
   <div class="row">
     <hr class="mx-auto">
-  </div>
-  <h3 class="text-align-center fw-bold mt-4">LOCATION</h3>
-  <div class="row">
     <div class="map-container">
       <div class="map-frame">
-        <div id="map"></div>
+        <div id="map">
+        </div>
       </div>
     </div>
   </div>
+  <h3 class="text-align-center fw-bold mt-4 mb-0">{{seller.firstName | uppercase}} ALSO SELLS</h3>
+  <hr class="mx-auto">
+  <div class="row">
+    <div *ngFor="let ad of seller.advertisements">
+      <app-ad-horizontal-card [advertisement]="ad" [thisAdvertisementId]="advertisement.id"></app-ad-horizontal-card>
+    </div>
+  </div>
+
 </mat-card>

@@ -18,7 +18,7 @@
       <app-advertisement-element [advertisement]="advertisement"></app-advertisement-element>
     </div>
     <div class="d-none d-xl-block col-md-3 ">
-      <app-seller-element [seller]="advertisement.seller"></app-seller-element>
+      <app-seller-element [advertisement]="advertisement" [seller]="advertisement.seller"></app-seller-element>
     </div>
 
 <!--    On medium/large screens-->
@@ -29,7 +29,7 @@
       <app-bid-element [advertisement]="advertisement" [bids]="bids"></app-bid-element>
     </div>
     <div class="d-none d-sm-block d-xl-none col-md-6 mt-3">
-      <app-seller-element [seller]="advertisement.seller"></app-seller-element>
+      <app-seller-element [advertisement]="advertisement" [seller]="advertisement.seller"></app-seller-element>
     </div>
   </div>
 
@@ -41,7 +41,7 @@
     <app-bid-element [advertisement]="advertisement" [bids]="bids"></app-bid-element>
   </div>
   <div class="d-block d-sm-none col-12 mt-3">
-    <app-seller-element [seller]="advertisement.seller"></app-seller-element>
+    <app-seller-element [advertisement]="advertisement" [seller]="advertisement.seller"></app-seller-element>
   </div>
 </div>
 

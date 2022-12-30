@@ -16,6 +16,9 @@ import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.co
 import {
   SavedAdvertisementsComponent
 } from "./components/advertisement/saved-ads/saved-advertisements.component";
+import {
+  UserAdvertisementsComponent
+} from "./components/account/dashboard/user-advertisements/user-advertisements.component";
 
 const routes: Routes = [
   {
@@ -55,6 +58,11 @@ const routes: Routes = [
   {
     path: "user",
     component: UserDashboardComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: "my-advertisements",
+    component: UserAdvertisementsComponent,
     canActivate: [AuthGuard]
   },
   {
