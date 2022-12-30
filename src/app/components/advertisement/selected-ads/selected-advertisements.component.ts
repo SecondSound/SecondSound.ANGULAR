@@ -82,8 +82,12 @@ export class SelectedAdvertisementsComponent implements OnInit {
   }
 
   searchAdvertisements() {
+    this.NoAdsFound = false;
     this.advertisementService.getAllAdvertisements(this.isLoggedIn, this.searchQuery).subscribe(ads => {
       this.advertisements = ads;
+      if (this.advertisements.length == 0) {
+        this.NoAdsFound = true;
+      }
     });
   }
 
