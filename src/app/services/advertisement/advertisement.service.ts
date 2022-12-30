@@ -18,6 +18,11 @@ import {NotifierService} from "angular-notifier";
 export class AdvertisementService {
   private baseUrl = environment.BASE_URL;
   private apiVersion = environment.API_VERSION
+  private defaultConfig = {
+    withCredentials: true,
+    headers: {},
+    params: {}
+  };
   subCategoriesSelected = new EventEmitter<FormArray>();
 
   constructor(private http: HttpClient,
@@ -26,12 +31,19 @@ export class AdvertisementService {
   ) {
   }
 
-  public getAllAdvertisements(isLoggedIn: boolean): Observable<AdvertisementDto[]> {
+  public getAllAdvertisements(isLoggedIn: boolean, searchQuery: string): Observable<AdvertisementDto[]> {
+    const config = Object.assign({}, this.defaultConfig);
+
+    if (searchQuery) {
+      config.params = {
+        'query' : searchQuery
+      };
+    }
 
     if (isLoggedIn == true) {
-      return this.http.get<AdvertisementDto[]>(this.baseUrl + "/api/" + this.apiVersion + "/advertisement")
+      return this.http.get<AdvertisementDto[]>(this.baseUrl + "/api/" + this.apiVersion + "/advertisement", config)
     } else {
-      return this.http.get<AdvertisementDto[]>(this.baseUrl + "/api/" + this.apiVersion + "/public/advertisement")
+      return this.http.get<AdvertisementDto[]>(this.baseUrl + "/api/" + this.apiVersion + "/public/advertisement", config)
     }
 
   }

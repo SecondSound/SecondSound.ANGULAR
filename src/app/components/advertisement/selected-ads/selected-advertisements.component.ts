@@ -1,7 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, Input, OnInit} from '@angular/core';
 import {AdvertisementService} from "../../../services/advertisement/advertisement.service";
 import {AdvertisementDto} from "../../../shared/models/AdvertisementDto";
 import {AuthManagementService} from "../../../services/auth-management.service";
+import {LoginResponse} from "../../../shared/models/login-response.model";
+import {Router} from "@angular/router";
+import {SearchService} from "../../../services/search/search.service";
 
 
 @Component({
@@ -10,11 +13,18 @@ import {AuthManagementService} from "../../../services/auth-management.service";
   styleUrls: ['./selected-advertisements.component.css']
 })
 export class SelectedAdvertisementsComponent implements OnInit {
+  searchQuery: string;
 
   constructor(private advertisementService: AdvertisementService,
-              private authManagementService: AuthManagementService) {
+              private authManagementService: AuthManagementService,
+              private searchService: SearchService) {
     this.authManagementService.isUserLoggedIn$.subscribe((loggedIn: boolean) => {
       this.isLoggedIn = loggedIn;
+    });
+
+    this.searchService.searchQuery$.subscribe((query: string) => {
+      this.searchQuery = query
+      this.searchAdvertisements();
     });
 
     this.getAllAdvertisements();
@@ -37,7 +47,7 @@ export class SelectedAdvertisementsComponent implements OnInit {
     this.advertisementService.subCategoriesSelected.subscribe(selectedSubCategories => {
 
         // Get advertisements from database
-      this.advertisementService.getAllAdvertisements(this.isLoggedIn).subscribe(ads => {
+      this.advertisementService.getAllAdvertisements(this.isLoggedIn, this.searchQuery).subscribe(ads => {
           // Save advertisements in variable
         this.advertisements = ads;
         let selectedAdList: AdvertisementDto[] = []
@@ -69,6 +79,12 @@ export class SelectedAdvertisementsComponent implements OnInit {
         }
       });
     })
+  }
+
+  searchAdvertisements() {
+    this.advertisementService.getAllAdvertisements(this.isLoggedIn, this.searchQuery).subscribe(ads => {
+      this.advertisements = ads;
+    });
   }
 
   ngAfterViewInit() {
