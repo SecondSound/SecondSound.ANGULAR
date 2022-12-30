@@ -14,7 +14,10 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  searchAdvertisements() {
-    this.searchService.searchAdvertisements(this.query);
+  searchAdvertisements(reset: boolean) {
+    if (reset) {
+      this.query = null;
+    }
+    this.searchService.searchAdvertisements(this.query, reset);
   }
 }

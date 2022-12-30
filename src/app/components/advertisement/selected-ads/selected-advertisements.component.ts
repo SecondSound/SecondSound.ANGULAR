@@ -23,11 +23,17 @@ export class SelectedAdvertisementsComponent implements OnInit {
       this.isLoggedIn = loggedIn;
     });
 
+    this.searchService.resetFilter$.subscribe((reset: boolean) => {
+      if (reset) {
+        this.advertisementService.subCategoriesSelected.next(null);
+        location.reload();
+      }
+    });
+
     this.searchService.searchQuery$.subscribe((query: string) => {
       this.searchQuery = query
       this.searchAdvertisements();
     });
-
   }
 
   public advertisements: AdvertisementDto[];
