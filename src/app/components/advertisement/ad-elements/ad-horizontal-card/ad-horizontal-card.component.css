@@ -1,0 +1,12 @@
+.horizontal-ad-card {
+  height: 50px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  background-color: #ECEFF1 ;
+}
+
+.horizontalCardImage {
+  width: 100%;
+  height: 50px;
+  object-fit: cover;
+}
