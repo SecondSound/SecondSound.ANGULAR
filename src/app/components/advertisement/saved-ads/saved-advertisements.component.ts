@@ -12,6 +12,7 @@ import {LoginResponse} from "../../../shared/models/login-response.model";
 export class SavedAdvertisementsComponent implements OnInit {
 
   public advertisements: AdvertisementDto[];
+  loading: boolean = true;
   user: LoginResponse | undefined;
   isLoggedIn: boolean = false;
 
@@ -33,7 +34,10 @@ export class SavedAdvertisementsComponent implements OnInit {
   }
 
   public getSavedAdvertisements(){
-    this.advertisementService.getSavedAdvertisements().subscribe(ads => {this.advertisements = ads})
+    this.advertisementService.getSavedAdvertisements().subscribe(ads => {
+      this.advertisements = ads
+      this.loading = false;
+    })
   }
 
   switchLikeButton(advertisementId: number) {
