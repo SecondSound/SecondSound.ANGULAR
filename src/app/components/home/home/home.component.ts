@@ -8,7 +8,7 @@ import {AdvertisementService} from "../../../services/advertisement/advertisemen
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private advertisementService : AdvertisementService) { }
+  constructor() { }
 
   ngOnInit(): void {
   }

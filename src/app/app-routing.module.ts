@@ -7,17 +7,21 @@ import {ContactComponent} from "./components/contact/contact/contact.component";
 import {InfoHelpComponent} from "./components/info/info-help/info-help.component";
 import {UserDashboardComponent} from "./components/account/dashboard/user-dashboard/user-dashboard.component";
 import {AuthGuard} from "./services/guards/auth.guard";
-import {AddAdvertisementComponent} from "./components/advertisement/add-advertisement/add-advertisement.component";
+import {AddAdvertisementComponent} from "./components/advertisement/create-ad/add-advertisement.component";
 import {ConfirmRegistrationComponent} from "./components/account/register/confirm-registration/confirm-registration.component";
 import {RegistrationConfirmedComponent} from "./components/account/register/registration-confirmed/registration-confirmed.component";
 import {RegisterFormComponent} from "./components/account/register/register-form/register-form.component";
 import {MessengerDashboardComponent} from "./components/account/messenger/messenger-dashboard/messenger-dashboard.component";
 import {ChatScreenComponent} from "./components/account/messenger/chat-screen/chat-screen.component";
 import {AdvertisementDetailsComponent} from "./components/advertisement/advertisement-details/advertisement-details.component";
+import {AdvertisementDetailsComponent} from "./components/advertisement/ad-details/advertisement-details.component";
 import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.component';
 import {
   SavedAdvertisementsComponent
-} from "./components/advertisement/saved-advertisements/saved-advertisements.component";
+} from "./components/advertisement/saved-ads/saved-advertisements.component";
+import {
+  UserAdvertisementsComponent
+} from "./components/account/dashboard/user-advertisements/user-advertisements.component";
 
 const routes: Routes = [
   {
@@ -57,6 +61,11 @@ const routes: Routes = [
   {
     path: "user",
     component: UserDashboardComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: "my-advertisements",
+    component: UserAdvertisementsComponent,
     canActivate: [AuthGuard]
   },
   {

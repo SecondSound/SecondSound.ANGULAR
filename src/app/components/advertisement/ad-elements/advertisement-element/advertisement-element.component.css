@@ -1,0 +1,19 @@
+h3 {
+  font-family: 'Courier New',monospace;
+  font-size: 2vh;
+  margin-bottom: 0;
+}
+
+hr {
+  width: 85%;
+  color: #1B3F92;
+  margin-top: 12px;
+  margin-bottom: 12px;
+}
+
+.bidDate {
+  font-size: 0.8vh;
+  color: #767676;
+  margin-bottom: 0;
+  text-align: center;
+}

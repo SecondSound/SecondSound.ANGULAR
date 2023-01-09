@@ -1,4 +1,5 @@
 import {SubCategory} from "./SubCategory";
+import {SellerBidderDto} from "./SellerBidderDto";
 
 export interface AdvertisementDto {
   id: number;
@@ -6,7 +7,7 @@ export interface AdvertisementDto {
   description: string
   price: string
   imgFile: string;
-  user: number;
+  seller: SellerBidderDto;
   subCategory: SubCategory;
   saved: boolean;
 }

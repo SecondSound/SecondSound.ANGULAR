@@ -53,7 +53,7 @@
   <mat-form-field class="form-full-width py-2" appearance="outline">
     <mat-label>Password</mat-label>
     <input type="password" matInput [formControl]="passwordFormControl" [errorStateMatcher]="matcher"
-           [type]="hide ? 'password' : 'text'" [(ngModel)]="password">
+           [type]="hide ? 'password' : 'text'" [(ngModel)]="password" (input)="matchPasswordsValidator()">
     <mat-icon matSuffix (click)="displayPassword()">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
     <mat-hint>Please fill in your password</mat-hint>
     <mat-error *ngIf="passwordFormControl.hasError('password') && !passwordFormControl.hasError('required')">
@@ -66,6 +66,24 @@
       Password needs to be at least {{ minLengthPassword }} characters long
     </mat-error>
   </mat-form-field>
+
+  <mat-form-field class="form-full-width py-2" appearance="outline">
+    <mat-label>Confirm Password</mat-label>
+    <input type="password" matInput [formControl]="passwordConfirmFormControl" [errorStateMatcher]="matcher"
+           [type]="hide ? 'password' : 'text'" [(ngModel)]="confirmPassword" (input)="matchPasswordsValidator()">
+    <mat-icon matSuffix (click)="displayPassword()">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+    <mat-hint>Please fill in your password</mat-hint>
+    <mat-error *ngIf="passwordConfirmFormControl.hasError('password') && !passwordConfirmFormControl.hasError('required')">
+      Please enter a valid password
+    </mat-error>
+    <mat-error *ngIf="passwordConfirmFormControl.hasError('required')">
+      Password is <strong>required</strong>
+    </mat-error>
+    <mat-error *ngIf="passwordConfirmFormControl.hasError('passwordsDontMatch') && !passwordFormControl.hasError('minLength')">
+      Passwords don't match
+    </mat-error>
+  </mat-form-field>
+
   <button mat-flat-button color="primary" type="button" class="half-width my-2"
           (click)="registerUser()" [disabled]="!getFormState()">Create your account</button>
 </form>
