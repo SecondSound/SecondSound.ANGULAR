@@ -54,7 +54,6 @@ export class ChatScreenComponent implements OnInit {
     this.messageService.getMessagesByChatId(this.chatId.id)
           .subscribe(data => {
             this.messages = data; }, error => {this.error = error; })
-
       }
 
     sendMessage() : void{
