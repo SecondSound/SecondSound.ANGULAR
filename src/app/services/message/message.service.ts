@@ -24,7 +24,10 @@ export class MessageService {
     }
 
   public getMessagesByChatId(id: number) {
-      return this.http.get<MessageDto[]>(this.baseUrl + "/api/" + this.apiVersion + "/public/message/" + id);
+  if (this.http.get<MessageDto[]>(this.baseUrl + "/api/" + this.apiVersion + "/public/message/" + id) == null)
+      { return null;}
+
+    return this.http.get<MessageDto[]>(this.baseUrl + "/api/" + this.apiVersion + "/public/message/" + id);
     }
 
   public postByChatMessage(message: string, id: number) {

@@ -12,44 +12,41 @@
     </div>
     <!-- Page content wrapper-->
 
-
-
-
-
-
     <div class="container">
-
-      <div class="row">
-        <div class="col-12 col-md-10 col-lg-8 col-xl-6 mx-auto py-4">
-          <div class="title">
-            <mat-card>
-              <div class="row">
-                <div *ngFor="let message of messages" >
-                  <h2 class="card-title mb-0 text-truncate">{{message.sender.firstName}} : {{message.message}}</h2>
+      <div *ngIf="(chat.sender.id == user.userId) || (chat.receiver.id == user.userId)" >
+        <div class="row">
+          <div class="col-12 col-md-10 col-lg-8 col-xl-6 mx-auto py-4">
+            <div class="title">
+              <mat-card>
+                <div class="row">
+                  <div *ngFor="let message of messages" >
+                    <h2 class="card-title mb-0 text-truncate">{{message.sender.firstName}} : {{message.message}}</h2>
+                  </div>
                 </div>
-              </div>
 
 
-              <mat-card-content class="d-flex justify-content-center">
-                <form class="form-width" [formGroup]="messageForm">
+                <mat-card-content class="d-flex justify-content-center">
+                  <form class="form-width" [formGroup]="messageForm">
 
-                  <mat-form-field class="form-full-width pt-2" appearance="outline">
-                    <mat-label>Message</mat-label>
-                    <textarea matInput placeholder="Is the item still available" formControlName="message" cdkTextareaAutosize
-                              cdkAutosizeMinRows="8"></textarea>
-                    <mat-icon color="primary" matSuffix>article</mat-icon>
-                  </mat-form-field>
+                    <mat-form-field class="form-full-width pt-2" appearance="outline">
+                      <mat-label>Message</mat-label>
+                      <textarea matInput placeholder="Is the item still available" formControlName="message" cdkTextareaAutosize
+                                cdkAutosizeMinRows="8"></textarea>
+                      <mat-icon color="primary" matSuffix>article</mat-icon>
+                    </mat-form-field>
 
 
-                  <button (click)="sendMessage()" mat-flat-button color="primary" type="button" class="justify-content-center my-2 mb-5">
-                    Send Message
-                  </button>
-                </form>
-              </mat-card-content>
-            </mat-card>
+                    <button (click)="sendMessage()" mat-flat-button color="primary" type="button" class="justify-content-center my-2 mb-5">
+                      Send Message
+                    </button>
+                  </form>
+                </mat-card-content>
+              </mat-card>
+            </div>
           </div>
         </div>
       </div>
+
     </div>
 
 

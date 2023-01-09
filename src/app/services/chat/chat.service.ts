@@ -29,13 +29,14 @@ export class ChatService {
         };
 
    return this.http.post<string>(this.baseUrl + "/api/" + this.apiVersion + "/chat/create/" + id, data, {responseType: 'text' as 'json'}).subscribe(data => {
-      this.router.navigate([this.baseUrl + "/api/" + this.apiVersion + "/chat-screen/" + data])});
+      this.router.navigate(["messenger/chat-screen/" + data])});
 
   }
 
+  public getChatById(id: number) : any {
 
-
-
+      return this.http.get<ChatDto>(this.baseUrl + "/api/" + this.apiVersion + "/chat/" + id);
+    }
 }
 
 
