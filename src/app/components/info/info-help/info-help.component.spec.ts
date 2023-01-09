@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { InfoHelpComponent } from './info-help.component';
 
 describe('InfoHelpComponent', () => {
@@ -8,7 +8,8 @@ describe('InfoHelpComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ InfoHelpComponent ]
+      declarations: [ InfoHelpComponent ],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA]
     })
     .compileComponents();
 

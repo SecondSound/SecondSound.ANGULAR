@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AdvertisementDialogComponent } from './advertisement-dialog.component';
+import {MAT_DIALOG_DATA, MatDialogModule, MatDialogRef} from "@angular/material/dialog";
 
 describe('AdvertisementDialogComponent', () => {
   let component: AdvertisementDialogComponent;
@@ -8,6 +9,11 @@ describe('AdvertisementDialogComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [ MatDialogModule],
+      providers: [
+        { provide: MAT_DIALOG_DATA, useValue: {} },
+        { provide: MatDialogRef, useValue: {} }
+        ],
       declarations: [ AdvertisementDialogComponent ]
     })
     .compileComponents();

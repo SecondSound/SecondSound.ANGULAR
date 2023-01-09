@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SellerElementComponent } from './seller-element.component';
+import {HttpClientModule} from "@angular/common/http";
+import {NotifierModule} from "angular-notifier";
 
 describe('SellerElementComponent', () => {
   let component: SellerElementComponent;
@@ -8,6 +10,7 @@ describe('SellerElementComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [ HttpClientModule, NotifierModule],
       declarations: [ SellerElementComponent ]
     })
     .compileComponents();

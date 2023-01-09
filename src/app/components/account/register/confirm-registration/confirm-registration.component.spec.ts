@@ -1,6 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ConfirmRegistrationComponent } from './confirm-registration.component';
+import {AuthManagementService} from "../../../../services/auth-management.service";
+import {AuthService} from "../../../../services/auth.service";
+import {HttpClientModule} from "@angular/common/http";
 
 describe('ConfirmRegistrationComponent', () => {
   let component: ConfirmRegistrationComponent;
@@ -8,6 +11,7 @@ describe('ConfirmRegistrationComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [HttpClientModule],
       declarations: [ ConfirmRegistrationComponent ]
     })
     .compileComponents();

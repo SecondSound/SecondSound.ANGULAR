@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { UserDashboardComponent } from './user-dashboard.component';
+import {HttpClientModule} from "@angular/common/http";
 
 describe('UserDashboardComponent', () => {
   let component: UserDashboardComponent;
@@ -8,7 +9,9 @@ describe('UserDashboardComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ UserDashboardComponent ]
+      imports: [HttpClientModule],
+      declarations: [ UserDashboardComponent ],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA]
     })
     .compileComponents();
 
