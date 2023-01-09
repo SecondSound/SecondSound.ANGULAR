@@ -13,8 +13,6 @@ import {RegistrationConfirmedComponent} from "./components/account/register/regi
 import {RegisterFormComponent} from "./components/account/register/register-form/register-form.component";
 import {MessengerDashboardComponent} from "./components/account/messenger/messenger-dashboard/messenger-dashboard.component";
 import {ChatScreenComponent} from "./components/account/messenger/chat-screen/chat-screen.component";
-import {AdvertisementDetailsComponent} from "./components/advertisement/advertisement-details/advertisement-details.component";
-import {AdvertisementDetailsComponent} from "./components/advertisement/ad-details/advertisement-details.component";
 import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.component';
 import {
   SavedAdvertisementsComponent
@@ -82,10 +80,6 @@ const routes: Routes = [
     path: "messenger/chat-screen/:id",
     component: ChatScreenComponent,
     canActivate: [AuthGuard]
-  },
-  {
-    path: "advertisement/details/:id",
-    component: AdvertisementDetailsComponent
   },
   {
     path: "advertisement/saved",

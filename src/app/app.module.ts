@@ -39,9 +39,6 @@ import {MatSelectModule} from "@angular/material/select";
 import { AdvertisementDetailsComponent } from './components/advertisement/ad-details/advertisement-details.component';
 import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.component';
 import {MatTreeModule} from "@angular/material/tree";
-import { FiltertreeComponent } from './components/advertisement/filtertree/filtertree.component';
-import { SelectedAdvertisementsComponent } from './components/advertisement/selected-advertisements/selected-advertisements.component';
-import { SavedAdvertisementsComponent } from './components/advertisement/saved-advertisements/saved-advertisements.component';
 import { ChatsComponent } from './components/account/messenger/chats/chats.component';
 import { ChatScreenComponent } from './components/account/messenger/chat-screen/chat-screen.component';
 import { FiltertreeComponent } from './components/advertisement/ad-elements/filter-element/filtertree.component';
@@ -74,17 +71,14 @@ import {SearchService} from "./services/search/search.service";
     UserDashboardComponent,
     AddAdvertisementComponent,
     AdvertisementDialogComponent,
-    AdvertisementDialogComponent,
-    UserDashboardComponent,
     ProfileHeaderComponent,
     ConfirmRegistrationComponent,
     RegistrationConfirmedComponent,
     RegisterFormComponent,
     MessengerDashboardComponent,
-    RegisterFormComponent,
     AdvertisementDetailsComponent,
-    PagenotfoundComponent,
     FiltertreeComponent,
+    PagenotfoundComponent,
     ChatsComponent,
     ChatScreenComponent,
     SelectedAdvertisementsComponent,
