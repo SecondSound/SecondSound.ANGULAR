@@ -23,6 +23,7 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/second-sound-theme.scss",
               "node_modules/bootstrap/dist/css/bootstrap.css",
               "node_modules/angular-notifier/styles/core.scss",

@@ -26,6 +26,11 @@
     </div>
     <p class="mb-0">{{seller.email}}</p>
   </div>
+  <h3 class="text-align-center fw-bold mt-4 mb-0">RATING</h3>
+  <div class="row">
+    <hr class="mx-auto">
+    <ngb-rating class="rating" [max]="5" [(rate)]="seller.rating" [readonly]="true"></ngb-rating>
+  </div>
   <h3 class="text-align-center fw-bold mt-4 mb-0">LOCATION</h3>
   <div class="row">
     <hr class="mx-auto">

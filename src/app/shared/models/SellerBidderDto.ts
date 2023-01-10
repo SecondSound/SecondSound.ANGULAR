@@ -8,5 +8,6 @@ export interface SellerBidderDto {
   city: string;
   phoneNumber: string;
   email: string;
+  rating?: number;
   advertisements: AdvertisementDto[];
 }
