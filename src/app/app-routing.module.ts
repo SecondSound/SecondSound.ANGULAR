@@ -20,6 +20,7 @@ import {
 import {
   UserAdvertisementsComponent
 } from "./components/account/dashboard/user-advertisements/user-advertisements.component";
+import {RatingsComponent} from "./components/account/dashboard/ratings/ratings.component";
 
 const routes: Routes = [
   {
@@ -59,6 +60,11 @@ const routes: Routes = [
   {
     path: "user",
     component: UserDashboardComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: "ratings",
+    component: RatingsComponent,
     canActivate: [AuthGuard]
   },
   {

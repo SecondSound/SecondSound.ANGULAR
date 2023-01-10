@@ -57,6 +57,9 @@ import {ErrorHandlerInterceptor} from "./services/interceptors/error-handler.int
 import { AdHorizontalCardComponent } from './components/advertisement/ad-elements/ad-horizontal-card/ad-horizontal-card.component';
 import { UserAdvertisementsComponent } from './components/account/dashboard/user-advertisements/user-advertisements.component';
 import {SearchService} from "./services/search/search.service";
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { RatingsComponent } from './components/account/dashboard/ratings/ratings.component';
+import { RatingCardComponent } from './components/account/dashboard/ratings/rating-card/rating-card.component';
 
 @NgModule({
   declarations: [
@@ -90,7 +93,9 @@ import {SearchService} from "./services/search/search.service";
     AdCardComponent,
     UserDetailsFormComponent,
     AdHorizontalCardComponent,
-    UserAdvertisementsComponent
+    UserAdvertisementsComponent,
+    RatingsComponent,
+    RatingCardComponent
   ],
   imports: [
     BrowserModule,
@@ -111,7 +116,8 @@ import {SearchService} from "./services/search/search.service";
     FormsModule,
     MatProgressSpinnerModule,
     MatSlideToggleModule,
-    NotifierModule
+    NotifierModule,
+    NgbModule
   ],
   providers: [
     AuthService,
