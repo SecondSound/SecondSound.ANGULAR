@@ -20,6 +20,7 @@ export class ChatScreenComponent implements OnInit {
   chatId: {id: number};
   public messages: MessageDto[];
   error = null;
+  authorized = true;
   user: LoginResponse;
   chat: ChatDto;
 
@@ -47,8 +48,10 @@ export class ChatScreenComponent implements OnInit {
 
          this.chatService.getChatById(this.chatId.id).subscribe(chat => {
            this.chat = chat;
+           if ((this.chat.sender.id != this.user.userId) && (this.chat.receiver.id != this.user.userId) ){
+             this.authorized = false;
+           }
          });
-        console.log(this.chat.sender.id);
 
 
     this.messageService.getMessagesByChatId(this.chatId.id)
