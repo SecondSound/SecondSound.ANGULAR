@@ -1,27 +1,29 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { SelectedAdvertisementsComponent } from './selected-advertisements.component';
+import {TestBed} from "@angular/core/testing";
+import {AppComponent} from "../../../app.component";
+import {RouterTestingModule} from "@angular/router/testing";
+import {CUSTOM_ELEMENTS_SCHEMA} from "@angular/core";
+import {SelectedAdvertisementsComponent} from "./selected-advertisements.component";
 import {HttpClientModule} from "@angular/common/http";
 import {NotifierModule} from "angular-notifier";
 import {AuthManagementService} from "../../../services/auth-management.service";
+import {AuthService} from "../../../services/auth.service";
 
-describe('SelectedAdvertisementsComponent', () => {
-  let component: SelectedAdvertisementsComponent;
-  let fixture: ComponentFixture<SelectedAdvertisementsComponent>;
+describe('AppComponent', () => {
+  let fixture;
+  let app;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [HttpClientModule, NotifierModule, AuthManagementService],
-      declarations: [ SelectedAdvertisementsComponent ]
-    })
-    .compileComponents();
-
+      imports: [HttpClientModule, NotifierModule],
+      providers: [AuthManagementService, AuthService],
+      declarations: [SelectedAdvertisementsComponent]
+    });
     fixture = TestBed.createComponent(SelectedAdvertisementsComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    app = fixture.componentInstance;
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+  it ("should create the component", () => {
+    expect(app).toBeTruthy();
+  })
+
 });

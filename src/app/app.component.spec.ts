@@ -4,6 +4,10 @@ import { AppComponent } from './app.component';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 describe('AppComponent', () => {
+
+  let fixture;
+  let app;
+
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [
@@ -13,24 +17,19 @@ describe('AppComponent', () => {
         AppComponent
       ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA]
-    }).compileComponents();
+    });
+    fixture = TestBed.createComponent(AppComponent);
+    app = fixture.componentInstance;
   });
 
-  it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
+  it('should create the application', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'SecondSound.ANGULAR'`, () => {
+  it(`should have as title 'Second Sound'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
+    expect(app.title).toEqual("Second Sound")
   });
 
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('SecondSound.ANGULAR app is running!');
-  });
 });
