@@ -1,7 +1,7 @@
 import {AdvertisementDto} from "./AdvertisementDto";
 
 export interface SellerBidderDto {
-  id: Number;
+  id: number;
   firstName: string;
   lastName: string;
   street: string;

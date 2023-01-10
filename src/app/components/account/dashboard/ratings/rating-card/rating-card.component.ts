@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Rating} from "../../../../../shared/models/rating.model";
 import {NotifierService} from "angular-notifier";
+import {RatingsService} from "../../../../../services/ratings/ratings.service";
 
 @Component({
   selector: 'app-rating-card',
@@ -11,14 +12,24 @@ export class RatingCardComponent implements OnInit {
   @Input() rating: Rating;
   hovered: number = 0;
 
-  constructor(private notifierService: NotifierService) { }
+  constructor(private ratingsService: RatingsService, private notifierService: NotifierService) { }
 
   ngOnInit(): void {
   }
 
-  updateRating($event: MouseEvent) {
+  updateRating() {
     this.rating.rating = this.hovered;
-    console.log(this.rating.rating);
-    this.notifierService.notify('success', 'Successfully updated rating!');
+
+    this.ratingsService.updateRating(this.rating).subscribe((newRating) => {
+      this.rating = newRating;
+      this.notifierService.notify('success', 'Successfully updated rating!');
+    });
+  }
+
+  deleteRating() {
+    location.reload();
+    this.ratingsService.deleteRating(this.rating).subscribe(() => {
+      this.notifierService.notify('success', 'Successfully deleted rating!');
+    });
   }
 }

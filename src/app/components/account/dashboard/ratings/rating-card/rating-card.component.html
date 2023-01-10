@@ -4,10 +4,10 @@
   </div>
   <div class="card-body">
     <ngb-rating class="rating" [max]="5" [(rate)]="rating.rating" [readonly]="false"
-                (hover)="hovered=$event" (leave)="hovered=0" (click)="updateRating($event)"></ngb-rating>
+                (hover)="hovered=$event" (leave)="hovered=0" (click)="updateRating()"></ngb-rating>
     <p class="card-text text-truncate-container" style="min-height: 60px">You gave {{ rating.user.firstName }} {{ rating.rating }} stars out of 5!</p>
   </div>
   <div class="text-center mb-4">
-    <button mat-raised-button color="primary">Delete rating</button>
+    <button mat-raised-button color="primary" (click)="deleteRating()">Delete rating</button>
   </div>
 </div>

@@ -24,6 +24,18 @@ export class RatingsService {
   }
 
   public getUserRatings(): Observable<Rating[]> {
-    return this.http.get<Rating[]>(this.baseUrl + "/api/" + this.apiVersion + "/rating");
+    return this.http.get<Rating[]>(this.baseUrl + "/api/" + this.apiVersion + "/rating", this.defaultConfig);
+  }
+
+  public updateRating(rating: Rating): Observable<Rating> {
+    return this.http.put<Rating>(this.baseUrl + "/api/" + this.apiVersion + "/rating/" + rating.id, rating, this.defaultConfig);
+  }
+
+  public deleteRating(rating: Rating): Observable<String> {
+    return this.http.delete<String>(this.baseUrl + "/api/" + this.apiVersion + "/rating/" + rating.id, this.defaultConfig);
+  }
+
+  public postRating(rating: any): Observable<Rating> {
+    return this.http.post<Rating>(this.baseUrl + "/api/" + this.apiVersion + "/rating", rating, this.defaultConfig);
   }
 }
