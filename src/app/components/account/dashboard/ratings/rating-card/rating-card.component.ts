@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {Rating} from "../../../../../shared/models/rating.model";
 
 @Component({
   selector: 'app-rating-card',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./rating-card.component.css']
 })
 export class RatingCardComponent implements OnInit {
+  @Input() rating: Rating;
+  hovered: number = 0;
 
   constructor() { }
 

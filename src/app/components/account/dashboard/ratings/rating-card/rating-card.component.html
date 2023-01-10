@@ -1,1 +1,10 @@
-<p>rating-card works!</p>
+<div class="card">
+  <div class="mt-2">
+    <h2>Rating of {{ rating.user.firstName }} {{ rating.user.lastName }}</h2>
+  </div>
+  <div class="card-body">
+    <ngb-rating class="rating" [max]="5" [(rate)]="rating.rating" [readonly]="false"
+                (hover)="hovered=$event" (leave)="hovered=0"></ngb-rating>
+    <p class="card-text text-truncate-container" style="min-height: 60px">You gave {{ rating.user.firstName }} {{ rating.rating }} stars out of 5!</p>
+  </div>
+</div>
