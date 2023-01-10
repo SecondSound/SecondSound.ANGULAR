@@ -7,6 +7,13 @@
           <mat-card-header class="justify-content-center flex-column">
             <h1>Place Advertisement</h1>
           </mat-card-header>
+          <ng-container *ngIf="loading">
+            <div class="row">
+              <div class="offset-5 col-3">
+                <mat-spinner></mat-spinner>
+              </div>
+            </div>
+          </ng-container>
           <mat-card-content class="d-flex justify-content-center">
             <form class="form-width" [formGroup]="advertisementForm">
               <div>

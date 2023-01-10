@@ -4,7 +4,7 @@ import {environment} from "../../../environments/environment";
 import {AdvertisementDto} from "../../shared/models/AdvertisementDto";
 import {FormArray, FormGroup} from "@angular/forms";
 import {Router} from "@angular/router";
-import {Observable} from "rxjs";
+import {Observable, timeout} from "rxjs";
 import {Category} from "../../shared/models/Category";
 import {SubCategory} from "../../shared/models/SubCategory";
 import {BidDto} from "../../shared/models/BidDto";
@@ -18,6 +18,11 @@ import {NotifierService} from "angular-notifier";
 export class AdvertisementService {
   private baseUrl = environment.BASE_URL;
   private apiVersion = environment.API_VERSION
+  private defaultConfig = {
+    withCredentials: true,
+    headers: {},
+    params: {}
+  };
   subCategoriesSelected = new EventEmitter<FormArray>();
 
   constructor(private http: HttpClient,
@@ -26,12 +31,19 @@ export class AdvertisementService {
   ) {
   }
 
-  public getAllAdvertisements(isLoggedIn: boolean): Observable<AdvertisementDto[]> {
+  public getAllAdvertisements(isLoggedIn: boolean, searchQuery: string): Observable<AdvertisementDto[]> {
+    const config = Object.assign({}, this.defaultConfig);
+
+    if (searchQuery) {
+      config.params = {
+        'query' : searchQuery
+      };
+    }
 
     if (isLoggedIn == true) {
-      return this.http.get<AdvertisementDto[]>(this.baseUrl + "/api/" + this.apiVersion + "/advertisement")
+      return this.http.get<AdvertisementDto[]>(this.baseUrl + "/api/" + this.apiVersion + "/advertisement", config)
     } else {
-      return this.http.get<AdvertisementDto[]>(this.baseUrl + "/api/" + this.apiVersion + "/public/advertisement")
+      return this.http.get<AdvertisementDto[]>(this.baseUrl + "/api/" + this.apiVersion + "/public/advertisement", config)
     }
 
   }
@@ -51,10 +63,9 @@ export class AdvertisementService {
         this.http.post<String>(this.baseUrl + "/api/" + this.apiVersion + "/resource/advertisement/" + advertisementId, file, {responseType: 'text' as 'json'})
           .subscribe(() => {
           this.notifierService.notify('success', 'Advertisement created!');
+          this.router.navigate(['']);
         });
       });
-
-    return this.router.navigate([''])
   }
 
   public getCategories() {
@@ -99,11 +110,6 @@ export class AdvertisementService {
   public deleteBid(id: Number) {
     this.http.delete<Number>(this.baseUrl + "/api/" + this.apiVersion + "/bids/" + id).subscribe();
   }
-
-  public getSeller(id: Number) : Observable<SellerBidderDto> {
-    return this.http.get<SellerBidderDto>(this.baseUrl + "/api/" + this.apiVersion + "/public/advertisement/seller/" + id);
-  }
-
   public getLatLong(seller: SellerBidderDto): Observable<any> {
     return this.http.get<any>("https://nominatim.openstreetmap.org/search?format=json&limit=1&q=" + seller.street + " " + seller.city);
   }

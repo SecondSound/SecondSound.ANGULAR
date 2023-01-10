@@ -4,6 +4,9 @@ import {SellerBidderDto} from "../../../../shared/models/SellerBidderDto";
 import * as L from 'leaflet';
 import {AdvertisementService} from "../../../../services/advertisement/advertisement.service";
 import {ActivatedRoute, Router} from "@angular/router";
+import {Rating} from "../../../../shared/models/rating.model";
+import {RatingsService} from "../../../../services/ratings/ratings.service";
+import {NotifierService} from "angular-notifier";
 
 @Component({
   selector: 'app-seller-element',
@@ -16,12 +19,16 @@ export class SellerElementComponent implements OnInit {
   @Input() seller: SellerBidderDto;
   @ViewChild('map-container') mapContainer;
   private map: L.Map;
+  hovered: number;
 
   constructor(private advertisementService: AdvertisementService,
+              private ratingsService: RatingsService,
+              private notifierService: NotifierService,
               private router: Router) {
   }
 
   ngOnInit(): void {
+    this.hovered = 0;
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
       this.initMap(this.seller);
   }
@@ -53,4 +60,15 @@ export class SellerElementComponent implements OnInit {
   }
 
 
+  rateUser() {
+    const rating = {
+      user: this.seller.id,
+      rating: this.hovered
+    }
+
+    this.ratingsService.postRating(rating).subscribe(() => {
+      this.notifierService.notify('success', `Successfully rated ${this.seller.firstName}!`)
+      this.ngOnInit();
+    });
+  }
 }

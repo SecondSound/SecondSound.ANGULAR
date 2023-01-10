@@ -8,9 +8,10 @@
     <div class="col-12 col-md-8">
       <div class="search d-flex">
         <i class="fa fa-search"></i>
-        <input type="text" class="form-control" placeholder="Search advertisements...">
-        <button mat-raised-button color="primary">Search</button>
+        <input type="text" class="form-control" placeholder="Search advertisements..." [(ngModel)]="query">
+        <button mat-raised-button color="primary" (click)="searchAdvertisements(false)">Search</button>
       </div>
+      <a class="mt-2" role="button" (click)="searchAdvertisements(true)">Reset Filters</a>
     </div>
   </div>
 </div>

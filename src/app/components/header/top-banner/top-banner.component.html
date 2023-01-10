@@ -12,18 +12,18 @@
             <img src="assets/images/second_sound_text.png" alt="Second Sound" class="banner-image">
           </a>
         </div>
-        <div class="col-md-4 col-4">
-          <a routerLink="/info" routerLinkActive="route-active" mat-button>
-            <span class="fa fa-info-circle icon-align"></span>
-            Help & Info
-          </a>
-        </div>
-        <div class="col-md-3 col-5">
-          <a routerLink="/contact" routerLinkActive="route-active" mat-button>
-            <span class="fa fa-envelope icon-align"></span>
-            Contact
-          </a>
-        </div>
+<!--        <div class="col-md-4 col-4">-->
+<!--          <a routerLink="/info" routerLinkActive="route-active" mat-button>-->
+<!--            <span class="fa fa-info-circle icon-align"></span>-->
+<!--            Help & Info-->
+<!--          </a>-->
+<!--        </div>-->
+<!--        <div class="col-md-3 col-5">-->
+<!--          <a routerLink="/contact" routerLinkActive="route-active" mat-button>-->
+<!--            <span class="fa fa-envelope icon-align"></span>-->
+<!--            Contact-->
+<!--          </a>-->
+<!--        </div>-->
       </div>
     </div>
     <div class="col-5 d-flex justify-content-end">
@@ -44,7 +44,7 @@
           <button mat-menu-item routerLink="/my-advertisements">My advertisements</button>
           <button mat-menu-item routerLink="/advertisement/saved">Favorite Advertisements</button>
           <button mat-menu-item routerLink="/user">My Profile</button>
-          <button mat-menu-item>My Reviews</button>
+          <button mat-menu-item routerLink="/ratings">My Ratings</button>
           <button mat-menu-item (click)="logOutUser()">Logout</button>
         </mat-menu>
       </ng-container>

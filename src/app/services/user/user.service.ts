@@ -13,8 +13,7 @@ export class UserService {
   private defaultConfig = {
     withCredentials: true,
     headers: {},
-    params: {
-    }
+    params: {}
   };
 
   constructor(private http: HttpClient) {
