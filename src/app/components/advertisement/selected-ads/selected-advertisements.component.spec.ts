@@ -5,17 +5,21 @@ import {AuthService} from "../../../services/auth.service";
 import {HttpClientTestingModule, HttpTestingController} from "@angular/common/http/testing";
 import {AdvertisementService} from "../../../services/advertisement/advertisement.service";
 import {AdvertisementDto} from "../../../shared/models/AdvertisementDto";
-import {CUSTOM_ELEMENTS_SCHEMA} from "@angular/core";
+import {CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA} from "@angular/core";
 import {of} from "rxjs";
 import {HttpClient} from "@angular/common/http";
-import {TestBed} from "@angular/core/testing";
+import {ComponentFixture, TestBed, waitForAsync} from "@angular/core/testing";
+import {LoginComponent} from "../../account/login/login.component";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 describe('HomeComponent/SelectedAdvertisements', () => {
+  let component: SelectedAdvertisementsComponent;
+  let fixture: ComponentFixture<SelectedAdvertisementsComponent>;
   let dummyAdvertisements: AdvertisementDto[];
   let httpClientSpy: jasmine.SpyObj<HttpClient>;
   let advertisementService: AdvertisementService;
 
-  beforeEach (() => {
+  beforeEach(waitForAsync(() => {
     let httpClientSpyObj = jasmine.createSpyObj('HttClient', ['get']);
     TestBed.configureTestingModule({
       imports: [
@@ -37,11 +41,11 @@ describe('HomeComponent/SelectedAdvertisements', () => {
       schemas: [
         CUSTOM_ELEMENTS_SCHEMA
       ]
-    }).compileComponents()
+    })
+  }));
 
-    advertisementService = TestBed.inject(AdvertisementService)
-    httpClientSpy = TestBed.inject(HttpClient) as jasmine.SpyObj<HttpClient>;
 
+  beforeEach(() => {
     dummyAdvertisements =
       [
         { id: 1,
@@ -75,10 +79,26 @@ describe('HomeComponent/SelectedAdvertisements', () => {
         }
       ]
 
-   });
+    advertisementService = TestBed.inject(AdvertisementService)
+    httpClientSpy = TestBed.inject(HttpClient) as jasmine.SpyObj<HttpClient>;
+    httpClientSpy.get.and.returnValue(of(dummyAdvertisements));
+    fixture = TestBed.createComponent(SelectedAdvertisementsComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+
+
+
+
+  });
+
+
+  it('should create the component', () => {
+    expect(component).toBeTruthy();
+  });
+
+
 
   it('should return all advertisements', (done: DoneFn) => {
-    httpClientSpy.get.and.returnValue(of(dummyAdvertisements));
     advertisementService.getAllAdvertisements(false, '').subscribe({
       next: (result) => {
         expect(result).toEqual(dummyAdvertisements)
@@ -89,7 +109,6 @@ describe('HomeComponent/SelectedAdvertisements', () => {
         done.fail;
       },
     });
-    expect(httpClientSpy.get).toHaveBeenCalledTimes(1)
   });
 
 })

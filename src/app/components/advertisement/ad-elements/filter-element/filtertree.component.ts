@@ -33,6 +33,7 @@ export class FiltertreeComponent implements OnInit {
   }
 
   public getAllCategoryDto() {
+    this.dataSource = null;
     return this.advertisementService.getCategoryDto()
       .subscribe(data => { this.dataSource.data = data } );
   }

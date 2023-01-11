@@ -12,9 +12,6 @@ import * as http from "http";
 describe('LoginComponent', () => {
   let component: LoginComponent;
   let fixture: ComponentFixture<LoginComponent>;
-  let backend: HttpClientTestingModule
-  let service: AuthManagementService;
-  let router: any;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
@@ -28,12 +25,6 @@ describe('LoginComponent', () => {
         NotifierModule
       ],
       providers: [
-        {
-          provide: RouterModule,
-          useClass: class {
-            navigate = jasmine.createSpy("navigate");
-          }
-        },
         AuthManagementService,
         AuthService
       ],
@@ -42,13 +33,6 @@ describe('LoginComponent', () => {
         NO_ERRORS_SCHEMA
       ]
     })
-      .compileComponents();
-
-    backend = TestBed.inject(HttpClientTestingModule);
-    service = TestBed.inject(AuthManagementService);
-    router = TestBed.inject(Router);
-
-
   }));
 
   beforeEach(() => {
@@ -57,7 +41,7 @@ describe('LoginComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create the component', () => {
     expect(component).toBeTruthy();
   });
 
