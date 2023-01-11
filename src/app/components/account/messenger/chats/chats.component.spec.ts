@@ -1,12 +1,15 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import {CUSTOM_ELEMENTS_SCHEMA} from "@angular/core";
-import {AuthManagementService} from "../../../../../services/auth-management.service";
-import {AuthService} from "../../../../../services/auth.service";
+import {AuthManagementService} from "../../../../services/auth-management.service";
+import {AuthService} from "../../../../services/auth.service";
 import {HttpClientTestingModule} from "@angular/common/http/testing";
 import {NotifierModule} from "angular-notifier";
-import {LoginResponse} from "../../../../../shared/models/login-response.model";
+import {LoginResponse} from "../../../../shared/models/login-response.model";
+//import {ChatDto} from "../../../../shared/models/chatDto";
 import {MatMenuModule} from "@angular/material/menu";
 import { ChatsComponent } from './chats.component';
+
+
 
 describe('ChatsComponent', () => {
   let component: ChatsComponent;
@@ -27,10 +30,11 @@ describe('ChatsComponent', () => {
          schemas: [CUSTOM_ELEMENTS_SCHEMA]
           })
         .compileComponents();
-    });
+
+
 
     fixture = TestBed.createComponent(ChatsComponent);
-    component = fixture.debugElement.componentInstance;
+    component = fixture.componentInstance;
     fixture.detectChanges();
   });
 
@@ -39,13 +43,15 @@ describe('ChatsComponent', () => {
   });
 
   it('should show a chat', () => {
-      let chat: Chat =
+      let chat: ChatDto =
         {
-          // create a chat
+          advertisement: null,
+          sender: null,
+          receiver: null
 
         }
 
-      let chat : list<Chat>, () => {
+      let chats : List<Chat>, () => {
         chat
       }
 
