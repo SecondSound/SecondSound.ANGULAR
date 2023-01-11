@@ -56,6 +56,40 @@ describe('RegisterComponent', () => {
       expect(component.getFormState()).toBeTruthy();
     });
 
+    it('should check if firstName error works', () => {
+      component.emailFormControl.setValue('bart.grootoonk@email.com');
+      component.passwordFormControl.setValue('password123');
+      component.passwordConfirmFormControl.setValue('password123');
+      component.passwordsMatch = true;
+      component.firstNameFormControl.setValue('');
+      component.lastNameFormControl.setValue('Grootoonk');
+
+      expect(component.getFormState()).toBeFalsy();
+    });
+
+    it('should check if lastName error works', () => {
+      component.emailFormControl.setValue('bart.grootoonk@email.com');
+      component.passwordFormControl.setValue('password123');
+      component.passwordConfirmFormControl.setValue('password123');
+      component.passwordsMatch = true;
+      component.firstNameFormControl.setValue('Bart');
+      component.lastNameFormControl.setValue('');
+
+      expect(component.getFormState()).toBeFalsy();
+    });
+
+    it('should check if email error works', () => {
+      component.emailFormControl.setValue('bart.grootoonk');
+      component.passwordFormControl.setValue('password123');
+      component.passwordConfirmFormControl.setValue('password123');
+      component.passwordsMatch = true;
+      component.firstNameFormControl.setValue('Bart');
+      component.lastNameFormControl.setValue('Grootoonk');
+
+      expect(component.getFormState()).toBeFalsy();
+    });
+
+
     it('should check if the set passwords are not same', () => {
       component.emailFormControl.setValue('bart.grootoonk@email.com');
       component.passwordFormControl.setValue('password123');
