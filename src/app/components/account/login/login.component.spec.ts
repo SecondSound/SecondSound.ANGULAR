@@ -13,7 +13,7 @@ describe('LoginComponent', () => {
   let component: LoginComponent;
   let fixture: ComponentFixture<LoginComponent>;
 
-  beforeEach(waitForAsync(() => {
+  beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [
         LoginComponent
@@ -33,7 +33,7 @@ describe('LoginComponent', () => {
         NO_ERRORS_SCHEMA
       ]
     })
-  }));
+  });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(LoginComponent);
@@ -41,7 +41,7 @@ describe('LoginComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create the component', () => {
+  it('should create the LoginComponent', () => {
     expect(component).toBeTruthy();
   });
 
@@ -52,8 +52,6 @@ describe('LoginComponent', () => {
   });
 
   it('should prevent submission with invalid input', () => {
-    component.ngOnInit();
-
     component.emailFormControl.setValue('bart.grootoonk@email.com');
     component.passwordFormControl.setValue('');
 
@@ -61,9 +59,9 @@ describe('LoginComponent', () => {
   });
 
   it('should submit with valid input', () => {
-    component.ngOnInit();
     component.emailFormControl.setValue('bart.grootoonk@email.com');
     component.passwordFormControl.setValue('password123');
+
     expect(component.getFormState()).toBeTruthy();
   });
 

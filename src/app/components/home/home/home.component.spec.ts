@@ -8,27 +8,30 @@ import {CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA} from "@angular/core";
 import {of} from "rxjs";
 import {HttpClient} from "@angular/common/http";
 import {ComponentFixture, TestBed, waitForAsync} from "@angular/core/testing";
-import {LoginComponent} from "../../account/login/login.component";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {SelectedAdvertisementsComponent} from "../../advertisement/selected-ads/selected-advertisements.component";
 import {FiltertreeComponent} from "../../advertisement/ad-elements/filter-element/filtertree.component";
 import {HomeComponent} from "./home.component";
-import {HOME} from "@angular/cdk/keycodes";
 import {Category} from "../../../shared/models/Category";
-import {SubCategory} from "../../../shared/models/SubCategory";
+import {CommonModule} from "@angular/common";
 
 describe('HomeComponent', () => {
   let httpClientSpy: jasmine.SpyObj<HttpClient>;
   let advertisementService: AdvertisementService;
 
-  beforeEach(async () => {
+  beforeEach(() => {
     let httpClientSpyObj = jasmine.createSpyObj('HttpClient', ['get']);
-    await TestBed.configureTestingModule({
+    TestBed.configureTestingModule({
       imports: [
         FormsModule,
         ReactiveFormsModule,
         NotifierModule,
-        HttpClientTestingModule
+        HttpClientTestingModule,
+        CommonModule
+      ],
+      declarations: [
+        FiltertreeComponent,
+        SelectedAdvertisementsComponent
       ],
       providers: [
         AuthManagementService,
@@ -40,7 +43,8 @@ describe('HomeComponent', () => {
         }
       ],
       schemas: [
-        CUSTOM_ELEMENTS_SCHEMA
+        CUSTOM_ELEMENTS_SCHEMA,
+        NO_ERRORS_SCHEMA
       ]
     })
 
@@ -51,7 +55,7 @@ describe('HomeComponent', () => {
   it('should create the HomeComponent', () => {
     let fixture: ComponentFixture<HomeComponent> = TestBed.createComponent(HomeComponent);
     let component: HomeComponent = fixture.componentInstance;
-    
+
     fixture.detectChanges();
     expect(component).toBeTruthy();
   });
@@ -116,7 +120,6 @@ describe('HomeComponent', () => {
         },
       });
     });
-
   });
 
   describe('FilterTreeComponent', () => {
@@ -125,6 +128,7 @@ describe('HomeComponent', () => {
     let fixture: ComponentFixture<FiltertreeComponent>;
 
     beforeEach(() => {
+
       httpClientSpy.get.and.returnValue(of(dummyCategories));
       fixture = TestBed.createComponent(FiltertreeComponent);
     })

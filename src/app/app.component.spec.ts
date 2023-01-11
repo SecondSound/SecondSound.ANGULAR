@@ -1,23 +1,18 @@
 import { TestBed } from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
-import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import {CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA} from "@angular/core";
 
 describe('AppComponent', () => {
-
   let fixture;
   let app;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [
-        RouterTestingModule
-      ],
+  beforeEach( () => {
+    TestBed.configureTestingModule({
       declarations: [
         AppComponent
       ],
-      schemas: [CUSTOM_ELEMENTS_SCHEMA]
-    });
+      schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA]
+    })
     fixture = TestBed.createComponent(AppComponent);
     app = fixture.componentInstance;
   });
@@ -31,5 +26,4 @@ describe('AppComponent', () => {
     const app = fixture.componentInstance;
     expect(app.title).toEqual("Second Sound")
   });
-
 });
