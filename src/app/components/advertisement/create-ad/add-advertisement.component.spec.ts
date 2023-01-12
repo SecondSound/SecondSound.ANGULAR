@@ -1,10 +1,10 @@
-import {ComponentFixture, TestBed, waitForAsync} from "@angular/core/testing";
+import {TestBed} from "@angular/core/testing";
 import {AddAdvertisementComponent} from "./add-advertisement.component";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpClientTestingModule} from "@angular/common/http/testing";
 import {NotifierModule} from "angular-notifier";
 import {CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA} from "@angular/core";
-import {MatDialog, MatDialogModule} from "@angular/material/dialog";
+import {MatDialogModule} from "@angular/material/dialog";
 import {HttpClient} from "@angular/common/http";
 import {AdvertisementService} from "../../../services/advertisement/advertisement.service";
 import {of} from "rxjs";
