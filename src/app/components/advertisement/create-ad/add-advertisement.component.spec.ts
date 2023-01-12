@@ -65,6 +65,7 @@ describe('AddAdvertisementComponent', () => {
     advertisementService.getCategories().subscribe(result => {
       expect(result).toEqual(dummySubCategories)
       expect(result[0].name).toBe('SubCategory 11')
+      expect(result[0].id).not.toBe(2)
     });
   });
 })
