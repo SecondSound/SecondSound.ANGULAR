@@ -1,12 +1,13 @@
 export interface User {
-  firstName: number;
+  id?: number;
+  firstName: string;
   lastName: string;
-  street: string;
-  houseNumber: string;
-  postalCode: string;
-  city: string;
-  country: string;
-  phoneNumber: string;
-  iban: string;
+  street?: string;
+  houseNumber?: string;
+  postalCode?: string;
+  city?: string;
+  country?: string;
+  phoneNumber?: string;
+  iban?: string;
   email: string;
 }

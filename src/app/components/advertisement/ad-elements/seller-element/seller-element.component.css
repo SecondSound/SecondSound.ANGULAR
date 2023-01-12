@@ -25,3 +25,8 @@ hr {
 p {
   color: #767676;
 }
+
+.rating {
+  color: #FFD700;
+  font-size: 36px;
+}
