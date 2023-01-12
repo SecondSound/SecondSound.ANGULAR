@@ -1,11 +1,8 @@
-import {Component, EventEmitter, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, NgModule, OnInit} from '@angular/core';
 import {AdvertisementService} from "../../../services/advertisement/advertisement.service";
 import {AdvertisementDto} from "../../../shared/models/AdvertisementDto";
 import {AuthManagementService} from "../../../services/auth-management.service";
-import {LoginResponse} from "../../../shared/models/login-response.model";
-import {Router} from "@angular/router";
 import {SearchService} from "../../../services/search/search.service";
-
 
 @Component({
   selector: 'app-selected-advertisements',

@@ -12,6 +12,8 @@ import {ConfirmRegistrationComponent} from "./components/account/register/confir
 import {RegistrationConfirmedComponent} from "./components/account/register/registration-confirmed/registration-confirmed.component";
 import {RegisterFormComponent} from "./components/account/register/register-form/register-form.component";
 import {AdvertisementDetailsComponent} from "./components/advertisement/ad-details/advertisement-details.component";
+import {MessengerDashboardComponent} from "./components/account/messenger/messenger-dashboard/messenger-dashboard.component";
+import {ChatScreenComponent} from "./components/account/messenger/chat-screen/chat-screen.component";
 import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.component';
 import {
   SavedAdvertisementsComponent
@@ -76,9 +78,24 @@ const routes: Routes = [
     component: AddAdvertisementComponent,
     canActivate: [AuthGuard]
   },
+     {
+       path: "advertisement/details/:id",
+       component: AdvertisementDetailsComponent
+     },
+     {
+       path: "advertisement/saved",
+       component: SavedAdvertisementsComponent,
+       canActivate: [AuthGuard]
+     },
   {
-    path: "advertisement/details/:id",
-    component: AdvertisementDetailsComponent
+    path: "messenger",
+    component: MessengerDashboardComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: "messenger/chat-screen/:id",
+    component: ChatScreenComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: "advertisement/saved",
