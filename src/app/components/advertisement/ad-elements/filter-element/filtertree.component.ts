@@ -1,10 +1,9 @@
-import {Component, OnInit, Output} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {NestedTreeControl} from "@angular/cdk/tree";
 import {MatTreeNestedDataSource} from "@angular/material/tree";
 import {AdvertisementService} from "../../../../services/advertisement/advertisement.service";
 import {Category} from "../../../../shared/models/Category";
 import {FormArray, FormBuilder, FormControl, FormGroup} from "@angular/forms";
-import {HomeComponent} from "../../../home/home/home.component";
 
 @Component({
   selector: 'app-filtertree',
@@ -33,15 +32,13 @@ export class FiltertreeComponent implements OnInit {
     this.advertisementService.subCategoriesSelected.emit(this.subCategoriesSelected.value);
   }
 
+  // Get al categories from database
   public getAllCategoryDto() {
     return this.advertisementService.getCategoryDto()
       .subscribe(data => { this.dataSource.data = data } );
   }
 
-  // submit() {
-  //   this.advertisementService.subCategoriesSelected.emit(this.subCategoriesSelected.value);
-  // }
-
+  // Checks which checkboxes are checked, put them in a FormArray and sends it to the service
   onCheckboxChange(e) {
     this.selectedSubCategories = this.subCategoriesSelected.get('selectedSubCategories') as FormArray;
 

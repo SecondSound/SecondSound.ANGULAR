@@ -26,7 +26,6 @@ import {AdvertisementService} from "./services/advertisement/advertisement.servi
 import { registerLocaleData } from '@angular/common';
 import localeNL from '@angular/common/locales/nl';
 import { AddAdvertisementComponent } from './components/advertisement/create-ad/add-advertisement.component';
-registerLocaleData(localeNL, 'nl');
 import {MatDialogModule} from "@angular/material/dialog";
 import { AdvertisementDialogComponent } from './dialogs/advertisement-dialog/advertisement-dialog.component';
 import {MatMenuModule} from "@angular/material/menu";
@@ -60,6 +59,8 @@ import {SearchService} from "./services/search/search.service";
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RatingsComponent } from './components/account/dashboard/ratings/ratings.component';
 import { RatingCardComponent } from './components/account/dashboard/ratings/rating-card/rating-card.component';
+
+registerLocaleData(localeNL, 'nl');
 
 @NgModule({
   declarations: [

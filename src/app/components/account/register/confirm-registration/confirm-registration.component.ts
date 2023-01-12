@@ -12,6 +12,7 @@ import {ActivatedRoute} from "@angular/router";
 export class ConfirmRegistrationComponent implements OnInit {
   token: string = '';
   tokenLength: number = 36;
+  mailString: string = '';
 
   tokenFormControl: FormControl = new FormControl('', [
     Validators.required,
@@ -40,5 +41,6 @@ export class ConfirmRegistrationComponent implements OnInit {
 
   resendMail() {
     console.log('resend mail clicked');
+    this.mailString = 'resend mail clicked'
   }
 }

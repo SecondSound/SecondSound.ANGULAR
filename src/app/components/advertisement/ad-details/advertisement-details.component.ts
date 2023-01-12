@@ -4,10 +4,7 @@ import {AdvertisementService} from "../../../services/advertisement/advertisemen
 import {ChatService} from "../../../services/chat/chat.service";
 import {catchError, NotFoundError} from "rxjs";
 import {AdvertisementDto} from "../../../shared/models/AdvertisementDto";
-import {AuthManagementService} from "../../../services/auth-management.service";
-import {LoginResponse} from "../../../shared/models/login-response.model";
 import {BidDto} from "../../../shared/models/BidDto";
-import {SellerBidderDto} from "../../../shared/models/SellerBidderDto";
 
 @Component({
   selector: 'app-advertisement-details',
@@ -16,7 +13,7 @@ import {SellerBidderDto} from "../../../shared/models/SellerBidderDto";
 })
 export class AdvertisementDetailsComponent implements OnInit {
   advertisementFromURL: { id: number };
-  advertisement: AdvertisementDto;
+  advertisement: AdvertisementDto = null;
   bids: BidDto[] = [];
   error = null;
 
