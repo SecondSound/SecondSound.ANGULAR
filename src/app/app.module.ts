@@ -34,10 +34,13 @@ import { ProfileHeaderComponent } from './components/account/dashboard/profile-h
 import { ConfirmRegistrationComponent } from './components/account/register/confirm-registration/confirm-registration.component';
 import { RegistrationConfirmedComponent } from './components/account/register/registration-confirmed/registration-confirmed.component';
 import { RegisterFormComponent } from './components/account/register/register-form/register-form.component';
+import { MessengerDashboardComponent } from './components/account/messenger/messenger-dashboard/messenger-dashboard.component';
 import {MatSelectModule} from "@angular/material/select";
 import { AdvertisementDetailsComponent } from './components/advertisement/ad-details/advertisement-details.component';
 import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.component';
 import {MatTreeModule} from "@angular/material/tree";
+import { ChatsComponent } from './components/account/messenger/chats/chats.component';
+import { ChatScreenComponent } from './components/account/messenger/chat-screen/chat-screen.component';
 import { FiltertreeComponent } from './components/advertisement/ad-elements/filter-element/filtertree.component';
 import { SelectedAdvertisementsComponent } from './components/advertisement/selected-ads/selected-advertisements.component';
 import { SavedAdvertisementsComponent } from './components/advertisement/saved-ads/saved-advertisements.component';
@@ -71,15 +74,16 @@ import { RatingCardComponent } from './components/account/dashboard/ratings/rati
     UserDashboardComponent,
     AddAdvertisementComponent,
     AdvertisementDialogComponent,
-    AdvertisementDialogComponent,
-    UserDashboardComponent,
     ProfileHeaderComponent,
     ConfirmRegistrationComponent,
     RegistrationConfirmedComponent,
     RegisterFormComponent,
+    MessengerDashboardComponent,
     AdvertisementDetailsComponent,
-    PagenotfoundComponent,
     FiltertreeComponent,
+    PagenotfoundComponent,
+    ChatsComponent,
+    ChatScreenComponent,
     SelectedAdvertisementsComponent,
     SavedAdvertisementsComponent,
     BidDialogComponent,
