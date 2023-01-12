@@ -43,19 +43,28 @@ describe('ChatsComponent', () => {
   });
 
   it('should show a chat', () => {
-      let chat: ChatDto =
+
+  let user: LoginResponse =
         {
-          advertisement: null,
-          sender: null,
-          receiver: null
-
+          firstName: 'Bart',
+          lastName: 'Grootoonk',
+          accessToken: null,
+          userId: null,
+          expirationDate: null
         }
+//       let chat: ChatDto =
+//         {
+//           advertisement: null,
+//           sender: null,
+//           receiver: null
+//
+//         }
+//
+//       let chats : List<Chat>, () => {
+//         chat
+//       }
 
-      let chats : List<Chat>, () => {
-        chat
-      }
-
-      component.chats = chat;
+//       component.chats = chat;
       fixture.detectChanges();
       let compiled = fixture.debugElement.nativeElement;
       expect(compiled.textContent).toContain('');
