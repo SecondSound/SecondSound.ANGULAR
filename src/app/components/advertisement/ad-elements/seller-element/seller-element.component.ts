@@ -7,6 +7,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {Rating} from "../../../../shared/models/rating.model";
 import {RatingsService} from "../../../../services/ratings/ratings.service";
 import {NotifierService} from "angular-notifier";
+import {AuthManagementService} from "../../../../services/auth-management.service";
 
 @Component({
   selector: 'app-seller-element',
@@ -20,14 +21,20 @@ export class SellerElementComponent implements OnInit {
   @ViewChild('map-container') mapContainer;
   private map: L.Map;
   hovered: number;
+  isLoggedIn: boolean = false;
 
   constructor(private advertisementService: AdvertisementService,
               private ratingsService: RatingsService,
               private notifierService: NotifierService,
+              private authManagementService: AuthManagementService,
               private router: Router) {
   }
 
   ngOnInit(): void {
+    this.authManagementService.isUserLoggedIn$.subscribe((loggedIn: boolean) => {
+      this.isLoggedIn = loggedIn;
+    });
+
     this.hovered = 0;
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
       this.initMap(this.seller);
@@ -61,14 +68,16 @@ export class SellerElementComponent implements OnInit {
 
 
   rateUser() {
-    const rating = {
-      user: this.seller.id,
-      rating: this.hovered
-    }
+    if (this.isLoggedIn) {
+      const rating = {
+        user: this.seller.id,
+        rating: this.hovered
+      }
 
-    this.ratingsService.postRating(rating).subscribe(() => {
-      this.notifierService.notify('success', `Successfully rated ${this.seller.firstName}!`)
-      this.ngOnInit();
-    });
+      this.ratingsService.postRating(rating).subscribe(() => {
+        this.notifierService.notify('success', `Successfully rated ${this.seller.firstName}!`)
+        this.ngOnInit();
+      });
+    }
   }
 }

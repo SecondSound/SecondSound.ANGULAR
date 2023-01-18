@@ -2,25 +2,25 @@
 <div class="container">
   <div class="d-flex" id="wrapper">
     <!-- Sidebar-->
-    <div class="border-end bg-white" id="sidebar-wrapper">
+    <div class="d-none d-xl-block col-lg-3">
       <div class="sidebar-heading border-bottom bg-light"></div>
       <div class="list-group list-group-flush">
         <button class="btn btn-primary" padding="10px" routerLink="../../" id="incommingToggle">back to messages</button>
-
+        <app-bid-element [advertisement]="advertisement" [bids]="bids"></app-bid-element>
 
       </div>
     </div>
     <!-- Page content wrapper-->
 
-    <div class="container">
+    <div class="d-none d-xl-block col-lg-8">
       <div *ngIf="(authorized  == true) " >
         <div class="row">
-          <div class="col-12 col-md-10 col-lg-8 col-xl-6 mx-auto py-4">
-            <div class="title">
+          <div class="col-22 col-xl-10 col-xl-8 col-xl-6 mx-auto py-4">
+            <div class="messages">
               <mat-card>
-                <div class="row">
+                <div class="row text-left mx-auto">
                   <div *ngFor="let message of messages" >
-                    <h2 class="card-title mb-0 text-truncate">{{message.sender.firstName}} : {{message.message}}</h2>
+                    <h2 class="card-title mb-8  text-align:center ">{{message.sender.firstName}} : {{message.message}}</h2>
                   </div>
                 </div>
 
@@ -49,14 +49,13 @@
 
     </div>
 
-
-
-
-
-
+    <div class="d-none d-xl-block col-lg-3">
+      <div class="sidebar-heading border-bottom bg-light"></div>
+      <div class="list-group list-group-flush">
+        <app-seller-element [advertisement]="advertisement" [seller]="seller"></app-seller-element>
+      </div>
+    </div>
   </div>
-  <!-- Page content wrapper-->
-
   </div>
 
 
