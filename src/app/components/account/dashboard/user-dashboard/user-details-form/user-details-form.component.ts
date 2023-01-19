@@ -26,7 +26,7 @@ export class UserDetailsFormComponent implements OnInit {
   cityFormControl: FormControl = new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(50)]);
   countryFormControl: FormControl = new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(50)]);
   phoneNumberFormControl: FormControl = new FormControl('', [Validators.required, Validators.minLength(8), Validators.maxLength(20)]);
-  ibanFormControl: FormControl = new FormControl('', [Validators.required, Validators.minLength(2), Validators.pattern('^([A-Z]{2}[ '+'\\'+'-]?[0-9]{2})(?=(?:[ '+'\\'+'-]?[A-Z0-9]){9,30}$)((?:[ '+'\\'+'-]?[A-Z0-9]{3,5}){2,7})([ '+'\\'+'-]?[A-Z0-9]{1,3})?$')]);
+  ibanFormControl: FormControl = new FormControl('', [Validators.required, Validators.minLength(2), Validators.pattern('^([A-Z*]{2}[ '+'\\'+'-]?[0-9*]{2})(?=(?:[ '+'\\'+'-]?[A-Z0-9*]){9,30}$)((?:[ '+'\\'+'-]?[A-Z0-9*]{3,5}){2,7})([ '+'\\'+'-]?[A-Z0-9*]{1,3})?$')]);
   emailFormControl: FormControl = new FormControl('', [Validators.required, Validators.email]);
   matcher: FormErrorStateMatcher = new FormErrorStateMatcher();
 
